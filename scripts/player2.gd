@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+@onready var device_num: int = Global.player_two_device_num
+
 @onready var sword = $Sword
 @onready var sword_animation = $Sword/AnimationPlayer
 
