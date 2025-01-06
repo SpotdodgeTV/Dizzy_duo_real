@@ -24,7 +24,7 @@ var previous_angle_difference: float = 0.0
 
 func get_movement_direction():
 	match device_num:
-		-1: #keyboard
+		-1: #keyboard and mouse
 			return Input.get_vector("keyboard_left", "keyboard_right", "keyboard_up", "keyboard_down")
 		_: #controller
 			return Vector2(Input.get_joy_axis(device_num, 0), Input.get_joy_axis(device_num, 1))
@@ -60,15 +60,15 @@ func end_lasso():
 
 func _input(event: InputEvent) -> void:
 	match device_num:
-		-1: #keyboard
+		-1: #keyboard and mouse
 			if Input.is_action_just_pressed("mouse_left"):
 				start_lasso()
 			elif Input.is_action_just_released("mouse_left"):
 				end_lasso()
 		_: #controller
-			if Input.get_joy_axis(0, JOY_AXIS_TRIGGER_RIGHT) > 0.1 and !lasso_in_use:
+			if Input.get_joy_axis(device_num, JOY_AXIS_TRIGGER_RIGHT) > 0.1 and !lasso_in_use:
 				start_lasso()
-			elif Input.get_joy_axis(0, JOY_AXIS_TRIGGER_RIGHT) < 0.1 and lasso_in_use and player_two_connected:
+			elif Input.get_joy_axis(device_num, JOY_AXIS_TRIGGER_RIGHT) < 0.1 and lasso_in_use and player_two_connected:
 				end_lasso()
 
 
@@ -85,7 +85,7 @@ func _process(delta):
 	#Spin logic
 	if player_two_connected:
 		match device_num:
-			-1: #keyboard
+			-1: #keyboard and mouse
 				var mouse_position: Vector2 = get_global_mouse_position()
 				var mouse_angle = get_angle_to(mouse_position)
 				spin_logic(true, mouse_angle, delta)
