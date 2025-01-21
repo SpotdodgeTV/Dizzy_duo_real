@@ -1,5 +1,6 @@
 extends RigidBody2D
 
+@onready var parent = $"../"
 @onready var device_num: int = Global.player_two_device_num
 
 @onready var sword = $Sword
@@ -9,7 +10,7 @@ const MAGNITUDE = 100
 const SWORD_ROTATION_SPEED = 15
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	connect("body_entered", take_damage)
 
 func get_sword_angle():
 	match device_num:
@@ -37,3 +38,7 @@ func _process(delta: float) -> void:
 func sling(direction, speed, nposition):
 	global_position = nposition
 	apply_impulse(direction * (speed * MAGNITUDE), nposition)
+
+func take_damage(body):
+	if body.is_in_group("bullet"):
+		parent.hurt()

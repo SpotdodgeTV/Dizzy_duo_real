@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var parent = $"../"
 @onready var device_num: int = Global.player_one_device_num
 
 @onready var player1 = self
@@ -21,6 +22,9 @@ var angle: float = 0.0
 var input_sensitivity: float = 0.4
 var target_position: Vector2 = Vector2.ZERO
 var previous_angle_difference: float = 0.0
+
+func _ready() -> void:
+	connect("body_entered", take_damage)
 
 func get_movement_direction():
 	match device_num:
@@ -111,3 +115,7 @@ func _process(delta):
 			line.points = [player1.position, player2.position]
 	else:
 		line.points = [player1.position, lerp(line.points[1], player1.position, 15 * delta)]
+
+func take_damage(body):
+	if body.is_in_group("bullet"):
+		parent.hurt(body.damage)
