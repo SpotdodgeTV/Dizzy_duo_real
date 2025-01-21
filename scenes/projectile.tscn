@@ -14,7 +14,7 @@ height = 120.0
 radius = 47.9392
 height = 121.143
 
-[node name="projectile" type="CharacterBody2D"]
+[node name="projectile" type="CharacterBody2D" groups=["bullet"]]
 position = Vector2(666, 318)
 scale = Vector2(0.500634, 0.478774)
 collision_layer = 0

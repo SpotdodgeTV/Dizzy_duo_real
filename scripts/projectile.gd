@@ -1,5 +1,6 @@
 extends CharacterBody2D
 @export var speed = 100
+@export var damage = 10
 var spawnPos : Vector2
 var dir : float
 var is_set =false
@@ -27,6 +28,8 @@ func _physics_process(delta):
 
 func _on_area_2d_body_entered(body: Node2D):
 	print("HIT!")
+	if body.is_in_group("player"):
+		body.parent.hurt(damage)
 	queue_free()
 
 

@@ -10,12 +10,12 @@ const MAGNITUDE = 100
 const SWORD_ROTATION_SPEED = 15
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	connect("body_entered", take_damage)
+	pass
 
 func get_sword_angle():
 	match device_num:
 		-1: #keyboard and mouse
-			return get_angle_to(get_local_mouse_position())
+			return get_angle_to(get_global_mouse_position())
 		_: #controller
 			var right_stick_direction: Vector2 = Vector2(Input.get_joy_axis(device_num, 2), Input.get_joy_axis(device_num, 3))
 			return right_stick_direction.angle()
@@ -39,6 +39,7 @@ func sling(direction, speed, nposition):
 	global_position = nposition
 	apply_impulse(direction * (speed * MAGNITUDE), nposition)
 
-func take_damage(body):
-	if body.is_in_group("bullet"):
-		parent.hurt()
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemy"):
+		body.damaged(20)

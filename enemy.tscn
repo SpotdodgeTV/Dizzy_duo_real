@@ -1,36 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdv6gh78tr2qn"]
+[gd_scene load_steps=7 format=3 uid="uid://bdv6gh78tr2qn"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_3jr3v"]
 [ext_resource type="Texture2D" uid="uid://bsppx5klhkwkk" path="res://Textures/Untitled drawing.svg" id="1_sdfb3"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_oriy2"]
-load_path = "res://.godot/imported/Untitled drawing.svg-53e36e70428d4913dac13bd201e04728.ctex"
+[ext_resource type="Texture2D" uid="uid://dukavvigm7qyg" path="res://Textures/characters/boss_1.png" id="2_b23x7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ufwb"]
 radius = 48.7647
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_oriy2"]
+load_path = "res://.godot/imported/Untitled drawing.svg-53e36e70428d4913dac13bd201e04728.ctex"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fq7qp"]
+radius = 43.566
+
 [node name="main" type="Node2D"]
-
-[node name="Enemy" type="Node2D" parent="."]
-scale = Vector2(0.999656, 1.00105)
-script = ExtResource("1_3jr3v")
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
-texture = ExtResource("1_sdfb3")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Enemy"]
-modulate = Color(0, 1, 1, 1)
-position = Vector2(0, -50)
-scale = Vector2(0.25192, 0.253908)
-texture = SubResource("CompressedTexture2D_oriy2")
-
-[node name="StateMachine" type="Node" parent="Enemy"]
 
 [node name="Cooldown" type="Timer" parent="."]
 autostart = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(397, -98)
@@ -41,5 +30,25 @@ texture = ExtResource("1_sdfb3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("CircleShape2D_6ufwb")
+
+[node name="Enemy" type="CharacterBody2D" parent="." groups=["enemy"]]
+rotation = 0.00286502
+script = ExtResource("1_3jr3v")
+
+[node name="face" type="Sprite2D" parent="Enemy"]
+scale = Vector2(4.99828, 5.00525)
+texture = ExtResource("2_b23x7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Enemy"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(0, -50.0525)
+scale = Vector2(0.251833, 0.254175)
+texture = SubResource("CompressedTexture2D_oriy2")
+
+[node name="StateMachine" type="Node" parent="Enemy"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+rotation = 0.00182393
+shape = SubResource("CircleShape2D_fq7qp")
 
 [connection signal="timeout" from="Cooldown" to="Enemy" method="_on_cooldown_timeout"]

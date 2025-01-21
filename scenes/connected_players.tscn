@@ -1,15 +1,19 @@
-[gd_scene load_steps=12 format=3 uid="uid://pt57p26pop1"]
+[gd_scene load_steps=13 format=3 uid="uid://pt57p26pop1"]
 
 [ext_resource type="Script" path="res://scripts/connected_players.gd" id="1_08mic"]
-[ext_resource type="Texture2D" uid="uid://ihxkmr4trrgu" path="res://textures/weapons/rope.png" id="1_gx0dy"]
+[ext_resource type="Texture2D" uid="uid://ihxkmr4trrgu" path="res://Textures/weapons/rope.png" id="1_gx0dy"]
 [ext_resource type="Script" path="res://scripts/player2.gd" id="2_h86dy"]
-[ext_resource type="Texture2D" uid="uid://c4x0dlrynjvim" path="res://textures/characters/knight.png" id="3_cxt7w"]
+[ext_resource type="Texture2D" uid="uid://c4x0dlrynjvim" path="res://Textures/characters/knight.png" id="3_cxt7w"]
 [ext_resource type="Script" path="res://scripts/player1.gd" id="4_8sexq"]
-[ext_resource type="Texture2D" uid="uid://ccf8yjh5253kp" path="res://textures/weapons/sword.png" id="4_a7w7r"]
-[ext_resource type="Texture2D" uid="uid://cowa12bnksvxl" path="res://textures/characters/cowboy.png" id="6_fufho"]
+[ext_resource type="Texture2D" uid="uid://ccf8yjh5253kp" path="res://Textures/weapons/sword.png" id="4_a7w7r"]
+[ext_resource type="Texture2D" uid="uid://cowa12bnksvxl" path="res://Textures/characters/cowboy.png" id="6_fufho"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yfwbq"]
 radius = 20.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c15uc"]
+radius = 6.69616
+height = 41.909
 
 [sub_resource type="Animation" id="Animation_y5jsf"]
 length = 0.001
@@ -36,6 +40,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(20.8778, 12.6527)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/Area2D/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_6sy6v"]
@@ -66,6 +82,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(20.8778, 12.6527), Vector2(13, 13), Vector2(20.8778, 12.6527)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/Area2D/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xlha2"]
 _data = {
@@ -86,6 +114,7 @@ texture_mode = 2
 [node name="Player2" type="RigidBody2D" parent="." groups=["player"]]
 position = Vector2(50, 0)
 gravity_scale = 0.0
+lock_rotation = true
 linear_damp = 2.0
 script = ExtResource("2_h86dy")
 
@@ -97,6 +126,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("3_cxt7w")
 
 [node name="Sword" type="Node2D" parent="Player2"]
+rotation = 0.119925
 
 [node name="Sprite2D" type="Sprite2D" parent="Player2/Sword"]
 position = Vector2(20.8778, 12.6527)
@@ -104,6 +134,17 @@ rotation = -3.40688
 scale = Vector2(2, 2)
 texture = ExtResource("4_a7w7r")
 offset = Vector2(-7.0898, 7.20289)
+
+[node name="Area2D" type="Area2D" parent="Player2/Sword/Sprite2D"]
+position = Vector2(8.41504, 8.84198)
+rotation = -2.87631
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2/Sword/Sprite2D/Area2D"]
+position = Vector2(32, -6)
+rotation = 0.523598
+shape = SubResource("CapsuleShape2D_c15uc")
+disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player2/Sword"]
 libraries = {
@@ -120,3 +161,5 @@ shape = SubResource("CircleShape2D_yfwbq")
 [node name="Sprite2D" type="Sprite2D" parent="Player1"]
 scale = Vector2(2, 2)
 texture = ExtResource("6_fufho")
+
+[connection signal="body_entered" from="Player2/Sword/Sprite2D/Area2D" to="Player2" method="_on_area_2d_body_entered"]
