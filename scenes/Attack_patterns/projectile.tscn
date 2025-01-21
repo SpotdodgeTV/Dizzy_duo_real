@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://c862e5hdf8y7"]
+
+[ext_resource type="Texture2D" uid="uid://bsppx5klhkwkk" path="res://Textures/Untitled drawing.svg" id="1_1ltek"]
+[ext_resource type="Script" path="res://scripts/projectile.gd" id="1_thmso"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_igavw"]
+load_path = "res://.godot/imported/Untitled drawing.svg-53e36e70428d4913dac13bd201e04728.ctex"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ikkc2"]
+radius = 46.0
+height = 120.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1cu2s"]
+radius = 47.9392
+height = 121.143
+
+[node name="projectile" type="CharacterBody2D"]
+position = Vector2(666, 318)
+scale = Vector2(0.500634, 0.478774)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_thmso")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(1, 1.25)
+texture = ExtResource("1_1ltek")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(1, 0.21268, 0.159696, 1)
+scale = Vector2(0.8, 1)
+texture = SubResource("CompressedTexture2D_igavw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CapsuleShape2D_ikkc2")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1.01135, 1)
+shape = SubResource("CapsuleShape2D_1cu2s")
+
+[node name="Life" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Life" to="." method="_on_life_timeout"]

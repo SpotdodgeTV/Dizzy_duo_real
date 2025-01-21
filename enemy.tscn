@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdv6gh78tr2qn"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_3jr3v"]
+[ext_resource type="Texture2D" uid="uid://bsppx5klhkwkk" path="res://Textures/Untitled drawing.svg" id="1_sdfb3"]
+[ext_resource type="Script" path="res://scripts/state_machine.gd" id="3_ls3ad"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_oriy2"]
+load_path = "res://.godot/imported/Untitled drawing.svg-53e36e70428d4913dac13bd201e04728.ctex"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ufwb"]
+radius = 48.7647
+
+[node name="main" type="Node2D"]
+
+[node name="Enemy" type="Node2D" parent="."]
+scale = Vector2(0.999656, 1.00105)
+script = ExtResource("1_3jr3v")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
+texture = ExtResource("1_sdfb3")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Enemy"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(0, -50)
+scale = Vector2(0.25192, 0.253908)
+texture = SubResource("CompressedTexture2D_oriy2")
+
+[node name="StateMachine" type="Node" parent="Enemy"]
+script = ExtResource("3_ls3ad")
+
+[node name="Cooldown" type="Timer" parent="."]
+autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(397, -98)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("1_sdfb3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_6ufwb")
+
+[connection signal="timeout" from="Cooldown" to="Enemy" method="_on_cooldown_timeout"]
