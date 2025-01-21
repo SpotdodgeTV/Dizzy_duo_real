@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfww0xgjujua"]
+
+[ext_resource type="Texture2D" uid="uid://501gmqda8eer" path="res://textures/portraits/cowboy_portrait.png" id="1_2ful0"]
+[ext_resource type="FontFile" uid="uid://u4csmhrdtwge" path="res://fonts/FreeCheese-Regular.ttf" id="2_2dwju"]
+[ext_resource type="Texture2D" uid="uid://th6o2hcp8ji4" path="res://textures/ui/brush-stroke.png" id="2_dg47y"]
+
+[sub_resource type="FontVariation" id="FontVariation_y6o30"]
+base_font = ExtResource("2_2dwju")
+
+[node name="PlayerSelectScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 1080.0
+
+[node name="Cowboy" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 139.0
+offset_top = -1080.0
+offset_right = 1219.0
+grow_vertical = 0
+scale = Vector2(0.82, 0.82)
+pivot_offset = Vector2(0, 1080)
+texture = ExtResource("1_2ful0")
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+modulate = Color(0.116741, 0.116741, 0.116741, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -325.0
+offset_top = -544.0
+offset_right = 283.0
+offset_bottom = -295.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.14, 1)
+texture = ExtResource("2_dg47y")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -335.0
+offset_top = -511.0
+offset_right = 335.0
+offset_bottom = -346.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.281227, 0, 0.00760611, 1)
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = SubResource("FontVariation_y6o30")
+theme_override_font_sizes/font_size = 70
+text = "PRESS ANY BUTTON TO JOIN"
+horizontal_alignment = 1
+autowrap_mode = 2
