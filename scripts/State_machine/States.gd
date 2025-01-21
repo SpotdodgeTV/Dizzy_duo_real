@@ -6,7 +6,7 @@ signal Transitioned
 func Enter():
 	pass
 	
-func EXit():
+func exit():
 	pass
 	
 func Update(_delta: float):

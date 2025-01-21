@@ -99,7 +99,7 @@ texture = ExtResource("3_fbsj4")
 [node name="Sprite2D" type="Sprite2D" parent="Player2/Sword"]
 position = Vector2(20.8778, 12.6527)
 rotation = -3.40688
-scale = Vector2(0.07, 0.07)
+scale = Vector2(0.104878, 0.104878)
 texture = ExtResource("4_w4fr8")
 offset = Vector2(-194.174, 134.55)
 

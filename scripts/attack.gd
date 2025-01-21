@@ -9,7 +9,7 @@ func _ready():
 			continue
 		i.spawnPos = i.position
 		i.dir = i.global_rotation
-		i.speed = speed
+		i.speed = i.speed + speed
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
