@@ -13,6 +13,7 @@ var player_two_connected = false
 const STARTING_MOVEMENT_SPEED = 100
 const MAX_MOVEMENT_SPEED = 150
 
+var elapsed_time = 0.0
 var current_movement_speed: int = STARTING_MOVEMENT_SPEED
 var radius: float = 100.0
 var max_speed:float = 10.0
@@ -53,6 +54,7 @@ func spin_logic(all_criteria_met, target_angle, delta):
 
 #anything that needs to happen when lassoing begins goes here
 func start_lasso():
+	elapsed_time = 0.0
 	lasso_in_use = true
 
 #anything that needs to happen when lassoing ends goes here
@@ -115,7 +117,7 @@ func _process(delta):
 				player_two_connected = true
 			elif player_two_connected:
 				if radius > 150:
-					player2.global_position = lerp(player2.global_position, player1.global_position, 1.5 * delta)
+					player2.global_position = lerp(player2.global_position, player1.global_position, delta * 3)
 				elif radius < 90:
 					player2.global_position = lerp(player2.global_position, Vector2(player1.global_position.x + cos(angle) * 90, player1.global_position.y + sin(angle) * 90), 5 * delta)
 				radius = player1.global_position.distance_to(player2.global_position)
