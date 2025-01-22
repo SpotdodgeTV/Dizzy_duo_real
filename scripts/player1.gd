@@ -58,9 +58,10 @@ func start_lasso():
 #anything that needs to happen when lassoing ends goes here
 func end_lasso():
 	lasso_in_use = false
-	player_two_connected = false
-	player2.freeze = false
-	player2.sling((player2.position - player1.position).normalized(), current_speed, player2.global_position)
+	if player_two_connected:
+		player_two_connected = false
+		player2.freeze = false
+		player2.sling((player2.global_position - player1.global_position).normalized(), current_speed, player2.global_position)
 
 func _input(event: InputEvent) -> void:
 	match device_num:
@@ -98,20 +99,26 @@ func _process(delta):
 				var is_input_large = spin_direction.length() > input_sensitivity
 				var target_angle = spin_direction.angle()
 				spin_logic(is_input_large, target_angle, delta)
-		target_position.x = player1.position.x + radius * cos(angle)
-		target_position.y = player1.position.y + radius * sin(angle)
+		target_position.x = player1.global_position.x + radius * cos(angle)
+		target_position.y = player1.global_position.y + radius * sin(angle)
 		player2.global_position = target_position
 	
 	if lasso_in_use:
-		if round(line.points[1]).distance_to(round(player2.position)) > 10 and !player_two_connected:
-			line.points = [player1.position, lerp(line.points[1], player2.position, 15 * delta)]
+		if round(line.points[1]).distance_to(round(player2.global_position)) > 10 and !player_two_connected:
+			line.points = [player1.global_position, lerp(line.points[1], player2.global_position, 15 * delta)]
 		else:
 			if !player_two_connected:
-				radius = player1.position.distance_to(player2.position)
-				angle = player1.position.angle_to_point(player2.position)
+				radius = player1.global_position.distance_to(player2.global_position)
+				angle = player1.global_position.angle_to_point(player2.global_position)
 				current_speed = 0
 				player2.freeze = true
 				player_two_connected = true
-			line.points = [player1.position, player2.position]
+			elif player_two_connected:
+				if radius > 150:
+					player2.global_position = lerp(player2.global_position, player1.global_position, 1.5 * delta)
+				elif radius < 90:
+					player2.global_position = lerp(player2.global_position, Vector2(player1.global_position.x + cos(angle) * 90, player1.global_position.y + sin(angle) * 90), 5 * delta)
+				radius = player1.global_position.distance_to(player2.global_position)
+			line.points = [player1.global_position, player2.global_position]
 	else:
-		line.points = [player1.position, lerp(line.points[1], player1.position, 15 * delta)]
+		line.points = [player1.global_position, lerp(line.points[1], player1.global_position, 15 * delta)]
