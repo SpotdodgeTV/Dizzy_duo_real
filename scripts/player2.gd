@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 @onready var parent = $"../"
+@onready var player_one = $"../Player1"
 @onready var device_num: int = Global.player_two_device_num
 
 @onready var sword = $Sword
@@ -36,7 +37,7 @@ func _process(delta: float) -> void:
 	#sword.rotation = lerp_angle(sword.rotation, get_angle_to(get_local_mouse_position()), SWORD_ROTATION_SPEED * delta)
 
 func sling(direction : Vector2, speed, nposition):
-	global_position = nposition
+	#global_position = nposition
 	direction = direction.rotated(deg_to_rad(80))
 	apply_impulse(direction * (speed * MAGNITUDE), nposition)
 
@@ -44,3 +45,13 @@ func sling(direction : Vector2, speed, nposition):
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		body.damaged(20)
+
+func _on_body_col_body_entered(body: Node2D) -> void:
+	if body.is_in_group("object") or body.is_in_group("enemy"):
+		
+		if player_one.player_two_connected:
+			player_one.end_lasso(-2)
+		
+		
+		#sling(linear_velocity.normalized(), -2, global_position)
+		print("touched object")

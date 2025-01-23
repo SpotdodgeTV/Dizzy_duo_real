@@ -58,12 +58,12 @@ func start_lasso():
 	lasso_in_use = true
 
 #anything that needs to happen when lassoing ends goes here
-func end_lasso():
+func end_lasso(sling_speed: int = current_speed):
 	lasso_in_use = false
 	if player_two_connected:
 		player_two_connected = false
 		player2.freeze = false
-		player2.sling((player2.global_position - player1.global_position).normalized(), current_speed, player2.global_position)
+		player2.sling((player2.global_position - player1.global_position).normalized(), sling_speed, player2.global_position)
 
 func _input(event: InputEvent) -> void:
 	match device_num:
@@ -113,7 +113,7 @@ func _process(delta):
 				radius = player1.global_position.distance_to(player2.global_position)
 				angle = player1.global_position.angle_to_point(player2.global_position)
 				current_speed = 0
-				player2.freeze = true
+				#player2.freeze = true
 				player_two_connected = true
 			elif player_two_connected:
 				if radius > 150:
