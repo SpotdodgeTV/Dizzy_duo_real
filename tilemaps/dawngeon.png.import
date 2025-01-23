@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4x0dlrynjvim"
-path="res://.godot/imported/knight.png-ac340253586d303ab5f5382d0675bdd5.ctex"
+uid="uid://bnhe1ahh8fv7w"
+path="res://.godot/imported/dawngeon.png-b8526da4212f4c932258f2a7adbdca9d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/characters/knight.png"
-dest_files=["res://.godot/imported/knight.png-ac340253586d303ab5f5382d0675bdd5.ctex"]
+source_file="res://tilemaps/dawngeon.png"
+dest_files=["res://.godot/imported/dawngeon.png-b8526da4212f4c932258f2a7adbdca9d.ctex"]
 
 [params]
 

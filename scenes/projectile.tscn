@@ -1,50 +1,86 @@
-[gd_scene load_steps=6 format=3 uid="uid://c862e5hdf8y7"]
+[gd_scene load_steps=11 format=3 uid="uid://c862e5hdf8y7"]
 
-[ext_resource type="Texture2D" uid="uid://bsppx5klhkwkk" path="res://Textures/Untitled drawing.svg" id="1_1ltek"]
 [ext_resource type="Script" path="res://scripts/projectile.gd" id="1_thmso"]
+[ext_resource type="Texture2D" uid="uid://dowdbufahwus0" path="res://Textures/bullets/bullet.png" id="2_v76n2"]
+[ext_resource type="Texture2D" uid="uid://bejtf8f2il5tl" path="res://Textures/bullets/fireball.png" id="3_xq1je"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_igavw"]
-load_path = "res://.godot/imported/Untitled drawing.svg-53e36e70428d4913dac13bd201e04728.ctex"
+[sub_resource type="CircleShape2D" id="CircleShape2D_qpa0g"]
+radius = 12.893
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ikkc2"]
-radius = 46.0
-height = 120.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_gw5kj"]
+atlas = ExtResource("3_xq1je")
+region = Rect2(0, 0, 7, 12)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1cu2s"]
-radius = 47.9392
-height = 121.143
+[sub_resource type="AtlasTexture" id="AtlasTexture_tr63r"]
+atlas = ExtResource("3_xq1je")
+region = Rect2(0, 12, 7, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uodg1"]
+atlas = ExtResource("3_xq1je")
+region = Rect2(0, 24, 7, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mx2gv"]
+atlas = ExtResource("3_xq1je")
+region = Rect2(0, 36, 7, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0sbqr"]
+atlas = ExtResource("3_xq1je")
+region = Rect2(0, 48, 7, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cnu1a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gw5kj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tr63r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uodg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mx2gv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0sbqr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="projectile" type="CharacterBody2D" groups=["bullet"]]
 position = Vector2(666, 318)
-scale = Vector2(0.500634, 0.478774)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_thmso")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 0, 1)
-scale = Vector2(1, 1.25)
-texture = ExtResource("1_1ltek")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-modulate = Color(1, 0.21268, 0.159696, 1)
-scale = Vector2(0.8, 1)
-texture = SubResource("CompressedTexture2D_igavw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource("CapsuleShape2D_ikkc2")
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(2, 2.25)
+texture = ExtResource("2_v76n2")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 scale = Vector2(1.01135, 1)
-shape = SubResource("CapsuleShape2D_1cu2s")
+shape = SubResource("CircleShape2D_qpa0g")
 
 [node name="Life" type="Timer" parent="."]
 wait_time = 5.0
-autostart = true
+one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, 19)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_cnu1a")
+autoplay = "default"
+frame_progress = 0.239753
+speed_scale = 5.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Life" to="." method="_on_life_timeout"]

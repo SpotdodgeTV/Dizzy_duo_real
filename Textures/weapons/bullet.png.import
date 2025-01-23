@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4x0dlrynjvim"
-path="res://.godot/imported/knight.png-ac340253586d303ab5f5382d0675bdd5.ctex"
+uid="uid://caa50fkgqphbm"
+path="res://.godot/imported/bullet.png-48e31b43d14aab4762b980925d0b3993.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/characters/knight.png"
-dest_files=["res://.godot/imported/knight.png-ac340253586d303ab5f5382d0675bdd5.ctex"]
+source_file="res://Textures/weapons/bullet.png"
+dest_files=["res://.godot/imported/bullet.png-48e31b43d14aab4762b980925d0b3993.ctex"]
 
 [params]
 

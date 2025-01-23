@@ -7,30 +7,30 @@
 script = ExtResource("1_04xym")
 
 [node name="projectile" parent="." instance=ExtResource("2_vvhlu")]
-position = Vector2(0, -200)
+position = Vector2(0, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="projectile2" parent="." instance=ExtResource("2_vvhlu")]
-position = Vector2(-55, -140)
+position = Vector2(-55, 60)
 speed = 133
 
 [node name="projectile3" parent="." instance=ExtResource("2_vvhlu")]
-position = Vector2(-95, -70)
+position = Vector2(-95, 130)
 speed = 166
 
 [node name="projectile4" parent="." instance=ExtResource("2_vvhlu")]
-position = Vector2(-125, 0)
+position = Vector2(-125, 200)
 speed = 200
 
 [node name="projectile5" parent="." instance=ExtResource("2_vvhlu")]
-position = Vector2(55, -140)
+position = Vector2(55, 60)
 speed = 133
 
 [node name="projectile6" parent="." instance=ExtResource("2_vvhlu")]
-position = Vector2(125, 0)
+position = Vector2(125, 200)
 speed = 200
 
 [node name="projectile7" parent="." instance=ExtResource("2_vvhlu")]
-position = Vector2(95, -70)
+position = Vector2(95, 130)
 speed = 166

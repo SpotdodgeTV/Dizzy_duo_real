@@ -24,7 +24,7 @@ func _input(event: InputEvent) -> void:
 	
 	match device_num:
 		-1: #keyboard and mousea
-			if Input.is_action_just_pressed("mouse_left"):
+			if Input.is_action_just_pressed("mouse_right"):
 				sword_animation.play("Swing")
 		_: #controller
 			if Input.get_joy_axis(device_num, JOY_AXIS_TRIGGER_RIGHT) > 0.1:
@@ -35,8 +35,9 @@ func _process(delta: float) -> void:
 	sword.rotation = get_sword_angle()
 	#sword.rotation = lerp_angle(sword.rotation, get_angle_to(get_local_mouse_position()), SWORD_ROTATION_SPEED * delta)
 
-func sling(direction, speed, nposition):
+func sling(direction : Vector2, speed, nposition):
 	global_position = nposition
+	direction = direction.rotated(deg_to_rad(80))
 	apply_impulse(direction * (speed * MAGNITUDE), nposition)
 
 

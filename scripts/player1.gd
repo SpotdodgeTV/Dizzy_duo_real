@@ -10,8 +10,8 @@ extends CharacterBody2D
 var lasso_in_use = false
 var player_two_connected = false
 
-const STARTING_MOVEMENT_SPEED = 100
-const MAX_MOVEMENT_SPEED = 150
+const STARTING_MOVEMENT_SPEED = 200
+const MAX_MOVEMENT_SPEED = 300
 
 var elapsed_time = 0.0
 var current_movement_speed: int = STARTING_MOVEMENT_SPEED
@@ -84,7 +84,7 @@ func _process(delta):
 	var movement_direction: Vector2 = get_movement_direction()
 	if movement_direction.length() > input_sensitivity:
 		current_movement_speed = min(current_movement_speed + 15 * delta, MAX_MOVEMENT_SPEED)
-		velocity = movement_direction * current_movement_speed
+		velocity = movement_direction.normalized() * current_movement_speed
 		move_and_slide()
 	else:
 		current_movement_speed = STARTING_MOVEMENT_SPEED#max(movement_speed - 15 * delta, 0)
@@ -106,8 +106,8 @@ func _process(delta):
 		player2.global_position = target_position
 	
 	if lasso_in_use:
-		if round(line.points[1]).distance_to(round(player2.global_position)) > 10 and !player_two_connected:
-			line.points = [player1.global_position, lerp(line.points[1], player2.global_position, 15 * delta)]
+		if round(line.points[1]).distance_to(round(player2.position)) > 10 and !player_two_connected:
+			line.points = [player1.position, lerp(line.points[1], player2.position, 15 * delta)]
 		else:
 			if !player_two_connected:
 				radius = player1.global_position.distance_to(player2.global_position)
@@ -121,6 +121,6 @@ func _process(delta):
 				elif radius < 90:
 					player2.global_position = lerp(player2.global_position, Vector2(player1.global_position.x + cos(angle) * 90, player1.global_position.y + sin(angle) * 90), 5 * delta)
 				radius = player1.global_position.distance_to(player2.global_position)
-			line.points = [player1.global_position, player2.global_position]
+			line.points = [player1.position, player2.position]
 	else:
-		line.points = [player1.global_position, lerp(line.points[1], player1.global_position, 15 * delta)]
+		line.points = [player1.position, lerp(line.points[1], player1.position, 15 * delta)]

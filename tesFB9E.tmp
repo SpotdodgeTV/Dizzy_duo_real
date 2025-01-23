@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtvd8y0a3u3n0"]
+
+[ext_resource type="PackedScene" uid="uid://pt57p26pop1" path="res://scenes/connected_players.tscn" id="1_t15xd"]
+[ext_resource type="PackedScene" uid="uid://bdv6gh78tr2qn" path="res://enemy.tscn" id="2_eqt2s"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Node2D" parent="." instance=ExtResource("1_t15xd")]
+
+[node name="Boss" parent="." instance=ExtResource("2_eqt2s")]
