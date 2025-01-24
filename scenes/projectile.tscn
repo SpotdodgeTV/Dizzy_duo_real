@@ -50,7 +50,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="projectile" type="CharacterBody2D" groups=["bullet"]]
+[node name="projectile" type="CharacterBody2D"]
 position = Vector2(666, 318)
 collision_layer = 0
 collision_mask = 0

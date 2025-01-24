@@ -1,12 +1,12 @@
 [gd_scene load_steps=14 format=3 uid="uid://pt57p26pop1"]
 
 [ext_resource type="Script" path="res://scripts/connected_players.gd" id="1_08mic"]
-[ext_resource type="Texture2D" uid="uid://ihxkmr4trrgu" path="res://textures/weapons/rope.png" id="1_gx0dy"]
+[ext_resource type="Texture2D" uid="uid://ihxkmr4trrgu" path="res://Textures/weapons/rope.png" id="1_gx0dy"]
 [ext_resource type="Script" path="res://scripts/player2.gd" id="2_h86dy"]
-[ext_resource type="Texture2D" uid="uid://c4x0dlrynjvim" path="res://textures/characters/knight.png" id="3_cxt7w"]
+[ext_resource type="Texture2D" uid="uid://c4x0dlrynjvim" path="res://Textures/characters/knight.png" id="3_cxt7w"]
 [ext_resource type="Script" path="res://scripts/player1.gd" id="4_8sexq"]
-[ext_resource type="Texture2D" uid="uid://ccf8yjh5253kp" path="res://textures/weapons/sword.png" id="4_a7w7r"]
-[ext_resource type="Texture2D" uid="uid://cowa12bnksvxl" path="res://textures/characters/cowboy.png" id="6_fufho"]
+[ext_resource type="Texture2D" uid="uid://ccf8yjh5253kp" path="res://Textures/weapons/sword.png" id="4_a7w7r"]
+[ext_resource type="Texture2D" uid="uid://cowa12bnksvxl" path="res://Textures/characters/cowboy.png" id="6_fufho"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yfwbq"]
 radius = 20.0

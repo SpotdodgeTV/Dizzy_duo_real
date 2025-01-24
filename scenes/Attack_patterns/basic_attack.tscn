@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/attack.gd" id="1_xh51w"]
 [ext_resource type="PackedScene" uid="uid://c862e5hdf8y7" path="res://scenes/projectile.tscn" id="2_aucb0"]
 
-[node name="Attack" type="Marker2D"]
+[node name="Attack" type="Marker2D" groups=["bullet"]]
 script = ExtResource("1_xh51w")
 
 [node name="projectile" parent="." instance=ExtResource("2_aucb0")]
