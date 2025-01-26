@@ -20,6 +20,7 @@ Global="*res://scripts/Global.gd"
 
 [display]
 
+window/size/viewport_height=672
 window/size/resizable=false
 window/stretch/mode="canvas_items"
 
@@ -89,3 +90,4 @@ mouse_right={
 
 textures/canvas_textures/default_texture_filter=0
 environment/defaults/default_clear_color=Color(0.0470588, 0.0313726, 0.0862745, 1)
+viewport/hdr_2d=true

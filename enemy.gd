@@ -3,14 +3,17 @@ extends CharacterBody2D
 @onready var main = self.get_parent()
 @onready var players = get_tree().get_nodes_in_group("player")
 @onready var closest_player = players[1]
+@onready var animation_player = $face/AnimationPlayer
+@onready var health_bar = $"../ProgressBar"
+var dead:bool = false
 #@onready var projectile = load("res://scenes/Attack_patterns/projectile.tscn")
 # Called when the node enters the scene tree for the first time.
 var health: int = 100
 @onready var attacks = {
 	0: load("res://scenes/Attack_patterns/basic_attack.tscn"),
-	1: load("res://scenes/Attack_patterns/burst.tscn"),
-	2: load("res://scenes/Attack_patterns/inverting_arc.tscn"),
-	3: load("res://scenes/Attack_patterns/cross_burst.tscn")
+	1: load("res://scenes/Attack_patterns/burst.tscn")
+	#2: load("res://scenes/Attack_patterns/inverting_arc.tscn"),
+	#3: load("res://scenes/Attack_patterns/cross_burst.tscn")
 }
 
 func _ready():
@@ -26,8 +29,8 @@ func get_closest_player():
 func _process(delta: float):
 	if Engine.get_process_frames() % 30 == 0:
 		get_closest_player()
-	var mouse_pos = get_viewport().get_mouse_position()
-	var vector_to_mouse = get_viewport_rect().get_center() - mouse_pos
+	#var mouse_pos = get_viewport().get_mouse_position()
+	#var vector_to_mouse = get_viewport_rect().get_center() - mouse_pos
 	#print(get_angle_to(closest_player.global_position))#get_angle_to(closest_player.global_position), closest_player.name)
 	#vector_to_mouse.angle() - PI/2
 	global_rotation = lerp_angle(global_rotation, closest_player.global_position.angle() + 1.5708, 2.5 * delta)
@@ -54,7 +57,7 @@ func _process(delta: float):
 		#temp += 15 * PI/180
 
 func shoot_attack(attack):
-	$face/AnimationPlayer.play("spit")
+	play_animation("spit", false)
 	var instance = attack.instantiate()
 	#instance.zdex = -1
 	
@@ -64,15 +67,26 @@ func shoot_attack(attack):
 	main.add_child.call_deferred(instance)
 
 func _on_cooldown_timeout():
-	#pass
-	var random_attack = randi() % attacks.size()
-	shoot_attack(attacks[random_attack])
-	
+	if !dead:
+		var random_attack = randi() % attacks.size()
+		shoot_attack(attacks[random_attack])
+
+func play_animation(anim: String = "", force:bool = false):
+	if !animation_player.is_playing() or force:
+		animation_player.play(anim)
 
 
 
 func damaged(damage):
+	play_animation("hurt", true)
 	health -= damage
+	health_bar.value = health
 	print("enemy received ", damage, " damage")
-	if health <= 0 :
+	if health <= 0 and !dead:
+		dead = true
+		play_animation("death", true)
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "death":
 		queue_free()

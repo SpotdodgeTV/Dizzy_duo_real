@@ -6,9 +6,12 @@ extends CharacterBody2D
 @onready var player1 = self
 @onready var player2 = $"../Player2"
 @onready var line = $"../Line2D"
+@onready var animation_player = $Sprite2D/AnimationPlayer
 
 var lasso_in_use = false
 var player_two_connected = false
+
+const STARTING_MOVEMENT_SPEED_LASSOED = 90
 
 const STARTING_MOVEMENT_SPEED = 200
 const MAX_MOVEMENT_SPEED = 300
@@ -58,12 +61,13 @@ func start_lasso():
 	lasso_in_use = true
 
 #anything that needs to happen when lassoing ends goes here
-func end_lasso(sling_speed: int = current_speed):
+func end_lasso(sling_speed: int = current_speed, sling_direction = (player2.global_position - player1.global_position).normalized()):
+	current_movement_speed = STARTING_MOVEMENT_SPEED
 	lasso_in_use = false
 	if player_two_connected:
 		player_two_connected = false
 		player2.freeze = false
-		player2.sling((player2.global_position - player1.global_position).normalized(), sling_speed, player2.global_position)
+		player2.sling(sling_direction, sling_speed, player2.global_position)
 
 func _input(event: InputEvent) -> void:
 	match device_num:
@@ -87,7 +91,10 @@ func _process(delta):
 		velocity = movement_direction.normalized() * current_movement_speed
 		move_and_slide()
 	else:
-		current_movement_speed = STARTING_MOVEMENT_SPEED#max(movement_speed - 15 * delta, 0)
+		if !player_two_connected:
+			current_movement_speed = STARTING_MOVEMENT_SPEED#max(movement_speed - 15 * delta, 0)
+		else:
+			current_movement_speed = STARTING_MOVEMENT_SPEED_LASSOED
 	
 	#Spin logic
 	if player_two_connected:
@@ -114,6 +121,7 @@ func _process(delta):
 				angle = player1.global_position.angle_to_point(player2.global_position)
 				current_speed = 0
 				#player2.freeze = true
+				current_movement_speed = STARTING_MOVEMENT_SPEED_LASSOED
 				player_two_connected = true
 			elif player_two_connected:
 				if radius > 150:

@@ -23,30 +23,33 @@ func _physics_process(delta):
 		#set_params()
 	velocity = Vector2(0, -speed).rotated(global_rotation)
 	move_and_slide()
-	if Input.is_action_just_pressed("mouse_left"):
-		var mouse_pos = get_viewport().get_mouse_position() - get_viewport_rect().get_center()
-		var vector_to_mouse = position - mouse_pos
-		reflect(mouse_pos)
-		#damaged(10)
+	#if Input.is_action_just_pressed("mouse_left"):
+		#var mouse_pos = get_viewport().get_mouse_position() - get_viewport_rect().get_center()
+		#var vector_to_mouse = position - mouse_pos
+		#reflect(mouse_pos)
+		##damaged(10)
 
 
 func _on_area_2d_body_entered(body: Node2D):
 	#print("HIT!")
 	if body.is_in_group("player") && reflected == false:
-		body.parent.hurt(damage)
+		body.parent.hurt(body, damage)
 		queue_free()
 	elif body.is_in_group("enemy") && reflected == true:
-		pass
-		#TODO: damage enemy here
+		body.damaged(damage)
+		queue_free()
 	elif body.is_in_group("object"):
 		queue_free()
 
 func reflect(target_pos : Vector2): 
-	#if(reflected):
-		#return
+	if(reflected):
+		return
 	print("target pos: ", target_pos)
 	var angle_to_target = (target_pos - global_position).angle()
 	global_rotation_degrees = rad_to_deg(angle_to_target) + 90
+	$AnimatedSprite2D.animation = "reflected"
+	speed += 50
+	damage = 2
 	reflected = true
 	#velocity = Vector2(0, -speed).rotated(global_rotation + deg_to_rad(180))
 	
