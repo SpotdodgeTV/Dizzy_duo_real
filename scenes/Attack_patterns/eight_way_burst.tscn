@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://blp810uiwlj2t"]
+
+[ext_resource type="Script" path="res://scripts/attack.gd" id="1_2vw3u"]
+[ext_resource type="PackedScene" uid="uid://c862e5hdf8y7" path="res://scenes/projectile.tscn" id="2_f5ghg"]
+
+[node name="Attack" type="Marker2D" groups=["bullet"]]
+script = ExtResource("1_2vw3u")
+
+[node name="projectile" parent="." instance=ExtResource("2_f5ghg")]
+position = Vector2(0, 0)
+metadata/projectile_index = 0
+
+[node name="projectile2" parent="." instance=ExtResource("2_f5ghg")]
+position = Vector2(0, 0)
+rotation = 1.5708
+metadata/projectile_index = 0
+
+[node name="projectile3" parent="." instance=ExtResource("2_f5ghg")]
+position = Vector2(0, 0)
+rotation = 3.14159
+metadata/projectile_index = 0
+
+[node name="projectile4" parent="." instance=ExtResource("2_f5ghg")]
+position = Vector2(0, 0)
+rotation = -1.5708
+metadata/projectile_index = 0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="projectile5" parent="." instance=ExtResource("2_f5ghg")]
+position = Vector2(0, 0)
+rotation = 0.785398
+metadata/projectile_index = 0
+
+[node name="projectile6" parent="." instance=ExtResource("2_f5ghg")]
+position = Vector2(0, 0)
+rotation = 2.35619
+metadata/projectile_index = 0
+
+[node name="projectile7" parent="." instance=ExtResource("2_f5ghg")]
+position = Vector2(0, 0)
+rotation = 3.92699
+metadata/projectile_index = 0
+
+[node name="projectile8" parent="." instance=ExtResource("2_f5ghg")]
+position = Vector2(0, 0)
+rotation = -0.785398
+metadata/projectile_index = 0

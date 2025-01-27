@@ -24,10 +24,4 @@ position = Vector2(0, 0)
 speed = 0
 metadata/projectile_index = 2
 
-[node name="projectile4" parent="." instance=ExtResource("2_m8iat")]
-visible = false
-position = Vector2(127, 2)
-speed = 0
-metadata/projectile_index = 2
-
 [node name="Camera2D" type="Camera2D" parent="."]
