@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://501gmqda8eer"
-path="res://.godot/imported/cowboy_portrait.png-0c97178c84f1a7e92d42f4f62cda7242.ctex"
+uid="uid://bu2l2560lqf31"
+path="res://.godot/imported/knight_bottomhalf_phtshop.PNG-e0063c725dbb48d1ae0227b2bc5bd910.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/portraits/cowboy_portrait.png"
-dest_files=["res://.godot/imported/cowboy_portrait.png-0c97178c84f1a7e92d42f4f62cda7242.ctex"]
+source_file="res://textures/portraits/knight_bottomhalf_phtshop.PNG"
+dest_files=["res://.godot/imported/knight_bottomhalf_phtshop.PNG-e0063c725dbb48d1ae0227b2bc5bd910.ctex"]
 
 [params]
 

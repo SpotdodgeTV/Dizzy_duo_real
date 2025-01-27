@@ -1,16 +1,43 @@
 [gd_scene load_steps=22 format=3 uid="uid://pt57p26pop1"]
 
 [ext_resource type="Script" path="res://scripts/connected_players.gd" id="1_08mic"]
-[ext_resource type="Texture2D" uid="uid://ihxkmr4trrgu" path="res://Textures/weapons/rope.png" id="1_gx0dy"]
+[ext_resource type="Texture2D" uid="uid://ihxkmr4trrgu" path="res://textures/weapons/rope.png" id="1_gx0dy"]
 [ext_resource type="Script" path="res://scripts/player2.gd" id="2_h86dy"]
-[ext_resource type="Material" uid="uid://b866f4ff4lu3u" path="res://Textures/unshaded_ui_mat.tres" id="3_0wc6k"]
-[ext_resource type="Texture2D" uid="uid://c4x0dlrynjvim" path="res://Textures/characters/knight.png" id="3_cxt7w"]
+[ext_resource type="Material" uid="uid://b866f4ff4lu3u" path="res://textures/unshaded_ui_mat.tres" id="3_0wc6k"]
+[ext_resource type="Texture2D" uid="uid://c4x0dlrynjvim" path="res://textures/characters/knight.png" id="3_cxt7w"]
 [ext_resource type="Script" path="res://scripts/player1.gd" id="4_8sexq"]
-[ext_resource type="Texture2D" uid="uid://ccf8yjh5253kp" path="res://Textures/weapons/sword.png" id="4_a7w7r"]
-[ext_resource type="Texture2D" uid="uid://cowa12bnksvxl" path="res://Textures/characters/cowboy.png" id="6_fufho"]
+[ext_resource type="Texture2D" uid="uid://ccf8yjh5253kp" path="res://textures/weapons/sword.png" id="4_a7w7r"]
+[ext_resource type="Texture2D" uid="uid://cowa12bnksvxl" path="res://textures/characters/cowboy.png" id="6_fufho"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yfwbq"]
 radius = 20.0
+
+[sub_resource type="Animation" id="Animation_bmbjd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_w4rh2"]
 resource_name = "hurt"
@@ -39,33 +66,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(-5, 0), Vector2(0, 0), Vector2(5, 0), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_bmbjd"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D2:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4skp8"]
@@ -170,6 +170,33 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_gb3bv"]
 radius = 21.0
 
+[sub_resource type="Animation" id="Animation_mrsfd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_3m0gm"]
 resource_name = "hurt"
 length = 0.3
@@ -196,33 +223,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(-5, 0), Vector2(0, 0), Vector2(5, 0), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_mrsfd"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eetsy"]
