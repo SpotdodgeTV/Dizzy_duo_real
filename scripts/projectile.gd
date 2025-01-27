@@ -33,7 +33,10 @@ func _physics_process(delta):
 func _on_area_2d_body_entered(body: Node2D):
 	#print("HIT!")
 	if body.is_in_group("player") && reflected == false:
-		body.parent.hurt(body, damage)
+		if body.is_in_group("cowboy"):
+			body.parent.hurt(body, damage)
+		elif body.is_in_group("knight"):
+			body.player_one.current_speed *= 0.5
 		queue_free()
 	elif body.is_in_group("enemy") && reflected == true:
 		body.damaged(damage)

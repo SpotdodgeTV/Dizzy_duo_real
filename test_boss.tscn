@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://dtvd8y0a3u3n0"]
+[gd_scene load_steps=9 format=4 uid="uid://dtvd8y0a3u3n0"]
 
 [ext_resource type="PackedScene" uid="uid://pt57p26pop1" path="res://scenes/connected_players.tscn" id="1_t15xd"]
 [ext_resource type="Script" path="res://boss_one.gd" id="1_vyqki"]
 [ext_resource type="PackedScene" uid="uid://bdv6gh78tr2qn" path="res://enemy.tscn" id="2_eqt2s"]
 [ext_resource type="Texture2D" uid="uid://bnhe1ahh8fv7w" path="res://tilemaps/dawngeon.png" id="3_bgfr0"]
+[ext_resource type="PackedScene" uid="uid://shbpwr4gt3cp" path="res://scenes/player_health_bar.tscn" id="5_lyckl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ali6m"]
 texture = ExtResource("3_bgfr0")
@@ -79,13 +80,20 @@ script = ExtResource("1_vyqki")
 color = Color(0.674815, 0.674815, 0.674815, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-2.09548e-08, 180)
+position = Vector2(0, 180)
 rotation = 0.00103694
 scale = Vector2(0.512807, 0.292644)
 
 [node name="Players" parent="." instance=ExtResource("1_t15xd")]
 position = Vector2(0, 391)
 rotation = 0.00103694
+
+[node name="PlayerHealth2" parent="Players" instance=ExtResource("5_lyckl")]
+offset_left = -576.567
+offset_top = -546.402
+offset_right = -532.567
+offset_bottom = -538.402
+scale = Vector2(7.1435, 7.1435)
 
 [node name="Boss" parent="." instance=ExtResource("2_eqt2s")]
 

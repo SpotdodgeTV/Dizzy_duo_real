@@ -13,7 +13,10 @@ var health: int = 100
 	0: load("res://scenes/Attack_patterns/basic_attack.tscn"),
 	1: load("res://scenes/Attack_patterns/burst.tscn")
 	#2: load("res://scenes/Attack_patterns/inverting_arc.tscn"),
-	#3: load("res://scenes/Attack_patterns/cross_burst.tscn")
+	#3: load("res://scenes/Attack_patterns/cross_burst.tscn"),
+	#4: load("res://scenes/Attack_patterns/machinegun.tscn"),
+	#5: load("res://scenes/Attack_patterns/machine_arc.tscn"),
+	#6: load("res://scenes/Attack_patterns/eight_way_burst.tscn")
 }
 
 func _ready():

@@ -12,16 +12,16 @@ var lasso_in_use = false
 var player_two_connected = false
 
 const STARTING_MOVEMENT_SPEED_LASSOED = 90
-
+const STARTING_SWING_SPEED = 0.5
 const STARTING_MOVEMENT_SPEED = 200
 const MAX_MOVEMENT_SPEED = 300
 
 var elapsed_time = 0.0
 var current_movement_speed: int = STARTING_MOVEMENT_SPEED
-var radius: float = 100.0
-var max_speed:float = 10.0
+var radius: float = 80.0
+var max_speed:float = 3.5
 var deacceleration: float = 2.0
-var current_speed: float = 0.0
+var current_speed: float = STARTING_SWING_SPEED
 var angle: float = 0.0
 var input_sensitivity: float = 0.4
 var target_position: Vector2 = Vector2.ZERO
@@ -42,7 +42,7 @@ func spin_logic(all_criteria_met, target_angle, delta):
 		var angle_difference = angle_difference(angle, target_angle)
 		if angle_difference > 0: #only clockwise motion
 			previous_angle_difference = angle_difference
-			angle = lerp_angle(angle, target_angle, current_speed * delta)
+			angle = lerp_angle(angle, target_angle, 1.5 * current_speed * delta)
 			if angle_difference > 1: #only increase speed if angle difference is large/if "fast" spinning is occurring
 				current_speed = min(current_speed + angle_difference * delta, max_speed)
 			else:
@@ -50,10 +50,14 @@ func spin_logic(all_criteria_met, target_angle, delta):
 				pass
 		else:
 			angle = lerp_angle(angle, angle + previous_angle_difference, current_speed * delta)
-			current_speed = max(current_speed - deacceleration * delta, 0)
+			current_speed = max(current_speed - deacceleration * delta, STARTING_SWING_SPEED)
 	else:
 		angle = lerp_angle(angle, angle + previous_angle_difference, current_speed * delta)
-		current_speed = max(current_speed - (deacceleration * 2) * delta, 0)
+		current_speed = max(current_speed - (deacceleration * 2) * delta, STARTING_SWING_SPEED)
+
+func new_spin_logic(delta):
+	current_speed = min(current_speed + delta, max_speed)
+	angle = lerp_angle(angle, angle + 3, current_speed * delta)
 
 #anything that needs to happen when lassoing begins goes here
 func start_lasso():
@@ -67,7 +71,7 @@ func end_lasso(sling_speed: int = current_speed, sling_direction = (player2.glob
 	if player_two_connected:
 		player_two_connected = false
 		player2.freeze = false
-		player2.sling(sling_direction, sling_speed, player2.global_position)
+		player2.sling(sling_direction, sling_speed * 1.5, player2.global_position)
 
 func _input(event: InputEvent) -> void:
 	match device_num:
@@ -100,14 +104,16 @@ func _process(delta):
 	if player_two_connected:
 		match device_num:
 			-1: #keyboard and mouse
-				var mouse_position: Vector2 = get_global_mouse_position()
-				var mouse_angle = get_angle_to(mouse_position)
-				spin_logic(true, mouse_angle, delta)
+				new_spin_logic(delta)
+				#var mouse_position: Vector2 = get_global_mouse_position()
+				#var mouse_angle = get_angle_to(mouse_position)
+				#spin_logic(true, mouse_angle, delta)
 			_: #controller
-				var spin_direction: Vector2 = Vector2(Input.get_joy_axis(device_num, 2), Input.get_joy_axis(device_num, 3))
-				var is_input_large = spin_direction.length() > input_sensitivity
-				var target_angle = spin_direction.angle()
-				spin_logic(is_input_large, target_angle, delta)
+				new_spin_logic(delta)
+				#var spin_direction: Vector2 = Vector2(Input.get_joy_axis(device_num, 2), Input.get_joy_axis(device_num, 3))
+				#var is_input_large = spin_direction.length() > input_sensitivity
+				#var target_angle = spin_direction.angle()
+				#spin_logic(is_input_large, target_angle, delta)
 		target_position.x = player1.global_position.x + radius * cos(angle)
 		target_position.y = player1.global_position.y + radius * sin(angle)
 		player2.global_position = target_position
@@ -119,12 +125,12 @@ func _process(delta):
 			if !player_two_connected:
 				radius = player1.global_position.distance_to(player2.global_position)
 				angle = player1.global_position.angle_to_point(player2.global_position)
-				current_speed = 0
+				current_speed = STARTING_SWING_SPEED
 				#player2.freeze = true
 				current_movement_speed = STARTING_MOVEMENT_SPEED_LASSOED
 				player_two_connected = true
 			elif player_two_connected:
-				if radius > 150:
+				if radius > 100:
 					player2.global_position = lerp(player2.global_position, player1.global_position, delta * 3)
 				elif radius < 90:
 					player2.global_position = lerp(player2.global_position, Vector2(player1.global_position.x + cos(angle) * 90, player1.global_position.y + sin(angle) * 90), 5 * delta)
