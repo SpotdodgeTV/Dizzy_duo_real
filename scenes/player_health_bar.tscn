@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://njjphe3rt4un" path="res://scenes/heart.tscn" id="2_2yn7j"]
 
 [node name="PlayerHealth" type="HBoxContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_constants/separation = -4
+offset_right = 49.0
+offset_bottom = 9.0
+theme_override_constants/separation = 1
 script = ExtResource("1_12phb")
 
 [node name="Heart" parent="." instance=ExtResource("2_2yn7j")]

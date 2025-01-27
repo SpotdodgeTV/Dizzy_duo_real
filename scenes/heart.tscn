@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://catuvvmp6c5uu" path="res://Textures/ui/heart.png" id="1_q2sa7"]
 [ext_resource type="Script" path="res://scripts/heart.gd" id="1_yy12f"]
 [ext_resource type="Material" uid="uid://b866f4ff4lu3u" path="res://Textures/unshaded_ui_mat.tres" id="2_lkuq1"]
-[ext_resource type="Texture2D" uid="uid://dghp8qk2jlx4n" path="res://Textures/ui/half-heart.png" id="2_ner07"]
-[ext_resource type="Texture2D" uid="uid://dh443bfjplha6" path="res://Textures/ui/empty-heart.png" id="3_2ft5f"]
+[ext_resource type="Texture2D" uid="uid://dmcq1ndlp8h8w" path="res://Textures/ui/half_heart.png" id="4_mfgpe"]
+[ext_resource type="Texture2D" uid="uid://cqj2r6ka4ai5g" path="res://Textures/ui/empty_heart.png" id="5_nadin"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cdx1a"]
 animations = [{
@@ -13,10 +13,10 @@ animations = [{
 "texture": ExtResource("1_q2sa7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_ner07")
+"texture": ExtResource("4_mfgpe")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_2ft5f")
+"texture": ExtResource("5_nadin")
 }],
 "loop": true,
 "name": &"default",
@@ -24,15 +24,14 @@ animations = [{
 }]
 
 [node name="Heart" type="Panel"]
-self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(8, 8)
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(9, 9)
 offset_right = 8.0
 offset_bottom = 8.0
-scale = Vector2(0.992923, 1)
 script = ExtResource("1_yy12f")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_lkuq1")
-position = Vector2(4, 4)
+position = Vector2(4.5, 4.5)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_cdx1a")
