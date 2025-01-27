@@ -1,14 +1,14 @@
 extends Panel
-
+var dia: Array[Array]
 @onready var text_label = $Text
 @onready var name_label = $NamePanel/Name
 
 signal dialog_pressed
 
 var dialog1 = {
-	"Cowboy": "Hello Knight.",
-	"Knight": "Hello Cowboy!",
-	"Cowboy2": "Super long text test to see if it gets faster when the text is longer."
+	1: ["Cowboy", "Hello Knight."],
+	2: ["Knight", "Hello Cowboy!"],
+	3: ["Cowboy2", "Super long text test to see if it gets faster when the text is longer."]
 	}
 
 func _input(event: InputEvent) -> void:
@@ -20,10 +20,10 @@ func play(dialog_name):
 	
 	for key in dialog:
 		var tween = create_tween()
-		name_label.text = key
+		name_label.text = dialog[key][0]
 		text_label.visible_ratio = 0
-		text_label.text = dialog[key]
-		tween.tween_property(text_label, "visible_ratio", 1, text_label.text.length() * .1)
+		text_label.text = dialog[key][1]
+		tween.tween_property(text_label, "visible_ratio", 1, text_label.text.length() * .01)
 		await dialog_pressed
 
 # Called when the node enters the scene tree for the first time.
