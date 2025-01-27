@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://7ubh2n0g7yu2"]
+
+[ext_resource type="Script" path="res://scripts/attack.gd" id="1_67hba"]
+[ext_resource type="PackedScene" uid="uid://c862e5hdf8y7" path="res://scenes/projectile.tscn" id="2_hfynt"]
+
+[node name="Attack" type="Marker2D" groups=["bullet"]]
+script = ExtResource("1_67hba")
+
+[node name="projectile" parent="." instance=ExtResource("2_hfynt")]
+position = Vector2(0, 0)
+metadata/projectile_index = 0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="projectile2" parent="." instance=ExtResource("2_hfynt")]
+position = Vector2(0, 0)
+rotation = 3.14159
+metadata/projectile_index = 0
