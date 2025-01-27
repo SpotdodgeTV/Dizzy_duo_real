@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://shbpwr4gt3cp"]
+
+[ext_resource type="Script" path="res://player_health_bar.gd" id="1_12phb"]
+[ext_resource type="PackedScene" uid="uid://njjphe3rt4un" path="res://scenes/heart.tscn" id="2_2yn7j"]
+
+[node name="PlayerHealth" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = -4
+script = ExtResource("1_12phb")
+
+[node name="Heart" parent="." instance=ExtResource("2_2yn7j")]
+layout_mode = 2
+
+[node name="Heart2" parent="." instance=ExtResource("2_2yn7j")]
+layout_mode = 2
+
+[node name="Heart3" parent="." instance=ExtResource("2_2yn7j")]
+layout_mode = 2
+
+[node name="Heart4" parent="." instance=ExtResource("2_2yn7j")]
+layout_mode = 2
+
+[node name="Heart5" parent="." instance=ExtResource("2_2yn7j")]
+layout_mode = 2
