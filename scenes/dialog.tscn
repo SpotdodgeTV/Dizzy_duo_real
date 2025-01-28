@@ -26,7 +26,6 @@ offset_left = 3.0
 offset_right = -2.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "BLAH BLAH BLAH BLAH"
 
 [node name="NamePanel" type="Panel" parent="."]
 layout_mode = 1
@@ -37,7 +36,7 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -332.0
 offset_top = -146.0
-offset_right = -191.0
+offset_right = -212.0
 offset_bottom = -115.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -52,6 +51,5 @@ offset_left = 3.0
 offset_right = -2.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "COWBOY"
 horizontal_alignment = 1
 vertical_alignment = 1

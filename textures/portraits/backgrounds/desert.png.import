@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqj2r6ka4ai5g"
-path="res://.godot/imported/empty_heart.png-8e34784be23dbb813dad0a233d6a3f1d.ctex"
+uid="uid://e1ym2xe8vyk0"
+path="res://.godot/imported/desert.png-632379a442e6ecc8a0118d87479367fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/ui/empty_heart.png"
-dest_files=["res://.godot/imported/empty_heart.png-8e34784be23dbb813dad0a233d6a3f1d.ctex"]
+source_file="res://textures/portraits/backgrounds/desert.png"
+dest_files=["res://.godot/imported/desert.png-632379a442e6ecc8a0118d87479367fe.ctex"]
 
 [params]
 

@@ -27,13 +27,12 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 100.0
-offset_top = -1089.0
-offset_right = 1180.0
-offset_bottom = -9.0
+offset_left = 112.0
+offset_top = -517.0
+offset_right = 447.0
+offset_bottom = -13.0
 grow_vertical = 0
-scale = Vector2(0.492, 0.492)
-pivot_offset = Vector2(0, 1080)
+pivot_offset = Vector2(168, 252)
 texture = ExtResource("1_2ful0")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -74,18 +73,19 @@ text = "PRESS ANY BUTTON TO JOIN"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Cowboy2" type="TextureRect" parent="."]
+[node name="Knight" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 2
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 611.0
-offset_top = -1370.0
-offset_right = 2495.0
-offset_bottom = 1085.0
+offset_left = -538.0
+offset_top = -491.0
+offset_right = -161.0
+grow_horizontal = 0
 grow_vertical = 0
-scale = Vector2(0.2, 0.2)
-pivot_offset = Vector2(0, 1080)
+pivot_offset = Vector2(189, 246)
 texture = ExtResource("4_tsqic")
 
 [node name="TextureRect2" type="TextureRect" parent="."]

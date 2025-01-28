@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqj2r6ka4ai5g"
-path="res://.godot/imported/empty_heart.png-8e34784be23dbb813dad0a233d6a3f1d.ctex"
+uid="uid://dl7amp6k2ypm3"
+path="res://.godot/imported/castle.jpg-12a8f08f4f23f01d6a51f40d5dabec01.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/ui/empty_heart.png"
-dest_files=["res://.godot/imported/empty_heart.png-8e34784be23dbb813dad0a233d6a3f1d.ctex"]
+source_file="res://textures/portraits/backgrounds/castle.jpg"
+dest_files=["res://.godot/imported/castle.jpg-12a8f08f4f23f01d6a51f40d5dabec01.ctex"]
 
 [params]
 

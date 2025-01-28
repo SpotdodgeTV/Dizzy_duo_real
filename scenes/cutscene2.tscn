@@ -1,0 +1,312 @@
+[gd_scene load_steps=19 format=3 uid="uid://dcjjg1d7dh4ca"]
+
+[ext_resource type="Script" path="res://scenes/cutscene_2.gd" id="1_okbgw"]
+[ext_resource type="Texture2D" uid="uid://du58wtu33d1wa" path="res://textures/portraits/backgrounds/background.jpg" id="2_ej75a"]
+[ext_resource type="Texture2D" uid="uid://1or86fgw6e3e" path="res://textures/misc/Dimensional_Portal.png" id="3_psklr"]
+[ext_resource type="Texture2D" uid="uid://bu2l2560lqf31" path="res://textures/portraits/knight_bottomhalf_phtshop.PNG" id="5_hebtt"]
+[ext_resource type="PackedScene" uid="uid://m57sixwgejsh" path="res://scenes/dialog.tscn" id="5_mxout"]
+[ext_resource type="Texture2D" uid="uid://c01lhllupwioj" path="res://textures/portraits/Knight_tophalf_phtshop.PNG" id="6_hvj7e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cam0o"]
+atlas = ExtResource("3_psklr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0d00x"]
+atlas = ExtResource("3_psklr")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7alva"]
+atlas = ExtResource("3_psklr")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcvmb"]
+atlas = ExtResource("3_psklr")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdm4e"]
+atlas = ExtResource("3_psklr")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txp3t"]
+atlas = ExtResource("3_psklr")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g5c5h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cam0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0d00x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7alva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcvmb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdm4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txp3t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="Animation" id="Animation_58rmr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Portal:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("knight:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-231, 344)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("knight/Top:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-111, -297)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("knight/Top:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("knight/Top:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("knight/Bottom:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_nyt8v"]
+resource_name = "cutscene"
+length = 2.0
+step = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dialog")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["dialog2"],
+"method": &"play"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("knight:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-231, 344), Vector2(-188.152, 344), Vector2(-152.102, 380), Vector2(-106.105, 344), Vector2(-52.712, 380), Vector2(5.056, 344), Vector2(63.491, 380), Vector2(117.787, 344), Vector2(161.077, 380), Vector2(181, 344)]
+}
+
+[sub_resource type="Animation" id="Animation_ixufh"]
+resource_name = "fly"
+length = 3.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("knight/Top:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-111, -297), Vector2(765, -208.75)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("knight/Top:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 17.4533]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("knight/Top:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("knight/Bottom:rotation")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.9, 1.6, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.245437, -1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_8ysad"]
+resource_name = "portal_fade_in"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Portal:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ajh5p"]
+_data = {
+"RESET": SubResource("Animation_58rmr"),
+"cutscene": SubResource("Animation_nyt8v"),
+"fly": SubResource("Animation_ixufh"),
+"portal_fade_in": SubResource("Animation_8ysad")
+}
+
+[node name="cutscene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_okbgw")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ej75a")
+
+[node name="Portal" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(893, 379)
+scale = Vector2(15, 15)
+sprite_frames = SubResource("SpriteFrames_g5c5h")
+autoplay = "default"
+frame = 2
+frame_progress = 0.761766
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ajh5p")
+}
+autoplay = "cutscene"
+
+[node name="knight" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -231.0
+offset_top = -328.0
+offset_right = -191.0
+offset_bottom = -288.0
+grow_vertical = 0
+scale = Vector2(0.8, 0.8)
+
+[node name="Bottom" type="TextureRect" parent="knight"]
+layout_mode = 0
+offset_left = -57.0
+offset_top = 4.0
+offset_right = 154.0
+offset_bottom = 415.0
+pivot_offset = Vector2(22, 406)
+texture = ExtResource("5_hebtt")
+flip_h = true
+
+[node name="Top" type="TextureRect" parent="knight"]
+layout_mode = 0
+offset_left = -111.0
+offset_top = -297.0
+offset_right = 266.0
+offset_bottom = 194.0
+pivot_offset = Vector2(151, 245.75)
+texture = ExtResource("6_hvj7e")
+flip_h = true
+
+[node name="Dialog" parent="." instance=ExtResource("5_mxout")]
+layout_mode = 1
+offset_top = -108.0
+offset_bottom = 0.0
