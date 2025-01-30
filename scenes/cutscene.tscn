@@ -1,10 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://de1lbhwggbx7k"]
+[gd_scene load_steps=20 format=3 uid="uid://de1lbhwggbx7k"]
 
 [ext_resource type="Script" path="res://scenes/cutscene.gd" id="1_kpa4m"]
 [ext_resource type="Texture2D" uid="uid://e1ym2xe8vyk0" path="res://textures/portraits/backgrounds/desert.png" id="1_muims"]
 [ext_resource type="PackedScene" uid="uid://m57sixwgejsh" path="res://scenes/dialog.tscn" id="1_tttkw"]
 [ext_resource type="Texture2D" uid="uid://1or86fgw6e3e" path="res://textures/misc/Dimensional_Portal.png" id="2_4571i"]
 [ext_resource type="Texture2D" uid="uid://501gmqda8eer" path="res://textures/portraits/cowboy_portrait.png" id="2_bwww4"]
+[ext_resource type="PackedScene" uid="uid://fja40kx2ag3p" path="res://scenes/scene_changer.tscn" id="6_icnfw"]
+[ext_resource type="PackedScene" uid="uid://3tew2csl0vog" path="res://scenes/pause_menu.tscn" id="7_ex1xb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cam0o"]
 atlas = ExtResource("2_4571i")
@@ -243,11 +245,16 @@ texture = ExtResource("2_bwww4")
 
 [node name="Dialog" parent="." instance=ExtResource("1_tttkw")]
 layout_mode = 1
-offset_top = -108.0
-offset_bottom = 0.0
+offset_top = -133.0
+offset_bottom = -25.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ajh5p")
 }
 autoplay = "cutscene"
+
+[node name="SceneChanger" parent="." instance=ExtResource("6_icnfw")]
+
+[node name="pause_menu" parent="." instance=ExtResource("7_ex1xb")]
+visible = false
