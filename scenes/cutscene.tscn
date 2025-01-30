@@ -1,10 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://de1lbhwggbx7k"]
+[gd_scene load_steps=20 format=3 uid="uid://de1lbhwggbx7k"]
 
 [ext_resource type="Script" path="res://scenes/cutscene.gd" id="1_kpa4m"]
 [ext_resource type="Texture2D" uid="uid://e1ym2xe8vyk0" path="res://textures/portraits/backgrounds/desert.png" id="1_muims"]
 [ext_resource type="PackedScene" uid="uid://m57sixwgejsh" path="res://scenes/dialog.tscn" id="1_tttkw"]
 [ext_resource type="Texture2D" uid="uid://1or86fgw6e3e" path="res://textures/misc/Dimensional_Portal.png" id="2_4571i"]
 [ext_resource type="Texture2D" uid="uid://501gmqda8eer" path="res://textures/portraits/cowboy_portrait.png" id="2_bwww4"]
+[ext_resource type="PackedScene" uid="uid://fja40kx2ag3p" path="res://scenes/scene_changer.tscn" id="6_icnfw"]
+[ext_resource type="PackedScene" uid="uid://3tew2csl0vog" path="res://scenes/pause_menu.tscn" id="7_ex1xb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cam0o"]
 atlas = ExtResource("2_4571i")
@@ -55,37 +57,6 @@ animations = [{
 "name": &"default",
 "speed": 12.0
 }]
-
-[sub_resource type="Animation" id="Animation_nyt8v"]
-resource_name = "cutscene"
-length = 2.0
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Cowboy:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-367.79, 222.656), Vector2(-284.453, 200), Vector2(-243.663, 166), Vector2(-203.767, 200), Vector2(-165.351, 166), Vector2(-128.944, 200), Vector2(-95.03, 166), Vector2(-61.146, 200), Vector2(-26.749, 166), Vector2(6.237, 200), Vector2(36.9, 166), Vector2(62.839, 200), Vector2(81.6548, 174.5), Vector2(90, 166)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Dialog")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1.2),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["dialog1"],
-"method": &"play"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_58rmr"]
 length = 0.001
@@ -138,21 +109,35 @@ tracks/3/keys = {
 "values": [0.0]
 }
 
-[sub_resource type="Animation" id="Animation_8ysad"]
-resource_name = "portal_fade_in"
-length = 0.3
+[sub_resource type="Animation" id="Animation_nyt8v"]
+resource_name = "cutscene"
+length = 2.0
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Portal:modulate")
-tracks/0/interp = 1
+tracks/0/path = NodePath("Cowboy:position")
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Vector2(-367.79, 222.656), Vector2(-284.453, 200), Vector2(-243.663, 166), Vector2(-203.767, 200), Vector2(-165.351, 166), Vector2(-128.944, 200), Vector2(-95.03, 166), Vector2(-61.146, 200), Vector2(-26.749, 166), Vector2(6.237, 200), Vector2(36.9, 166), Vector2(62.839, 200), Vector2(81.6548, 174.5), Vector2(90, 166)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Dialog")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["dialog1"],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_ixufh"]
@@ -194,6 +179,23 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.0, 0.261799, 17.4533]
+}
+
+[sub_resource type="Animation" id="Animation_8ysad"]
+resource_name = "portal_fade_in"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Portal:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ajh5p"]
@@ -243,11 +245,16 @@ texture = ExtResource("2_bwww4")
 
 [node name="Dialog" parent="." instance=ExtResource("1_tttkw")]
 layout_mode = 1
-offset_top = -108.0
-offset_bottom = 0.0
+offset_top = -133.0
+offset_bottom = -25.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ajh5p")
 }
 autoplay = "cutscene"
+
+[node name="SceneChanger" parent="." instance=ExtResource("6_icnfw")]
+
+[node name="pause_menu" parent="." instance=ExtResource("7_ex1xb")]
+visible = false

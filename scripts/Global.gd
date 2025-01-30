@@ -4,3 +4,4 @@ extends Node
 #>0 are for any devices (controllers) that are connected and -1 will be reserved for mouse and keyboard
 var player_one_device_num: int = -1
 var player_two_device_num: int = -1
+var coop_enabled = false

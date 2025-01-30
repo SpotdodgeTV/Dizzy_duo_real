@@ -1,8 +1,5 @@
 extends Control
 
-func _ready() -> void:
-	pass
-
 func dialog_signal(dialog_name, key):
 	match key:
 		2:

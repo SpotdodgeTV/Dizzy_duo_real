@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://fja40kx2ag3p"]
+
+[ext_resource type="Shader" path="res://shaders/scene_transition.gdshader" id="1_7v32f"]
+[ext_resource type="Script" path="res://scripts/scene_changer.gd" id="1_j243i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dbxdh"]
+shader = ExtResource("1_7v32f")
+shader_parameter/circle_size = 0.0
+shader_parameter/screen_width = 1162.0
+shader_parameter/screen_height = 672.0
+
+[sub_resource type="Animation" id="Animation_o5jei"]
+resource_name = "circle_open"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Black:material:shader_parameter/circle_size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.05]
+}
+
+[sub_resource type="Animation" id="Animation_qekaj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Black:material:shader_parameter/circle_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_axwcj"]
+_data = {
+"RESET": SubResource("Animation_qekaj"),
+"circle_open": SubResource("Animation_o5jei")
+}
+
+[node name="SceneChanger" type="CanvasLayer"]
+script = ExtResource("1_j243i")
+
+[node name="Black" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_dbxdh")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_axwcj")
+}
+autoplay = "circle_open"
