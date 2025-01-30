@@ -1,9 +1,9 @@
 extends Node2D
 
-
+signal enemy_dead
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$Enemy.connect("has_died", _on_enemy_has_died)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -15,3 +15,8 @@ func activate():
 
 func deactivate():
 	$Enemy.active = false
+
+
+func _on_enemy_has_died() -> void:
+	print("HHHHHHH")
+	emit_signal("enemy_dead")

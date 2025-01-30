@@ -18,6 +18,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = 0.174533
 speed = 0
+projectile_index = 1
 metadata/projectile_index = 1
 
 [node name="projectile3" parent="." instance=ExtResource("2_u2br0")]
@@ -25,6 +26,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = 0.349066
 speed = 0
+projectile_index = 2
 metadata/projectile_index = 2
 
 [node name="projectile4" parent="." instance=ExtResource("2_u2br0")]
@@ -32,6 +34,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = 0.523599
 speed = 0
+projectile_index = 3
 metadata/projectile_index = 3
 
 [node name="projectile5" parent="." instance=ExtResource("2_u2br0")]
@@ -39,6 +42,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = 0.698132
 speed = 0
+projectile_index = 4
 metadata/projectile_index = 4
 
 [node name="projectile6" parent="." instance=ExtResource("2_u2br0")]
@@ -46,6 +50,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = 0.872665
 speed = 0
+projectile_index = 5
 metadata/projectile_index = 6
 
 [node name="projectile7" parent="." instance=ExtResource("2_u2br0")]
@@ -53,6 +58,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = 1.0472
 speed = 0
+projectile_index = 6
 metadata/projectile_index = 7
 
 [node name="projectile8" parent="." instance=ExtResource("2_u2br0")]
@@ -60,6 +66,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = 1.22173
 speed = 0
+projectile_index = 7
 metadata/projectile_index = 8
 
 [node name="projectile9" parent="." instance=ExtResource("2_u2br0")]
@@ -67,6 +74,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = 1.39626
 speed = 0
+projectile_index = 8
 metadata/projectile_index = 9
 
 [node name="projectile10" parent="." instance=ExtResource("2_u2br0")]
@@ -74,6 +82,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = 1.57079
 speed = 0
+projectile_index = 9
 metadata/projectile_index = 10
 
 [node name="projectile11" parent="." instance=ExtResource("2_u2br0")]
@@ -81,6 +90,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = 1.74533
 speed = 0
+projectile_index = 10
 metadata/projectile_index = 11
 
 [node name="projectile12" parent="." instance=ExtResource("2_u2br0")]
@@ -88,6 +98,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = 1.91986
 speed = 0
+projectile_index = 11
 metadata/projectile_index = 12
 
 [node name="projectile13" parent="." instance=ExtResource("2_u2br0")]
@@ -95,6 +106,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = 2.09439
 speed = 0
+projectile_index = 12
 metadata/projectile_index = 13
 
 [node name="projectile14" parent="." instance=ExtResource("2_u2br0")]
@@ -102,6 +114,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = 2.26893
 speed = 0
+projectile_index = 13
 metadata/projectile_index = 14
 
 [node name="projectile15" parent="." instance=ExtResource("2_u2br0")]
@@ -109,6 +122,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = 2.44346
 speed = 0
+projectile_index = 14
 metadata/projectile_index = 15
 
 [node name="projectile16" parent="." instance=ExtResource("2_u2br0")]
@@ -116,6 +130,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = 2.61799
 speed = 0
+projectile_index = 15
 metadata/projectile_index = 16
 
 [node name="projectile17" parent="." instance=ExtResource("2_u2br0")]
@@ -123,6 +138,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = 2.79253
 speed = 0
+projectile_index = 16
 metadata/projectile_index = 17
 
 [node name="projectile18" parent="." instance=ExtResource("2_u2br0")]
@@ -130,6 +146,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = 2.96706
 speed = 0
+projectile_index = 17
 metadata/projectile_index = 18
 
 [node name="projectile19" parent="." instance=ExtResource("2_u2br0")]
@@ -137,6 +154,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = -3.14159
 speed = 0
+projectile_index = 18
 metadata/projectile_index = 19
 
 [node name="projectile20" parent="." instance=ExtResource("2_u2br0")]
@@ -144,6 +162,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = -2.96706
 speed = 0
+projectile_index = 19
 metadata/projectile_index = 20
 
 [node name="projectile21" parent="." instance=ExtResource("2_u2br0")]
@@ -151,6 +170,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = -2.79253
 speed = 0
+projectile_index = 20
 metadata/projectile_index = 21
 
 [node name="projectile22" parent="." instance=ExtResource("2_u2br0")]
@@ -158,6 +178,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = -2.61799
 speed = 0
+projectile_index = 21
 metadata/projectile_index = 22
 
 [node name="projectile23" parent="." instance=ExtResource("2_u2br0")]
@@ -165,6 +186,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = -2.44346
 speed = 0
+projectile_index = 22
 metadata/projectile_index = 23
 
 [node name="projectile24" parent="." instance=ExtResource("2_u2br0")]
@@ -172,6 +194,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = -2.26893
 speed = 0
+projectile_index = 23
 metadata/projectile_index = 24
 
 [node name="projectile25" parent="." instance=ExtResource("2_u2br0")]
@@ -179,6 +202,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = -2.09439
 speed = 0
+projectile_index = 24
 metadata/projectile_index = 25
 
 [node name="projectile26" parent="." instance=ExtResource("2_u2br0")]
@@ -186,6 +210,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = -1.91986
 speed = 0
+projectile_index = 25
 metadata/projectile_index = 26
 
 [node name="projectile27" parent="." instance=ExtResource("2_u2br0")]
@@ -193,6 +218,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = -1.74533
 speed = 0
+projectile_index = 26
 metadata/projectile_index = 27
 
 [node name="projectile28" parent="." instance=ExtResource("2_u2br0")]
@@ -200,6 +226,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = -1.57079
 speed = 0
+projectile_index = 27
 metadata/projectile_index = 28
 
 [node name="projectile29" parent="." instance=ExtResource("2_u2br0")]
@@ -207,6 +234,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = -1.39626
 speed = 0
+projectile_index = 28
 metadata/projectile_index = 29
 
 [node name="projectile30" parent="." instance=ExtResource("2_u2br0")]
@@ -214,6 +242,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = -1.22173
 speed = 0
+projectile_index = 29
 metadata/projectile_index = 30
 
 [node name="projectile31" parent="." instance=ExtResource("2_u2br0")]
@@ -221,6 +250,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = -1.0472
 speed = 0
+projectile_index = 30
 metadata/projectile_index = 31
 
 [node name="projectile32" parent="." instance=ExtResource("2_u2br0")]
@@ -228,6 +258,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = -0.872665
 speed = 0
+projectile_index = 31
 metadata/projectile_index = 32
 
 [node name="projectile33" parent="." instance=ExtResource("2_u2br0")]
@@ -235,6 +266,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = -0.698132
 speed = 0
+projectile_index = 32
 metadata/projectile_index = 33
 
 [node name="projectile34" parent="." instance=ExtResource("2_u2br0")]
@@ -242,6 +274,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = -0.523598
 speed = 0
+projectile_index = 33
 metadata/projectile_index = 34
 
 [node name="projectile35" parent="." instance=ExtResource("2_u2br0")]
@@ -249,6 +282,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = -0.349066
 speed = 0
+projectile_index = 34
 metadata/projectile_index = 35
 
 [node name="projectile36" parent="." instance=ExtResource("2_u2br0")]
@@ -256,6 +290,7 @@ visible = false
 position = Vector2(0, 0)
 rotation = -0.174533
 speed = 0
+projectile_index = 35
 metadata/projectile_index = 36
 
 [node name="Camera2D" type="Camera2D" parent="."]

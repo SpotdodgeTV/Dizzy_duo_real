@@ -8,47 +8,59 @@ script = ExtResource("1_a67ms")
 
 [node name="projectile2" parent="." instance=ExtResource("2_pyixm")]
 position = Vector2(-44, -41)
+speed = 0
 
 [node name="projectile3" parent="." instance=ExtResource("2_pyixm")]
 position = Vector2(45, -40)
+speed = 0
 
 [node name="projectile4" parent="." instance=ExtResource("2_pyixm")]
 position = Vector2(1, -84)
-
-[node name="Camera2D" type="Camera2D" parent="."]
+speed = 0
 
 [node name="projectile5" parent="." instance=ExtResource("2_pyixm")]
 position = Vector2(-41.0001, 43.9999)
 rotation = -1.57079
+speed = 0
 
 [node name="projectile6" parent="." instance=ExtResource("2_pyixm")]
 position = Vector2(-39.9999, -45.0001)
 rotation = -1.57079
+speed = 0
 
 [node name="projectile7" parent="." instance=ExtResource("2_pyixm")]
 position = Vector2(-84, -1.00019)
 rotation = -1.57079
+speed = 0
 
 [node name="projectile8" parent="." instance=ExtResource("2_pyixm")]
 position = Vector2(43.9998, 41.0002)
 rotation = -3.14159
+speed = 0
 
 [node name="projectile9" parent="." instance=ExtResource("2_pyixm")]
 position = Vector2(-45.0002, 39.9998)
 rotation = -3.14159
+speed = 0
 
 [node name="projectile10" parent="." instance=ExtResource("2_pyixm")]
 position = Vector2(-1.00037, 84)
 rotation = -3.14159
+speed = 0
 
 [node name="projectile11" parent="." instance=ExtResource("2_pyixm")]
 position = Vector2(41.0003, -43.9997)
 rotation = 1.5708
+speed = 0
 
 [node name="projectile12" parent="." instance=ExtResource("2_pyixm")]
 position = Vector2(39.9997, 45.0003)
 rotation = 1.5708
+speed = 0
 
 [node name="projectile13" parent="." instance=ExtResource("2_pyixm")]
 position = Vector2(84, 1.00056)
 rotation = 1.5708
+speed = 0
+
+[node name="Camera2D" type="Camera2D" parent="."]

@@ -1,6 +1,5 @@
-[gd_scene load_steps=24 format=4 uid="uid://dx7hafeqt4sl1"]
+[gd_scene load_steps=25 format=4 uid="uid://dx7hafeqt4sl1"]
 
-[ext_resource type="Script" path="res://boss_one.gd" id="1_yxoq0"]
 [ext_resource type="PackedScene" uid="uid://pt57p26pop1" path="res://scenes/connected_players.tscn" id="2_ptrcr"]
 [ext_resource type="PackedScene" uid="uid://bdv6gh78tr2qn" path="res://enemy.tscn" id="3_5h4f3"]
 [ext_resource type="Script" path="res://Triangle_boss.gd" id="3_66m4a"]
@@ -9,8 +8,23 @@
 [ext_resource type="Material" uid="uid://b866f4ff4lu3u" path="res://Textures/unshaded_ui_mat.tres" id="6_8ae8b"]
 [ext_resource type="Texture2D" uid="uid://codg1kx34rums" path="res://Textures/characters/triangle_boss.png" id="6_tmwhk"]
 [ext_resource type="AnimationLibrary" uid="uid://b7e3c06etyhfm" path="res://animations/enemy.res" id="7_7l5vh"]
+[ext_resource type="Texture2D" uid="uid://dffhjdhgvpgg4" path="res://Textures/characters/triangle_inactive.png" id="7_qk32x"]
 [ext_resource type="Texture2D" uid="uid://dukavvigm7qyg" path="res://Textures/characters/boss_1.png" id="7_w6a1w"]
-[ext_resource type="Script" path="res://scripts/boss_health_bar.gd" id="10_81jsb"]
+
+[sub_resource type="GDScript" id="GDScript_fyjra"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	#$Boss
+	pass
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ali6m"]
 texture = ExtResource("4_s15xd")
@@ -86,33 +100,99 @@ script/source = "extends Node2D
 @onready var bottom_right = $Bottom_right/Enemy
 @onready var top_left = $Top_left/Enemy
 @onready var top_right = $Top_right/Enemy
+var phase = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	bottom_left.active = false
-	bottom_right.active = false
-	top_left.active = false
-	top_right.active = false
-
+	top_left.connect(\"has_died\", _on_top_left_enemy_dead)
+	top_right.connect(\"has_died\", _on_top_right_enemy_dead)
+	bottom_left.connect(\"has_died\", _on_bottom_left_enemy_dead)
+	bottom_right.connect(\"has_died\", _on_bottom_right_enemy_dead)
+	deactivate(bottom_left)
+	deactivate(bottom_right)
+	deactivate(top_left)
+	deactivate(top_right)
+	$Main_body.attacks = {
+	0: load(\"res://scenes/Attack_patterns/inverting_arc.tscn\"),
+	1: load(\"res://scenes/Attack_patterns/cross_burst.tscn\"),
+	2: load(\"res://scenes/Attack_patterns/machine_arc.tscn\"),
+	3: load(\"res://scenes/Attack_patterns/eight_way_burst.tscn\"),
+	4: load(\"res://scenes/Attack_patterns/alternating_crosses.tscn\")
+}
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
 func phase_update(phase: int):
+	print(\"phase: \", phase)
 	match phase:
 		0:
+			main_body_activate()
 			bottom_left.active = false
 			bottom_right.active = false
 			top_left.active = false
 			top_right.active = false
 		1:
-			main_body.active = false
-			top_left.active = true
-			top_right.active = true
+			main_body_deactivate()
+			activate(top_left)
+			activate(top_right)
+		2:
+			main_body_activate()
+		3:
+			main_body_deactivate()
+			activate(bottom_left)
+			activate(bottom_right)
+		4:
+			main_body_activate()
+		5:
+			activate(top_left)
+			activate(top_right)
+			activate(bottom_left)
+			activate(bottom_right)
 
 
-func _on_test_timeout() -> void:
-	phase_update(1)
+func activate(sub_boss):
+	sub_boss.active = true
+	sub_boss.health = 40
+	sub_boss.get_child(0).animation = \"triangle_child\"
+	
+func deactivate(sub_boss):
+	sub_boss.active = false
+	sub_boss.get_child(0).animation = \"triangle_deactivate\"
+
+func main_body_activate():
+	$Main_body/face.animation = \"triangleboss\"
+	main_body.active = true
+	
+func main_body_deactivate():
+	$Main_body/face.animation = \"inactive\"
+	main_body.active = false
+
+func _on_main_body_next_phase() -> void:
+	phase += 1
+	phase_update(phase)
+
+
+func _on_top_right_enemy_dead() -> void:
+	deactivate(top_right)
+	check_children()
+
+func _on_top_left_enemy_dead() -> void:
+	deactivate(top_left)
+	check_children()
+
+func _on_bottom_right_enemy_dead() -> void:
+	deactivate(bottom_right)
+	check_children()
+
+func _on_bottom_left_enemy_dead() -> void:
+	deactivate(bottom_left)
+	check_children()
+
+func check_children() -> void:
+	if !top_left.active && !top_right.active && !bottom_left.active && !bottom_right.active:
+		phase +=1 
+		phase_update(phase)
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wskqp"]
@@ -125,6 +205,14 @@ region = Rect2(0, 0, 16, 15)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uj4bg"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_qk32x")
+}],
+"loop": true,
+"name": &"inactive",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wskqp")
@@ -168,8 +256,22 @@ border_width_right = 3
 border_width_bottom = 3
 border_color = Color(1, 1, 1, 1)
 
+[sub_resource type="GDScript" id="GDScript_gp4pq"]
+script/source = "extends ProgressBar
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_yxoq0")
+script = SubResource("GDScript_fyjra")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." groups=["object"]]
 z_index = -1
@@ -182,7 +284,7 @@ tile_set = SubResource("TileSet_13jxl")
 z_index = -1
 position = Vector2(-64, -28)
 scale = Vector2(4, 4)
-tile_map_data = PackedByteArray("AAAEAAUAAAAGAAQAAAD9/wUAAAAGAAQAAAAEAAEAAAAGAAQAAAD9/wEAAAAGAAQAAAA=")
+tile_map_data = PackedByteArray("AAAEAAMAAAAGAAQAAAD9/wMAAAAGAAQAAAABAP7/AAABAAAAAAABAP//AAABAAEAAAAAAP//AAADAAEAAAAAAP7/AAADAAAAAAABAAgAAAABAAQAAAABAAcAAAABAAMAAAAAAAcAAAADAAMAAAAAAAgAAAADAAQAAAA=")
 tile_set = SubResource("TileSet_13jxl")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
@@ -203,10 +305,12 @@ script = SubResource("GDScript_far63")
 metadata/_edit_group_ = true
 
 [node name="Cooldown" type="Timer" parent="main_boss"]
+wait_time = 2.0
 autostart = true
 
 [node name="Main_body" type="CharacterBody2D" parent="main_boss" groups=["enemy"]]
 rotation = -3.14159
+scale = Vector2(1, 0.982383)
 script = ExtResource("3_66m4a")
 enemy_name = "triangleboss"
 
@@ -215,7 +319,7 @@ z_index = 1
 material = ExtResource("6_8ae8b")
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_uj4bg")
-animation = &"spit"
+animation = &"inactive"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="main_boss/Main_body/face"]
 libraries = {
@@ -243,7 +347,7 @@ position = Vector2(-416, 180.001)
 rotation = 3.14159
 
 [node name="Top_left" parent="main_boss" groups=["sub-boss"] instance=ExtResource("3_5h4f3")]
-position = Vector2(425, 190.999)
+position = Vector2(423, 190.999)
 rotation = 3.14159
 
 [node name="Bottom_right" parent="main_boss" groups=["sub-boss"] instance=ExtResource("3_5h4f3")]
@@ -286,7 +390,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_xwxwf")
 step = 1.0
 value = 100.0
 show_percentage = false
-script = ExtResource("10_81jsb")
+script = SubResource("GDScript_gp4pq")
 
 [node name="Label" type="Label" parent="CanvasLayer/BossHealth"]
 material = ExtResource("6_8ae8b")
@@ -295,9 +399,5 @@ offset_top = -23.0
 offset_right = 40.0
 text = "EVIL BOSS MAN"
 
-[node name="test" type="Timer" parent="."]
-wait_time = 10.0
-autostart = true
-
 [connection signal="timeout" from="main_boss/Cooldown" to="main_boss/Main_body" method="_on_cooldown_timeout"]
-[connection signal="timeout" from="test" to="main_boss" method="_on_test_timeout"]
+[connection signal="next_phase" from="main_boss/Main_body" to="main_boss" method="_on_main_body_next_phase"]

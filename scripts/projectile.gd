@@ -5,6 +5,7 @@ var spawnPos : Vector2
 var dir : float
 var is_set =false
 var reflected: bool = false 
+@export var projectile_index: int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#global_position = spawnPos
@@ -36,7 +37,7 @@ func _on_area_2d_body_entered(body: Node2D):
 		if body.is_in_group("cowboy"):
 			body.parent.hurt(body, damage)
 		elif body.is_in_group("knight"):
-			body.player_one.current_speed *= 0.5
+			body.player_one.current_speed *= 0.86
 		queue_free()
 	elif body.is_in_group("enemy") && reflected == true:
 		body.damaged(damage)
@@ -45,6 +46,8 @@ func _on_area_2d_body_entered(body: Node2D):
 		queue_free()
 
 func reflect(target_pos : Vector2): 
+	if !visible:
+		return
 	if(reflected):
 		return
 	print("target pos: ", target_pos)

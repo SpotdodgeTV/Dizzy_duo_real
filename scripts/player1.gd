@@ -71,7 +71,7 @@ func end_lasso(sling_speed: int = current_speed, sling_direction = (player2.glob
 	if player_two_connected:
 		player_two_connected = false
 		player2.freeze = false
-		player2.sling(sling_direction, sling_speed * 1.5, player2.global_position)
+		player2.sling(sling_direction, sling_speed * 2, player2.global_position)
 
 func _input(event: InputEvent) -> void:
 	match device_num:
@@ -130,9 +130,9 @@ func _process(delta):
 				current_movement_speed = STARTING_MOVEMENT_SPEED_LASSOED
 				player_two_connected = true
 			elif player_two_connected:
-				if radius > 100:
+				if radius > 65:
 					player2.global_position = lerp(player2.global_position, player1.global_position, delta * 3)
-				elif radius < 90:
+				elif radius < 50:
 					player2.global_position = lerp(player2.global_position, Vector2(player1.global_position.x + cos(angle) * 90, player1.global_position.y + sin(angle) * 90), 5 * delta)
 				radius = player1.global_position.distance_to(player2.global_position)
 			line.points = [player1.position, player2.position]

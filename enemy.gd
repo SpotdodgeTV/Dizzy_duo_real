@@ -9,9 +9,8 @@ extends CharacterBody2D
 @export var active:bool = true
 @export var enemy_name = "boss1"
 var dead:bool = false
-#@onready var projectile = load("res://scenes/Attack_patterns/projectile.tscn")
-# Called when the node enters the scene tree for the first time.
 var health: int = 100
+
 @onready var attacks = {
 	0: load("res://scenes/Attack_patterns/basic_attack.tscn"),
 	1: load("res://scenes/Attack_patterns/burst.tscn")
@@ -21,6 +20,15 @@ var health: int = 100
 	#5: load("res://scenes/Attack_patterns/machine_arc.tscn"),
 	#6: load("res://scenes/Attack_patterns/eight_way_burst.tscn")
 }
+#
+	#0: load("res://scenes/Attack_patterns/inverting_arc.tscn"),
+	#1: load("res://scenes/Attack_patterns/cross_burst.tscn"),
+	#2: load("res://scenes/Attack_patterns/machine_arc.tscn"),
+	#3: load("res://scenes/Attack_patterns/eight_way_burst.tscn"),
+	#4: load("res://scenes/Attack_patterns/alternating_crosses.tscn")
+#}
+
+signal has_died
 
 func _ready():
 	enemy_setup()
@@ -81,12 +89,13 @@ func shoot_attack(attack):
 	
 	instance.rotation = rotation
 	instance.position = position
-	instance.speed = 0
+	#instance.speed = 0
 	main.add_child.call_deferred(instance)
 
 func _on_cooldown_timeout():
 	if !dead && active:
 		var random_attack = randi() % attacks.size()
+		#random_attack = 4
 		shoot_attack(attacks[random_attack])
 
 func play_animation(anim: String = "", force:bool = false):
@@ -103,6 +112,7 @@ func damaged(damage):
 			boss_bar.value = health
 		print("enemy received ", damage, " damage")
 		if health <= 0 and !dead:
+			emit_signal("has_died")
 			if main.is_in_group("sub-boss"):
 				active = false
 				return

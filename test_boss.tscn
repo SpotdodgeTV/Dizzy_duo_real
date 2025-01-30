@@ -1,12 +1,86 @@
-[gd_scene load_steps=13 format=4 uid="uid://dtvd8y0a3u3n0"]
+[gd_scene load_steps=24 format=4 uid="uid://dtvd8y0a3u3n0"]
 
 [ext_resource type="PackedScene" uid="uid://pt57p26pop1" path="res://scenes/connected_players.tscn" id="1_t15xd"]
-[ext_resource type="Script" path="res://boss_one.gd" id="1_vyqki"]
-[ext_resource type="PackedScene" uid="uid://bdv6gh78tr2qn" path="res://enemy.tscn" id="2_eqt2s"]
+[ext_resource type="Script" path="res://enemy_control.gd" id="2_2g1qa"]
 [ext_resource type="Texture2D" uid="uid://bnhe1ahh8fv7w" path="res://tilemaps/dawngeon.png" id="3_bgfr0"]
+[ext_resource type="Script" path="res://enemy.gd" id="3_kt6lq"]
+[ext_resource type="Texture2D" uid="uid://dukavvigm7qyg" path="res://Textures/characters/boss_1.png" id="5_68mgc"]
 [ext_resource type="PackedScene" uid="uid://shbpwr4gt3cp" path="res://scenes/player_health_bar.tscn" id="5_lyckl"]
 [ext_resource type="Material" uid="uid://b866f4ff4lu3u" path="res://Textures/unshaded_ui_mat.tres" id="6_3lnv2"]
-[ext_resource type="Script" path="res://scripts/boss_health_bar.gd" id="7_xnnok"]
+[ext_resource type="Texture2D" uid="uid://ce8uw1k7kxutd" path="res://Textures/characters/triangle_active.png" id="6_e6qvd"]
+[ext_resource type="Texture2D" uid="uid://codg1kx34rums" path="res://Textures/characters/triangle_boss.png" id="6_pljah"]
+[ext_resource type="AnimationLibrary" uid="uid://b7e3c06etyhfm" path="res://animations/enemy.res" id="7_pft87"]
+[ext_resource type="Texture2D" uid="uid://dffhjdhgvpgg4" path="res://Textures/characters/triangle_inactive.png" id="7_uggwi"]
+
+[sub_resource type="GDScript" id="GDScript_fyjra"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	#$Boss
+	pass
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wskqp"]
+atlas = ExtResource("5_68mgc")
+region = Rect2(0, 15, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vflaq"]
+atlas = ExtResource("5_68mgc")
+region = Rect2(0, 0, 16, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uj4bg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wskqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vflaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wskqp")
+}],
+"loop": false,
+"name": &"spit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_e6qvd")
+}],
+"loop": true,
+"name": &"triangle_child",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_uggwi")
+}],
+"loop": true,
+"name": &"triangle_deactivate",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_pljah")
+}],
+"loop": false,
+"name": &"triangleboss",
+"speed": 0.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fq7qp"]
+radius = 43.566
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3dy6a"]
+polygon = PackedVector2Array(-3.1, -5.6, -3.1, -4.6, -5.1, -4.6, -5.1, -3.6, -6.1, -3.6, -6.1, -2.6, -7.1, -2.6, -7.1, -0.6, -8, -0.6, -8, 4.6, -7.1, 4.6, -7.1, 6.6, -6.1, 6.6, -6.1, 7.6, -5.1, 7.6, -5.1, 8.6, -3.1, 8.6, -3.1, 9.5, 3.1, 9.5, 3.1, 8.6, 5.1, 8.6, 5.1, 7.6, 6.1, 7.6, 6.1, 6.6, 7.1, 6.6, 7.1, 4.6, 8, 4.6, 8, -0.6, 7.1, -0.6, 7.1, -2.6, 6.1, -2.6, 6.1, -3.6, 5.1, -3.6, 5.1, -4.6, 4.1, -4.6, 4.1, -5.6)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ali6m"]
 texture = ExtResource("3_bgfr0")
@@ -86,10 +160,55 @@ border_width_right = 3
 border_width_bottom = 3
 border_color = Color(1, 1, 1, 1)
 
-[node name="Node2D" type="Node2D"]
-script = ExtResource("1_vyqki")
+[sub_resource type="GDScript" id="GDScript_gp4pq"]
+script/source = "extends ProgressBar
 
-[node name="Boss" parent="." instance=ExtResource("2_eqt2s")]
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="Node2D" type="Node2D"]
+script = SubResource("GDScript_fyjra")
+
+[node name="Boss" type="Node2D" parent="."]
+script = ExtResource("2_2g1qa")
+metadata/_edit_group_ = true
+
+[node name="Cooldown" type="Timer" parent="Boss"]
+wait_time = 2.0
+autostart = true
+
+[node name="Enemy" type="CharacterBody2D" parent="Boss" groups=["enemy"]]
+rotation = -3.14159
+script = ExtResource("3_kt6lq")
+
+[node name="face" type="AnimatedSprite2D" parent="Boss/Enemy"]
+z_index = 1
+material = ExtResource("6_3lnv2")
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_uj4bg")
+animation = &"spit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Boss/Enemy/face"]
+libraries = {
+"": ExtResource("7_pft87")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boss/Enemy"]
+rotation = 0.00182393
+shape = SubResource("CircleShape2D_fq7qp")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Boss/Enemy"]
+position = Vector2(-2.53518e-05, -10)
+scale = Vector2(5, 5)
+occluder = SubResource("OccluderPolygon2D_3dy6a")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.674815, 0.674815, 0.674815, 1)
@@ -149,7 +268,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_mg12c")
 step = 1.0
 value = 100.0
 show_percentage = false
-script = ExtResource("7_xnnok")
+script = SubResource("GDScript_gp4pq")
 
 [node name="Label" type="Label" parent="CanvasLayer/BossHealth"]
 material = ExtResource("6_3lnv2")
@@ -157,3 +276,6 @@ layout_mode = 0
 offset_top = -23.0
 offset_right = 40.0
 text = "EVIL BOSS MAN"
+
+[connection signal="timeout" from="Boss/Cooldown" to="Boss/Enemy" method="_on_cooldown_timeout"]
+[connection signal="animation_finished" from="Boss/Enemy/face/AnimationPlayer" to="Boss/Enemy" method="_on_animation_player_animation_finished"]
