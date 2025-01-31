@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cowa12bnksvxl"
-path="res://.godot/imported/cowboy.png-eba226a5d4e2dd18b251525c874313c1.ctex"
+path="res://.godot/imported/cowboy.png-2a21b8d409ac532998dc37b96b21ca0d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/characters/cowboy.png"
-dest_files=["res://.godot/imported/cowboy.png-eba226a5d4e2dd18b251525c874313c1.ctex"]
+source_file="res://textures/characters/cowboy.png"
+dest_files=["res://.godot/imported/cowboy.png-2a21b8d409ac532998dc37b96b21ca0d.ctex"]
 
 [params]
 

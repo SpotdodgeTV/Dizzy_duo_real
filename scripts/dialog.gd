@@ -1,8 +1,7 @@
-extends Panel
-var dia: Array[Array]
-@onready var text_label = $Text
-@onready var name_label = $NamePanel/Name
-@onready var name_panel = $NamePanel
+extends CanvasLayer
+@onready var text_label = $Dialog/Text
+@onready var name_label = $Dialog/NamePanel/Name
+@onready var name_panel = $Dialog/NamePanel
 
 signal dialog_pressed
 signal finished

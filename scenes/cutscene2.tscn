@@ -308,8 +308,5 @@ texture = ExtResource("6_hvj7e")
 flip_h = true
 
 [node name="Dialog" parent="." instance=ExtResource("5_mxout")]
-layout_mode = 1
-offset_top = -133.0
-offset_bottom = -25.0
 
 [node name="SceneChanger" parent="." instance=ExtResource("7_f5nxm")]

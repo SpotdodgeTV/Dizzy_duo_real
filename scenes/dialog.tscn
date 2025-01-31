@@ -4,7 +4,10 @@
 [ext_resource type="StyleBox" uid="uid://hlluy8vr7uu4" path="res://textures/misc/styleboxdialog.tres" id="1_pmt06"]
 [ext_resource type="FontFile" uid="uid://u4csmhrdtwge" path="res://fonts/FreeCheese-Regular.ttf" id="3_qe2xf"]
 
-[node name="Dialog" type="Panel"]
+[node name="Dialog" type="CanvasLayer"]
+script = ExtResource("1_0tkyb")
+
+[node name="Dialog" type="Panel" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -18,9 +21,8 @@ grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(332, 92)
 theme_override_styles/panel = ExtResource("1_pmt06")
-script = ExtResource("1_0tkyb")
 
-[node name="Text" type="Label" parent="."]
+[node name="Text" type="Label" parent="Dialog"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,7 +33,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 20
 
-[node name="NamePanel" type="Panel" parent="."]
+[node name="NamePanel" type="Panel" parent="Dialog"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -47,7 +49,7 @@ grow_vertical = 0
 pivot_offset = Vector2(332, 92)
 theme_override_styles/panel = ExtResource("1_pmt06")
 
-[node name="Name" type="Label" parent="NamePanel"]
+[node name="Name" type="Label" parent="Dialog/NamePanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

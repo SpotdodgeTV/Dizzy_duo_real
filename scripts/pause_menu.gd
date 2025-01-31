@@ -11,6 +11,8 @@ func _input(event: InputEvent) -> void:
 func the_stuff():
 	get_tree().paused = !get_tree().paused
 	visible = get_tree().paused
+	AudioServer.set_bus_effect_enabled(0, 0, get_tree().paused)
+	AudioServer.set_bus_effect_enabled(0, 1, get_tree().paused)
 
 func quit():
 	get_tree().quit()

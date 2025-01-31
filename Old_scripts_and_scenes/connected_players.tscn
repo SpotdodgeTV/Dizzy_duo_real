@@ -13,6 +13,7 @@ points = PackedVector2Array(177, 129, 320, 127)
 
 [node name="player" parent="." instance=ExtResource("1_y6xsf")]
 position = Vector2(477, 275)
+script = null
 
 [node name="player2" parent="." instance=ExtResource("3_pqom7")]
 position = Vector2(334, 280)
