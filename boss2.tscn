@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bnhe1ahh8fv7w" path="res://tilemaps/dawngeon.png" id="4_s15xd"]
 [ext_resource type="PackedScene" uid="uid://shbpwr4gt3cp" path="res://scenes/player_health_bar.tscn" id="5_8bwsw"]
 [ext_resource type="Material" uid="uid://b866f4ff4lu3u" path="res://Textures/unshaded_ui_mat.tres" id="6_8ae8b"]
-[ext_resource type="Texture2D" uid="uid://codg1kx34rums" path="res://Textures/characters/triangle_boss.png" id="6_tmwhk"]
+[ext_resource type="Texture2D" uid="uid://b2hdsm2gyh3n2" path="res://Textures/characters/triangle_boss.png" id="6_tmwhk"]
 [ext_resource type="AnimationLibrary" uid="uid://b7e3c06etyhfm" path="res://animations/enemy.res" id="7_7l5vh"]
-[ext_resource type="Texture2D" uid="uid://dffhjdhgvpgg4" path="res://Textures/characters/triangle_inactive.png" id="7_qk32x"]
+[ext_resource type="Texture2D" uid="uid://ctl6t71jflewk" path="res://Textures/characters/triangle_inactive.png" id="7_qk32x"]
 [ext_resource type="Texture2D" uid="uid://dukavvigm7qyg" path="res://Textures/characters/boss_1.png" id="7_w6a1w"]
 
 [sub_resource type="GDScript" id="GDScript_fyjra"]
@@ -193,6 +193,13 @@ func check_children() -> void:
 	if !top_left.active && !top_right.active && !bottom_left.active && !bottom_right.active:
 		phase +=1 
 		phase_update(phase)
+
+
+func _on_main_body_has_died() -> void:
+			deactivate(top_left)
+			deactivate(top_right)
+			deactivate(bottom_left)
+			deactivate(bottom_right)
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wskqp"]
@@ -309,6 +316,7 @@ wait_time = 2.0
 autostart = true
 
 [node name="Main_body" type="CharacterBody2D" parent="main_boss" groups=["enemy"]]
+position = Vector2(-3, 7.60554e-06)
 rotation = -3.14159
 scale = Vector2(1, 0.982383)
 script = ExtResource("3_66m4a")
@@ -400,4 +408,5 @@ offset_right = 40.0
 text = "EVIL BOSS MAN"
 
 [connection signal="timeout" from="main_boss/Cooldown" to="main_boss/Main_body" method="_on_cooldown_timeout"]
+[connection signal="has_died" from="main_boss/Main_body" to="main_boss" method="_on_main_body_has_died"]
 [connection signal="next_phase" from="main_boss/Main_body" to="main_boss" method="_on_main_body_next_phase"]

@@ -11,10 +11,13 @@ script = ExtResource("1_b2cba")
 [node name="projectile3" parent="." instance=ExtResource("2_f8lji")]
 position = Vector2(0, 0)
 rotation = -0.261799
+speed = 0
 
 [node name="projectile4" parent="." instance=ExtResource("2_f8lji")]
 position = Vector2(0, 0)
 rotation = 0.261799
+speed = 0
 
 [node name="projectile2" parent="." instance=ExtResource("2_f8lji")]
 position = Vector2(0, 0)
+speed = 0

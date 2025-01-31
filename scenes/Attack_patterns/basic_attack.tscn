@@ -8,6 +8,7 @@ script = ExtResource("1_xh51w")
 
 [node name="projectile" parent="." instance=ExtResource("2_aucb0")]
 position = Vector2(0, 0)
+speed = 0
 metadata/projectile_index = 0
 
 [node name="Camera2D" type="Camera2D" parent="."]

@@ -6,6 +6,7 @@ signal next_phase
 @export var phase_change_increment = 100
 @export var initial_health = 400
 
+
 func _ready():
 	enemy_setup()
 	health = initial_health
@@ -17,6 +18,7 @@ func damaged(damage):
 		boss_bar.value = health
 		print("enemy received ", damage, " damage")
 		if health <= 0 and !dead:
+			emit_signal("has_died")
 			dead = true
 			play_animation("death", true)
 			return

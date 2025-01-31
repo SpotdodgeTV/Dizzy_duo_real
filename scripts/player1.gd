@@ -11,11 +11,17 @@ extends CharacterBody2D
 var lasso_in_use = false
 var player_two_connected = false
 
+const LASSO_MAX_LENGTH = 150.0
+const LASSO_UPPER_BOUND = 100.0
+const LASSO_MIN_LENGTH = 50.0
+
 const STARTING_MOVEMENT_SPEED_LASSOED = 90
 const STARTING_SWING_SPEED = 0.5
 const STARTING_MOVEMENT_SPEED = 200
 const MAX_MOVEMENT_SPEED = 300
 
+var lasso_length: float = 65.0
+var lasso_pulled_in: bool = false
 var elapsed_time = 0.0
 var current_movement_speed: int = STARTING_MOVEMENT_SPEED
 var radius: float = 80.0
@@ -76,6 +82,14 @@ func end_lasso(sling_speed: int = current_speed, sling_direction = (player2.glob
 func _input(event: InputEvent) -> void:
 	match device_num:
 		-1: #keyboard and mouse
+			if Input.is_action_just_pressed("mouse_up"):
+				if lasso_pulled_in and player_two_connected:
+					if lasso_length < LASSO_MAX_LENGTH:
+						lasso_length += 3
+			if Input.is_action_just_pressed("mouse_down"):
+				if lasso_pulled_in and player_two_connected:
+					if lasso_length > LASSO_MIN_LENGTH:
+						lasso_length -= 3
 			if Input.is_action_just_pressed("mouse_left"):
 				start_lasso()
 			elif Input.is_action_just_released("mouse_left"):
@@ -101,6 +115,7 @@ func _process(delta):
 			current_movement_speed = STARTING_MOVEMENT_SPEED_LASSOED
 	
 	#Spin logic
+	radius = player1.global_position.distance_to(player2.global_position)
 	if player_two_connected:
 		match device_num:
 			-1: #keyboard and mouse
@@ -114,27 +129,40 @@ func _process(delta):
 				#var is_input_large = spin_direction.length() > input_sensitivity
 				#var target_angle = spin_direction.angle()
 				#spin_logic(is_input_large, target_angle, delta)
-		target_position.x = player1.global_position.x + radius * cos(angle)
-		target_position.y = player1.global_position.y + radius * sin(angle)
+		if lasso_length < LASSO_MIN_LENGTH and !lasso_pulled_in:
+			lasso_length += 5
+		elif lasso_length < LASSO_UPPER_BOUND and !lasso_pulled_in:
+			lasso_pulled_in = true
+		elif !lasso_pulled_in and lasso_length > LASSO_UPPER_BOUND:
+			lasso_length -= 8
+			if lasso_length <= LASSO_UPPER_BOUND:
+				lasso_pulled_in = true
+		target_position.x = player1.global_position.x + lasso_length * cos(angle)
+		target_position.y = player1.global_position.y + lasso_length * sin(angle)
 		player2.global_position = target_position
+		#player2.global_position = lerp(player2.global_position, target_position, 5 * delta)
 	
 	if lasso_in_use:
 		if round(line.points[1]).distance_to(round(player2.position)) > 10 and !player_two_connected:
 			line.points = [player1.position, lerp(line.points[1], player2.position, 15 * delta)]
 		else:
+			#radius = player1.global_position.distance_to(player2.global_position)
 			if !player_two_connected:
-				radius = player1.global_position.distance_to(player2.global_position)
 				angle = player1.global_position.angle_to_point(player2.global_position)
 				current_speed = STARTING_SWING_SPEED
 				#player2.freeze = true
 				current_movement_speed = STARTING_MOVEMENT_SPEED_LASSOED
+				lasso_pulled_in = false
+				lasso_length = radius
 				player_two_connected = true
 			elif player_two_connected:
-				if radius > 65:
-					player2.global_position = lerp(player2.global_position, player1.global_position, delta * 3)
-				elif radius < 50:
-					player2.global_position = lerp(player2.global_position, Vector2(player1.global_position.x + cos(angle) * 90, player1.global_position.y + sin(angle) * 90), 5 * delta)
-				radius = player1.global_position.distance_to(player2.global_position)
+				pass
+				#if radius > lasso_length:
+					#player2.global_position = lerp(player2.global_position, player1.global_position, delta * 3)
+				#if radius != lasso_length:
+					#player2.global_position = lerp(player2.global_position, global_position.direction_to(player2.global_position) * lasso_length, delta * 3)
+				#if radius < 45:
+					#player2.global_position = lerp(player2.global_position, Vector2(player1.global_position.x + cos(angle) * 90, player1.global_position.y + sin(angle) * 90), 5 * delta)
 			line.points = [player1.position, player2.position]
 	else:
 		line.points = [player1.position, lerp(line.points[1], player1.position, 15 * delta)]
