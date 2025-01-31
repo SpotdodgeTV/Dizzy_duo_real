@@ -1,0 +1,302 @@
+[gd_scene load_steps=23 format=4 uid="uid://s7bd68yk8qyp"]
+
+[ext_resource type="Texture2D" uid="uid://bnhe1ahh8fv7w" path="res://tilemaps/dawngeon.png" id="1_thu1d"]
+[ext_resource type="Script" path="res://Triangle_boss.gd" id="2_svg2d"]
+[ext_resource type="Material" uid="uid://b866f4ff4lu3u" path="res://Textures/unshaded_ui_mat.tres" id="3_0ixm5"]
+[ext_resource type="Texture2D" uid="uid://ctl6t71jflewk" path="res://Textures/characters/triangle_inactive.png" id="4_d1rgj"]
+[ext_resource type="Texture2D" uid="uid://dukavvigm7qyg" path="res://Textures/characters/boss_1.png" id="5_051b6"]
+[ext_resource type="Texture2D" uid="uid://b2hdsm2gyh3n2" path="res://Textures/characters/triangle_boss.png" id="6_fklmd"]
+[ext_resource type="AnimationLibrary" uid="uid://b7e3c06etyhfm" path="res://animations/enemy.res" id="7_n14gi"]
+[ext_resource type="PackedScene" uid="uid://pt57p26pop1" path="res://scenes/connected_players.tscn" id="8_rot3o"]
+[ext_resource type="PackedScene" uid="uid://shbpwr4gt3cp" path="res://scenes/player_health_bar.tscn" id="9_v1lv7"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qj176"]
+texture = ExtResource("1_thu1d")
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:1/0 = 0
+6:1/0 = 0
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:2/0 = 0
+6:2/0 = 0
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:3/0 = 0
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:3/0 = 0
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:3/0 = 0
+6:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:4/0 = 0
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:4/0 = 0
+3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+6:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_c6n85"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_qj176")
+
+[sub_resource type="GDScript" id="GDScript_ckqmm"]
+script/source = "extends Node2D
+
+var phase = 0
+var locations  
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	$Main_body.attacks = {
+	0: load(\"res://scenes/Attack_patterns/inverting_arc.tscn\"),
+	1: load(\"res://scenes/Attack_patterns/cross_burst.tscn\"),
+	2: load(\"res://scenes/Attack_patterns/machine_arc.tscn\"),
+	3: load(\"res://scenes/Attack_patterns/eight_way_burst.tscn\"),
+	4: load(\"res://scenes/Attack_patterns/alternating_crosses.tscn\")
+}
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+func phase_update(phase: int):
+	print(\"phase: \", phase)
+	match phase:
+		0:
+			$Main_body.global_position = Vector2(0, 0)
+		1:
+			$Main_body.global_position = Vector2(0, 180)
+		2:
+			$Main_body.global_position = Vector2(180, 0)
+
+	
+
+
+func _on_main_body_next_phase() -> void:
+	phase += 1
+	phase_update(randi_range(0, 2))
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wskqp"]
+atlas = ExtResource("5_051b6")
+region = Rect2(0, 15, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vflaq"]
+atlas = ExtResource("5_051b6")
+region = Rect2(0, 0, 16, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rm8vi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_d1rgj")
+}],
+"loop": true,
+"name": &"inactive",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wskqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vflaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wskqp")
+}],
+"loop": false,
+"name": &"spit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_fklmd")
+}],
+"loop": false,
+"name": &"triangleboss",
+"speed": 0.0
+}]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2bpek"]
+load_path = "res://.godot/imported/Untitled drawing.svg-53e36e70428d4913dac13bd201e04728.ctex"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_35ao6"]
+radius = 43.566
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tr6fa"]
+polygon = PackedVector2Array(-3.1, -5.6, -3.1, -4.6, -5.1, -4.6, -5.1, -3.6, -6.1, -3.6, -6.1, -2.6, -7.1, -2.6, -7.1, -0.6, -8, -0.6, -8, 4.6, -7.1, 4.6, -7.1, 6.6, -6.1, 6.6, -6.1, 7.6, -5.1, 7.6, -5.1, 8.6, -3.1, 8.6, -3.1, 9.5, 3.1, 9.5, 3.1, 8.6, 5.1, 8.6, 5.1, 7.6, 6.1, 7.6, 6.1, 6.6, 7.1, 6.6, 7.1, 4.6, 8, 4.6, 8, -0.6, 7.1, -0.6, 7.1, -2.6, 6.1, -2.6, 6.1, -3.6, 5.1, -3.6, 5.1, -4.6, 4.1, -4.6, 4.1, -5.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qj500"]
+bg_color = Color(0.154876, 0.154876, 0.154876, 0.466667)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1pqsb"]
+bg_color = Color(1, 0, 0, 0.647059)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="GDScript" id="GDScript_drh2r"]
+script/source = "extends ProgressBar
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="Environment" id="Environment_w3ahx"]
+background_mode = 3
+glow_enabled = true
+glow_blend_mode = 1
+fog_density = 0.7928
+fog_height = 754.53
+fog_height_density = -3.0877
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." groups=["object"]]
+z_index = -1
+position = Vector2(-64, -28)
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAD+////AAACAAIAAAD/////AAACAAIAAAAAAP//AAACAAIAAAABAP//AAACAAIAAAAAAAAAAAACAAIAAAD//wAAAAACAAIAAAD+/wAAAAACAAIAAAD+/wEAAAACAAIAAAD//wEAAAACAAIAAAAAAAEAAAACAAIAAAABAAEAAAACAAIAAAABAAAAAAACAAIAAAACAAAAAAACAAIAAAADAAAAAAACAAIAAAAEAAAAAAADAAIAAAD8//7/AAACAAAAAAD8////AAADAAIAAAD8/wAAAAADAAIAAAD8/wEAAAADAAIAAAD8/wIAAAACAAIAAAD8/wMAAAACAAIAAAD8/wQAAAACAAIAAAD9//7/AAACAAAAAAD9////AAADAAIAAAD9/wAAAAADAAIAAAD9/wEAAAACAAIAAAD9/wIAAAACAAIAAAD9/wMAAAACAAIAAAD9/wQAAAACAAIAAAD+//7/AAACAAAAAAD+/wIAAAACAAIAAAD+/wMAAAACAAIAAAD+/wQAAAACAAIAAAD///7/AAACAAAAAAD//wIAAAACAAIAAAD//wMAAAACAAIAAAD//wQAAAACAAIAAAAAAP7/AAACAAAAAAAAAAIAAAACAAIAAAAAAAMAAAACAAIAAAAAAAQAAAACAAIAAAABAP7/AAACAAAAAAABAAIAAAACAAIAAAABAAMAAAACAAIAAAABAAQAAAACAAIAAAACAP7/AAACAAAAAAACAP//AAACAAIAAAACAAEAAAACAAIAAAACAAIAAAACAAIAAAACAAMAAAACAAIAAAACAAQAAAACAAIAAAADAP7/AAACAAAAAAADAP//AAACAAIAAAADAAEAAAACAAIAAAADAAIAAAACAAIAAAADAAMAAAACAAIAAAADAAQAAAACAAIAAAAEAP7/AAACAAAAAAAEAP//AAADAAIAAAAEAAEAAAACAAIAAAAEAAIAAAACAAIAAAAEAAMAAAACAAIAAAAEAAQAAAACAAIAAAD8/wUAAAADAAIAAAD9/wUAAAACAAIAAAD+/wUAAAACAAIAAAD//wUAAAACAAIAAAAAAAUAAAACAAIAAAABAAUAAAACAAIAAAACAAUAAAACAAIAAAADAAUAAAACAAIAAAAEAAUAAAACAAIAAAAFAAUAAAABAAIAAAAFAAQAAAACAAIAAAAFAAMAAAACAAIAAAAFAAIAAAACAAIAAAAFAAEAAAABAAIAAAAFAAAAAAABAAIAAAAFAP//AAABAAIAAAAFAP7/AAACAAAAAAD4//7/AAAAAAAAAAD4////AAAAAAEAAAD4/wAAAAAAAAIAAAD4/wEAAAAAAAIAAAD4/wIAAAAAAAIAAAD4/wMAAAAAAAIAAAD4/wQAAAAAAAIAAAD4/wUAAAAAAAIAAAD4/wYAAAAAAAIAAAD4/wcAAAAAAAMAAAD4/wgAAAAAAAAAAAD5//7/AAABAAAAAAD5////AAABAAEAAAD5/wAAAAABAAIAAAD5/wEAAAADAAIAAAD5/wIAAAACAAIAAAD5/wMAAAACAAIAAAD5/wQAAAACAAIAAAD5/wUAAAADAAIAAAD5/wYAAAABAAIAAAD5/wcAAAABAAMAAAD5/wgAAAABAAQAAAD6//7/AAACAAAAAAD6////AAABAAIAAAD6/wAAAAABAAIAAAD6/wEAAAADAAIAAAD6/wIAAAACAAIAAAD6/wMAAAACAAIAAAD6/wQAAAACAAIAAAD6/wUAAAADAAIAAAD6/wYAAAABAAIAAAD6/wcAAAABAAIAAAD6/wgAAAACAAQAAAD7//7/AAACAAAAAAD7////AAADAAIAAAD7/wAAAAADAAIAAAD7/wEAAAADAAIAAAD7/wIAAAACAAIAAAD7/wMAAAACAAIAAAD7/wQAAAACAAIAAAD7/wUAAAADAAIAAAD7/wYAAAADAAIAAAD7/wcAAAADAAIAAAD7/wgAAAACAAQAAAD8/wYAAAADAAIAAAD8/wcAAAADAAIAAAD8/wgAAAACAAQAAAD9/wYAAAADAAIAAAD9/wcAAAADAAIAAAD9/wgAAAACAAQAAAD+/wYAAAACAAIAAAD+/wcAAAACAAIAAAD+/wgAAAACAAQAAAD//wYAAAACAAIAAAD//wcAAAACAAIAAAD//wgAAAACAAQAAAAAAAYAAAACAAIAAAAAAAcAAAACAAIAAAAAAAgAAAACAAQAAAABAAYAAAACAAIAAAABAAcAAAACAAIAAAABAAgAAAACAAQAAAACAAYAAAACAAIAAAACAAcAAAACAAIAAAACAAgAAAACAAQAAAADAAYAAAACAAIAAAADAAcAAAACAAIAAAADAAgAAAACAAQAAAAEAAYAAAADAAIAAAAEAAcAAAADAAIAAAAEAAgAAAACAAQAAAAFAAYAAAABAAIAAAAFAAcAAAABAAIAAAAFAAgAAAACAAQAAAAGAP7/AAACAAAAAAAGAP//AAABAAIAAAAGAAAAAAABAAIAAAAGAAEAAAABAAIAAAAGAAIAAAACAAIAAAAGAAMAAAACAAIAAAAGAAQAAAACAAIAAAAGAAUAAAABAAIAAAAGAAYAAAABAAIAAAAGAAcAAAABAAIAAAAGAAgAAAACAAQAAAAHAP7/AAACAAAAAAAHAP//AAABAAIAAAAHAAAAAAABAAIAAAAHAAEAAAABAAIAAAAHAAIAAAACAAIAAAAHAAMAAAACAAIAAAAHAAQAAAACAAIAAAAHAAUAAAABAAIAAAAHAAYAAAABAAIAAAAHAAcAAAABAAIAAAAHAAgAAAACAAQAAAAIAP7/AAADAAAAAAAIAP//AAADAAEAAAAIAAAAAAABAAIAAAAIAAEAAAABAAIAAAAIAAIAAAACAAIAAAAIAAMAAAACAAIAAAAIAAQAAAACAAIAAAAIAAUAAAABAAIAAAAIAAYAAAABAAIAAAAIAAcAAAADAAMAAAAIAAgAAAADAAQAAAAJAP7/AAAAAAAAAAAJAP//AAAEAAEAAAAJAAAAAAAEAAIAAAAJAAEAAAAEAAIAAAAJAAIAAAAEAAIAAAAJAAMAAAAEAAIAAAAJAAQAAAAEAAIAAAAJAAUAAAAEAAIAAAAJAAYAAAAEAAIAAAAJAAcAAAAEAAMAAAAJAAgAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_c6n85")
+
+[node name="main_boss" type="Node2D" parent="."]
+rotation = -3.14159
+script = SubResource("GDScript_ckqmm")
+metadata/_edit_group_ = true
+
+[node name="Cooldown" type="Timer" parent="main_boss"]
+wait_time = 2.0
+autostart = true
+
+[node name="Main_body" type="CharacterBody2D" parent="main_boss" groups=["enemy"]]
+rotation = -3.14159
+scale = Vector2(1, 0.982383)
+script = ExtResource("2_svg2d")
+phase_change_threshold = 150
+phase_change_increment = 50
+initial_health = 200
+enemy_name = "triangleboss"
+
+[node name="face" type="AnimatedSprite2D" parent="main_boss/Main_body"]
+z_index = 1
+material = ExtResource("3_0ixm5")
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_rm8vi")
+animation = &"spit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="main_boss/Main_body/face"]
+libraries = {
+"": ExtResource("7_n14gi")
+}
+
+[node name="Sprite2D2" type="Sprite2D" parent="main_boss/Main_body"]
+visible = false
+modulate = Color(0, 1, 1, 1)
+position = Vector2(0, -50.0525)
+scale = Vector2(0.251833, 0.254175)
+texture = SubResource("CompressedTexture2D_2bpek")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_boss/Main_body"]
+rotation = 0.00182393
+shape = SubResource("CircleShape2D_35ao6")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="main_boss/Main_body"]
+position = Vector2(-2.53518e-05, -10)
+scale = Vector2(5, 5)
+occluder = SubResource("OccluderPolygon2D_tr6fa")
+
+[node name="Players" parent="." instance=ExtResource("8_rot3o")]
+position = Vector2(0, 391)
+rotation = 0.00103694
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlayerHealth" parent="CanvasLayer" instance=ExtResource("9_v1lv7")]
+modulate = Color(1, 1, 1, 0.760784)
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 53.0
+offset_bottom = 13.0
+scale = Vector2(6, 6)
+pivot_offset = Vector2(3.16063e-05, 0.00147909)
+
+[node name="BossHealth" type="ProgressBar" parent="CanvasLayer"]
+material = ExtResource("3_0ixm5")
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -227.0
+offset_top = -42.0
+offset_right = 227.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_qj500")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1pqsb")
+step = 1.0
+value = 100.0
+show_percentage = false
+script = SubResource("GDScript_drh2r")
+
+[node name="Label" type="Label" parent="CanvasLayer/BossHealth"]
+material = ExtResource("3_0ixm5")
+layout_mode = 0
+offset_top = -23.0
+offset_right = 40.0
+text = "EVIL BOSS MAN"
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.674815, 0.674815, 0.674815, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 180)
+rotation = 0.00103694
+scale = Vector2(0.512807, 0.292644)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_w3ahx")
+
+[connection signal="timeout" from="main_boss/Cooldown" to="main_boss/Main_body" method="_on_cooldown_timeout"]
+[connection signal="next_phase" from="main_boss/Main_body" to="main_boss" method="_on_main_body_next_phase"]
