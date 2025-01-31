@@ -15,4 +15,4 @@ func _process(delta: float) -> void:
 	pass
 
 func next_scene():
-	$SceneChanger.change_scene("res://scenes/cutscene2.tscn")
+	$SceneChanger.change_scene("res://scenes/tutorial.tscn")

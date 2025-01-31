@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://de1lbhwggbx7k"]
+[gd_scene load_steps=21 format=3 uid="uid://de1lbhwggbx7k"]
 
 [ext_resource type="Script" path="res://scenes/cutscene.gd" id="1_kpa4m"]
 [ext_resource type="Texture2D" uid="uid://e1ym2xe8vyk0" path="res://textures/portraits/backgrounds/desert.png" id="1_muims"]
@@ -195,7 +195,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 2, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ajh5p"]
@@ -205,6 +205,14 @@ _data = {
 "fly": SubResource("Animation_ixufh"),
 "portal_fade_in": SubResource("Animation_8ysad")
 }
+
+[sub_resource type="Environment" id="Environment_s8iwh"]
+background_mode = 3
+glow_enabled = true
+glow_blend_mode = 1
+fog_density = 0.7928
+fog_height = 754.53
+fog_height_density = -3.0877
 
 [node name="cutscene" type="Control"]
 layout_mode = 3
@@ -256,3 +264,6 @@ visible = false
 
 [node name="pause_menu" parent="." instance=ExtResource("7_ex1xb")]
 visible = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_s8iwh")
