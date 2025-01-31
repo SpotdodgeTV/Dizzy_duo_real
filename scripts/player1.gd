@@ -93,12 +93,12 @@ func _input(event: InputEvent) -> void:
 			if Input.is_action_just_pressed("mouse_left"):
 				start_lasso()
 			elif Input.is_action_just_released("mouse_left"):
-				end_lasso()
+				end_lasso(current_speed * 1.7)
 		_: #controller
 			if Input.get_joy_axis(device_num, JOY_AXIS_TRIGGER_RIGHT) > 0.1 and !lasso_in_use:
 				start_lasso()
 			elif Input.get_joy_axis(device_num, JOY_AXIS_TRIGGER_RIGHT) < 0.1 and lasso_in_use and player_two_connected:
-				end_lasso()
+				end_lasso(current_speed * 1.3)
 
 
 func _process(delta):

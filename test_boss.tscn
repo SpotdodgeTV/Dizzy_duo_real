@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://dtvd8y0a3u3n0"]
+[gd_scene load_steps=26 format=4 uid="uid://dtvd8y0a3u3n0"]
 
 [ext_resource type="PackedScene" uid="uid://pt57p26pop1" path="res://scenes/connected_players.tscn" id="1_t15xd"]
 [ext_resource type="Script" path="res://enemy_control.gd" id="2_2g1qa"]
@@ -12,6 +12,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://b7e3c06etyhfm" path="res://animations/enemy.res" id="7_pft87"]
 [ext_resource type="Texture2D" uid="uid://ctl6t71jflewk" path="res://Textures/characters/triangle_inactive.png" id="7_uggwi"]
 [ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="12_h6aqj"]
+[ext_resource type="AudioStream" uid="uid://bj6uku1d25dx7" path="res://music/boss1.mp3" id="13_g81u2"]
 
 [sub_resource type="GDScript" id="GDScript_fyjra"]
 script/source = "extends Node2D
@@ -280,6 +281,12 @@ text = "EVIL BOSS MAN"
 
 [node name="pause_menu" parent="." instance=ExtResource("12_h6aqj")]
 visible = false
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("13_g81u2")
+autoplay = true
+bus = &"Music"
 
 [connection signal="timeout" from="Boss/Cooldown" to="Boss/Enemy" method="_on_cooldown_timeout"]
 [connection signal="animation_finished" from="Boss/Enemy/face/AnimationPlayer" to="Boss/Enemy" method="_on_animation_player_animation_finished"]

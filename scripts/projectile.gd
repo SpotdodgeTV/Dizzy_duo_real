@@ -37,7 +37,10 @@ func _on_area_2d_body_entered(body: Node2D):
 		if body.is_in_group("cowboy"):
 			body.parent.hurt(body, damage)
 		elif body.is_in_group("knight"):
-			body.player_one.current_speed *= 0.86
+			if body.player_one.player_two_connected:
+				body.player_one.current_speed *= 0.86
+			else:
+				body.sling((body.global_position - global_position), 0.04, body.global_position, false)
 		queue_free()
 	elif body.is_in_group("enemy") && reflected == true:
 		body.damaged(damage)
