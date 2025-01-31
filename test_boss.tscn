@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://dtvd8y0a3u3n0"]
+[gd_scene load_steps=25 format=4 uid="uid://dtvd8y0a3u3n0"]
 
 [ext_resource type="PackedScene" uid="uid://pt57p26pop1" path="res://scenes/connected_players.tscn" id="1_t15xd"]
 [ext_resource type="Script" path="res://enemy_control.gd" id="2_2g1qa"]
@@ -7,10 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://dukavvigm7qyg" path="res://Textures/characters/boss_1.png" id="5_68mgc"]
 [ext_resource type="PackedScene" uid="uid://shbpwr4gt3cp" path="res://scenes/player_health_bar.tscn" id="5_lyckl"]
 [ext_resource type="Material" uid="uid://b866f4ff4lu3u" path="res://Textures/unshaded_ui_mat.tres" id="6_3lnv2"]
-[ext_resource type="Texture2D" uid="uid://ce8uw1k7kxutd" path="res://Textures/characters/triangle_active.png" id="6_e6qvd"]
-[ext_resource type="Texture2D" uid="uid://codg1kx34rums" path="res://Textures/characters/triangle_boss.png" id="6_pljah"]
+[ext_resource type="Texture2D" uid="uid://b8r3prh8gxjht" path="res://Textures/characters/triangle_active.png" id="6_e6qvd"]
+[ext_resource type="Texture2D" uid="uid://b2hdsm2gyh3n2" path="res://Textures/characters/triangle_boss.png" id="6_pljah"]
 [ext_resource type="AnimationLibrary" uid="uid://b7e3c06etyhfm" path="res://animations/enemy.res" id="7_pft87"]
-[ext_resource type="Texture2D" uid="uid://dffhjdhgvpgg4" path="res://Textures/characters/triangle_inactive.png" id="7_uggwi"]
+[ext_resource type="Texture2D" uid="uid://ctl6t71jflewk" path="res://Textures/characters/triangle_inactive.png" id="7_uggwi"]
+[ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="12_h6aqj"]
 
 [sub_resource type="GDScript" id="GDScript_fyjra"]
 script/source = "extends Node2D
@@ -276,6 +277,9 @@ layout_mode = 0
 offset_top = -23.0
 offset_right = 40.0
 text = "EVIL BOSS MAN"
+
+[node name="pause_menu" parent="." instance=ExtResource("12_h6aqj")]
+visible = false
 
 [connection signal="timeout" from="Boss/Cooldown" to="Boss/Enemy" method="_on_cooldown_timeout"]
 [connection signal="animation_finished" from="Boss/Enemy/face/AnimationPlayer" to="Boss/Enemy" method="_on_animation_player_animation_finished"]

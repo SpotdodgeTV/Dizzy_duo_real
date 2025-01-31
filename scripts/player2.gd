@@ -48,15 +48,15 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		body.damaged(20)
 		if player_one.player_two_connected:
-			player_one.end_lasso(5, (global_position - body.global_position).normalized())
+			player_one.end_lasso(1, (global_position - body.global_position).normalized())
 		else:
-			sling((global_position - body.global_position).normalized(), 3.7, global_position, false)
+			sling((global_position - body.global_position).normalized(), 2, global_position, false)
 
 func _on_body_col_body_entered(body: Node2D) -> void:
 	if body.is_in_group("object") or body.is_in_group("enemy"):
 		
 		if player_one.player_two_connected:
-			player_one.end_lasso(-2)
+			player_one.end_lasso(-1)
 		else:
 			print("test")
 			sling((player_one.global_position - global_position).normalized(), 1.5, global_position, false)
