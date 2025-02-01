@@ -291,7 +291,7 @@ tile_set = SubResource("TileSet_13jxl")
 z_index = -1
 position = Vector2(-64, -28)
 scale = Vector2(4, 4)
-tile_map_data = PackedByteArray("AAAEAAMAAAAGAAQAAAD9/wMAAAAGAAQAAAABAP7/AAABAAAAAAABAP//AAABAAEAAAAAAP//AAADAAEAAAAAAP7/AAADAAAAAAABAAgAAAABAAQAAAABAAcAAAABAAMAAAAAAAcAAAADAAMAAAAAAAgAAAADAAQAAAA=")
+tile_map_data = PackedByteArray("AAAEAAMAAAAGAAQAAAD9/wMAAAAGAAQAAAA=")
 tile_set = SubResource("TileSet_13jxl")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]

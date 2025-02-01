@@ -12,10 +12,11 @@ func _ready() -> void:
 	pass
 
 func hurt(body, damage = 10):
-	health -= 1
-	player_healthbar.update_hearts(health)
-	
-	if health <= 0:
-		dead = true
-	
-	body.animation_player.play("hurt")
+	if !body.animation_player.is_playing():
+		health -= 1
+		player_healthbar.update_hearts(health)
+		
+		if health <= 0:
+			dead = true
+		
+		body.animation_player.play("hurt")

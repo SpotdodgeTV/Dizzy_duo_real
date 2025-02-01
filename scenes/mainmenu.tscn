@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bu2l2560lqf31" path="res://Textures/portraits/knight_bottomhalf_phtshop.PNG" id="3_bpluq"]
 [ext_resource type="Texture2D" uid="uid://c01lhllupwioj" path="res://Textures/portraits/Knight_tophalf_phtshop.PNG" id="4_vrmla"]
 [ext_resource type="FontFile" uid="uid://u4csmhrdtwge" path="res://fonts/FreeCheese-Regular.ttf" id="5_5j65v"]
-[ext_resource type="PackedScene" path="res://scenes/scene_changer.tscn" id="7_wpugf"]
+[ext_resource type="PackedScene" uid="uid://fja40kx2ag3p" path="res://scenes/scene_changer.tscn" id="7_wpugf"]
 
 [sub_resource type="Animation" id="Animation_s4cp3"]
 length = 0.001
