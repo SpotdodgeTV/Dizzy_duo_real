@@ -1,32 +1,32 @@
 [gd_scene load_steps=35 format=4 uid="uid://dtvd8y0a3u3n0"]
 
-[ext_resource type="PackedScene" uid="uid://pt57p26pop1" path="res://scenes/connected_players.tscn" id="1_t15xd"]
-[ext_resource type="Script" path="res://scripts/Boss1Room.gd" id="1_yia5d"]
-[ext_resource type="Script" path="res://enemy_control.gd" id="2_2g1qa"]
-[ext_resource type="Script" path="res://enemy.gd" id="3_kt6lq"]
-[ext_resource type="Texture2D" uid="uid://dukavvigm7qyg" path="res://Textures/characters/boss_1.png" id="5_68mgc"]
-[ext_resource type="PackedScene" uid="uid://shbpwr4gt3cp" path="res://scenes/player_health_bar.tscn" id="5_lyckl"]
-[ext_resource type="Material" uid="uid://b866f4ff4lu3u" path="res://Textures/unshaded_ui_mat.tres" id="6_3lnv2"]
-[ext_resource type="Texture2D" uid="uid://b8r3prh8gxjht" path="res://Textures/characters/triangle_active.png" id="6_e6qvd"]
-[ext_resource type="Texture2D" uid="uid://b2hdsm2gyh3n2" path="res://Textures/characters/triangle_boss.png" id="6_pljah"]
-[ext_resource type="AnimationLibrary" uid="uid://b7e3c06etyhfm" path="res://animations/enemy.res" id="7_pft87"]
-[ext_resource type="Texture2D" uid="uid://ctl6t71jflewk" path="res://Textures/characters/triangle_inactive.png" id="7_uggwi"]
-[ext_resource type="AudioStream" uid="uid://ua0ht7o1885t" path="res://sfx/Roar__007.wav" id="10_2qqn5"]
-[ext_resource type="TileSet" uid="uid://btud2pws16bag" path="res://Textures/misc/TileSet.tres" id="10_jtqv8"]
-[ext_resource type="Script" path="res://scripts/camera_2d.gd" id="10_msnn8"]
-[ext_resource type="AudioStream" uid="uid://dnqcphrnc5ocj" path="res://sfx/Bass Drum__001.wav" id="11_8a2m6"]
-[ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="12_h6aqj"]
-[ext_resource type="PackedScene" path="res://scenes/door.tscn" id="14_mgkoc"]
-[ext_resource type="AudioStream" uid="uid://b6j8fk0u1t6jt" path="res://music/TutBoss.wav" id="15_1b6g8"]
-[ext_resource type="PackedScene" uid="uid://fja40kx2ag3p" path="res://scenes/scene_changer.tscn" id="15_264to"]
-[ext_resource type="AudioStream" uid="uid://dtjc8yi7m8ac6" path="res://music/BossOpening1.mp3" id="16_x0y0w"]
+[ext_resource type="Script" path="res://scripts/Boss1Room.gd" id="1_j82m5"]
+[ext_resource type="Script" path="res://scripts/enemy_control.gd" id="2_im668"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="3_in51r"]
+[ext_resource type="Material" uid="uid://b866f4ff4lu3u" path="res://Textures/unshaded_ui_mat.tres" id="4_2oym3"]
+[ext_resource type="Texture2D" uid="uid://dukavvigm7qyg" path="res://Textures/characters/boss_1.png" id="5_4ec1r"]
+[ext_resource type="Texture2D" uid="uid://b8r3prh8gxjht" path="res://Textures/characters/triangle_active.png" id="6_r8oxk"]
+[ext_resource type="Texture2D" uid="uid://ctl6t71jflewk" path="res://Textures/characters/triangle_inactive.png" id="7_kjqff"]
+[ext_resource type="Texture2D" uid="uid://b2hdsm2gyh3n2" path="res://Textures/characters/triangle_boss.png" id="8_3pk37"]
+[ext_resource type="AnimationLibrary" uid="uid://b7e3c06etyhfm" path="res://animations/enemy.res" id="9_3fewp"]
+[ext_resource type="AudioStream" uid="uid://ua0ht7o1885t" path="res://sfx/Roar__007.wav" id="10_g078r"]
+[ext_resource type="AudioStream" uid="uid://dnqcphrnc5ocj" path="res://sfx/Bass Drum__001.wav" id="11_derxk"]
+[ext_resource type="Script" path="res://scripts/camera_2d.gd" id="12_7k52s"]
+[ext_resource type="PackedScene" uid="uid://pt57p26pop1" path="res://scenes/connected_players.tscn" id="13_qjde3"]
+[ext_resource type="TileSet" uid="uid://btud2pws16bag" path="res://Textures/misc/TileSet.tres" id="14_1bvhs"]
+[ext_resource type="PackedScene" uid="uid://shbpwr4gt3cp" path="res://scenes/player_health_bar.tscn" id="15_oe5ja"]
+[ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="16_fr3lf"]
+[ext_resource type="AudioStream" uid="uid://b6j8fk0u1t6jt" path="res://music/TutBoss.wav" id="17_f66hq"]
+[ext_resource type="AudioStream" uid="uid://dtjc8yi7m8ac6" path="res://music/BossOpening1.mp3" id="18_efkyw"]
+[ext_resource type="PackedScene" uid="uid://fja40kx2ag3p" path="res://scenes/scene_changer.tscn" id="19_gyw1e"]
+[ext_resource type="PackedScene" path="res://scenes/door.tscn" id="20_asoyi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wskqp"]
-atlas = ExtResource("5_68mgc")
+atlas = ExtResource("5_4ec1r")
 region = Rect2(0, 15, 16, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vflaq"]
-atlas = ExtResource("5_68mgc")
+atlas = ExtResource("5_4ec1r")
 region = Rect2(0, 0, 16, 15)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uj4bg"]
@@ -47,7 +47,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_e6qvd")
+"texture": ExtResource("6_r8oxk")
 }],
 "loop": true,
 "name": &"triangle_child",
@@ -55,7 +55,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_uggwi")
+"texture": ExtResource("7_kjqff")
 }],
 "loop": true,
 "name": &"triangle_deactivate",
@@ -63,7 +63,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_pljah")
+"texture": ExtResource("8_3pk37")
 }],
 "loop": false,
 "name": &"triangleboss",
@@ -274,11 +274,11 @@ _data = {
 }
 
 [node name="Boss1" type="Node2D"]
-script = ExtResource("1_yia5d")
+script = ExtResource("1_j82m5")
 metadata/_edit_horizontal_guides_ = [-72.0]
 
 [node name="Boss" type="Node2D" parent="."]
-script = ExtResource("2_2g1qa")
+script = ExtResource("2_im668")
 metadata/_edit_group_ = true
 
 [node name="Cooldown" type="Timer" parent="Boss"]
@@ -287,19 +287,19 @@ autostart = true
 
 [node name="Enemy" type="CharacterBody2D" parent="Boss" groups=["enemy"]]
 rotation = -3.14159
-script = ExtResource("3_kt6lq")
+script = ExtResource("3_in51r")
 
 [node name="face" type="AnimatedSprite2D" parent="Boss/Enemy"]
 modulate = Color(0.5, 0.5, 0.5, 0.6)
 z_index = 1
-material = ExtResource("6_3lnv2")
+material = ExtResource("4_2oym3")
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_uj4bg")
 animation = &"spit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Boss/Enemy/face"]
 libraries = {
-"": ExtResource("7_pft87")
+"": ExtResource("9_3fewp")
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boss/Enemy"]
@@ -312,11 +312,11 @@ scale = Vector2(5, 5)
 occluder = SubResource("OccluderPolygon2D_3dy6a")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Boss/Enemy"]
-stream = ExtResource("10_2qqn5")
+stream = ExtResource("10_g078r")
 bus = &"SFX"
 
 [node name="Damage_sound" type="AudioStreamPlayer2D" parent="Boss/Enemy"]
-stream = ExtResource("11_8a2m6")
+stream = ExtResource("11_derxk")
 bus = &"SFX"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
@@ -327,9 +327,9 @@ position = Vector2(0, 224)
 rotation = 0.00103694
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
-script = ExtResource("10_msnn8")
+script = ExtResource("12_7k52s")
 
-[node name="Players" parent="." instance=ExtResource("1_t15xd")]
+[node name="Players" parent="." instance=ExtResource("13_qjde3")]
 position = Vector2(0, 448)
 rotation = 0.00103694
 
@@ -338,21 +338,21 @@ z_index = -1
 position = Vector2(-64, -28)
 scale = Vector2(4, 4)
 tile_map_data = PackedByteArray("AAD+////AAACAAIAAAD/////AAACAAIAAAAAAP//AAACAAIAAAABAP//AAACAAIAAAAAAAAAAAACAAIAAAD//wAAAAACAAIAAAD+/wAAAAACAAIAAAD+/wEAAAACAAIAAAD//wEAAAACAAIAAAAAAAEAAAACAAIAAAABAAEAAAACAAIAAAABAAAAAAACAAIAAAACAAAAAAACAAIAAAADAAAAAAACAAIAAAAEAAAAAAADAAIAAAD8//7/AAACAAAAAAD8////AAADAAIAAAD8/wAAAAADAAIAAAD8/wEAAAADAAIAAAD8/wIAAAACAAIAAAD8/wMAAAACAAIAAAD8/wQAAAACAAIAAAD9//7/AAACAAAAAAD9////AAADAAIAAAD9/wAAAAADAAIAAAD9/wEAAAACAAIAAAD9/wIAAAACAAIAAAD9/wMAAAACAAIAAAD9/wQAAAACAAIAAAD+//7/AAACAAAAAAD+/wIAAAACAAIAAAD+/wMAAAACAAIAAAD+/wQAAAACAAIAAAD///7/AAACAAAAAAD//wIAAAACAAIAAAD//wMAAAACAAIAAAD//wQAAAACAAIAAAAAAP7/AAACAAAAAAAAAAIAAAACAAIAAAAAAAMAAAACAAIAAAAAAAQAAAACAAIAAAABAP7/AAACAAAAAAABAAIAAAACAAIAAAABAAMAAAACAAIAAAABAAQAAAACAAIAAAACAP7/AAACAAAAAAACAP//AAACAAIAAAACAAEAAAACAAIAAAACAAIAAAACAAIAAAACAAMAAAACAAIAAAACAAQAAAACAAIAAAADAP7/AAACAAAAAAADAP//AAACAAIAAAADAAEAAAACAAIAAAADAAIAAAACAAIAAAADAAMAAAACAAIAAAADAAQAAAACAAIAAAAEAP7/AAACAAAAAAAEAP//AAADAAIAAAAEAAEAAAACAAIAAAAEAAIAAAACAAIAAAAEAAMAAAACAAIAAAAEAAQAAAACAAIAAAD8/wUAAAADAAIAAAD9/wUAAAACAAIAAAD+/wUAAAACAAIAAAD//wUAAAACAAIAAAAAAAUAAAACAAIAAAABAAUAAAACAAIAAAACAAUAAAACAAIAAAADAAUAAAACAAIAAAAEAAUAAAACAAIAAAAFAAUAAAABAAIAAAAFAAQAAAACAAIAAAAFAAMAAAACAAIAAAAFAAIAAAACAAIAAAAFAAEAAAABAAIAAAAFAAAAAAABAAIAAAAFAP//AAABAAIAAAAFAP7/AAACAAAAAAD4//7/AAAAAAAAAAD4////AAAAAAEAAAD4/wAAAAAAAAIAAAD4/wEAAAAAAAIAAAD4/wIAAAAAAAIAAAD4/wMAAAAGAAMAAED4/wQAAAAAAAIAAAD4/wUAAAAAAAIAAAD4/wYAAAAAAAIAAAD4/wcAAAAAAAMAAAD4/wgAAAAAAAAAAAD5//7/AAABAAAAAAD5////AAABAAEAAAD5/wAAAAABAAIAAAD5/wEAAAADAAIAAAD5/wIAAAACAAIAAAD5/wMAAAACAAIAAAD5/wQAAAACAAIAAAD5/wUAAAADAAIAAAD5/wYAAAABAAIAAAD5/wcAAAABAAMAAAD5/wgAAAABAAQAAAD6//7/AAACAAAAAAD6////AAABAAIAAAD6/wAAAAABAAIAAAD6/wEAAAADAAIAAAD6/wIAAAACAAIAAAD6/wMAAAACAAIAAAD6/wQAAAACAAIAAAD6/wUAAAADAAIAAAD6/wYAAAABAAIAAAD6/wcAAAABAAIAAAD6/wgAAAACAAQAAAD7//7/AAACAAAAAAD7////AAADAAIAAAD7/wAAAAADAAIAAAD7/wEAAAADAAIAAAD7/wIAAAACAAIAAAD7/wMAAAACAAIAAAD7/wQAAAACAAIAAAD7/wUAAAADAAIAAAD7/wYAAAADAAIAAAD7/wcAAAADAAIAAAD7/wgAAAACAAQAAAD8/wYAAAADAAIAAAD8/wcAAAADAAIAAAD8/wgAAAACAAQAAAD9/wYAAAADAAIAAAD9/wcAAAADAAIAAAD9/wgAAAACAAQAAAD+/wYAAAACAAIAAAD+/wcAAAACAAIAAAD+/wgAAAACAAQAAAD//wYAAAACAAIAAAD//wcAAAACAAIAAAD//wgAAAACAAQAAAAAAAYAAAACAAIAAAAAAAcAAAACAAIAAAAAAAgAAAAGAAMAAAABAAYAAAACAAIAAAABAAcAAAACAAIAAAABAAgAAAAGAAMAABACAAYAAAACAAIAAAACAAcAAAACAAIAAAACAAgAAAACAAQAAAADAAYAAAACAAIAAAADAAcAAAACAAIAAAADAAgAAAACAAQAAAAEAAYAAAADAAIAAAAEAAcAAAADAAIAAAAEAAgAAAACAAQAAAAFAAYAAAABAAIAAAAFAAcAAAABAAIAAAAFAAgAAAACAAQAAAAGAP7/AAACAAAAAAAGAP//AAABAAIAAAAGAAAAAAABAAIAAAAGAAEAAAABAAIAAAAGAAIAAAACAAIAAAAGAAMAAAACAAIAAAAGAAQAAAACAAIAAAAGAAUAAAABAAIAAAAGAAYAAAABAAIAAAAGAAcAAAABAAIAAAAGAAgAAAACAAQAAAAHAP7/AAACAAAAAAAHAP//AAABAAIAAAAHAAAAAAABAAIAAAAHAAEAAAABAAIAAAAHAAIAAAACAAIAAAAHAAMAAAACAAIAAAAHAAQAAAACAAIAAAAHAAUAAAABAAIAAAAHAAYAAAABAAIAAAAHAAcAAAABAAIAAAAHAAgAAAACAAQAAAAIAP7/AAADAAAAAAAIAP//AAADAAEAAAAIAAAAAAABAAIAAAAIAAEAAAABAAIAAAAIAAIAAAACAAIAAAAIAAMAAAACAAIAAAAIAAQAAAACAAIAAAAIAAUAAAABAAIAAAAIAAYAAAABAAIAAAAIAAcAAAADAAMAAAAIAAgAAAADAAQAAAAJAP7/AAAAAAAAAAAJAP//AAAEAAEAAAAJAAAAAAAEAAIAAAAJAAEAAAAEAAIAAAAJAAIAAAAEAAIAAAAJAAMAAAAEAAIAAAAJAAQAAAAEAAIAAAAJAAUAAAAEAAIAAAAJAAYAAAAEAAIAAAAJAAcAAAAEAAMAAAAJAAgAAAAAAAAAAAA=")
-tile_set = ExtResource("10_jtqv8")
+tile_set = ExtResource("14_1bvhs")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="." groups=["object"]]
 z_index = -1
 position = Vector2(-64, -28)
 scale = Vector2(4, 4)
 tile_map_data = PackedByteArray("AAAEAAEAAAAGAAQAAAD9/wEAAAAGAAQAAAA=")
-tile_set = ExtResource("10_jtqv8")
+tile_set = ExtResource("14_1bvhs")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ykgmf")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PlayerHealth" parent="CanvasLayer" instance=ExtResource("5_lyckl")]
+[node name="PlayerHealth" parent="CanvasLayer" instance=ExtResource("15_oe5ja")]
 modulate = Color(1, 1, 1, 0.760784)
 offset_left = 4.0
 offset_top = 4.0
@@ -363,7 +363,7 @@ pivot_offset = Vector2(3.16063e-05, 0.00147909)
 
 [node name="BossHealth" type="ProgressBar" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0)
-material = ExtResource("6_3lnv2")
+material = ExtResource("4_2oym3")
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -383,23 +383,23 @@ show_percentage = false
 script = SubResource("GDScript_gp4pq")
 
 [node name="Label" type="Label" parent="CanvasLayer/BossHealth"]
-material = ExtResource("6_3lnv2")
+material = ExtResource("4_2oym3")
 layout_mode = 0
 offset_top = -23.0
 offset_right = 40.0
 text = "EVIL BOSS MAN"
 
-[node name="pause_menu" parent="." instance=ExtResource("12_h6aqj")]
+[node name="pause_menu" parent="." instance=ExtResource("16_fr3lf")]
 visible = false
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
-stream = ExtResource("15_1b6g8")
+stream = ExtResource("17_f66hq")
 bus = &"Music"
 
 [node name="BossIntro" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
-stream = ExtResource("16_x0y0w")
+stream = ExtResource("18_efkyw")
 bus = &"Music"
 
 [node name="Marker2D" type="Marker2D" parent="."]
@@ -420,13 +420,13 @@ shape = SubResource("RectangleShape2D_ym6uk")
 position = Vector2(240, -48)
 shape = SubResource("RectangleShape2D_ym6uk")
 
-[node name="SceneChanger" parent="." instance=ExtResource("15_264to")]
+[node name="SceneChanger" parent="." instance=ExtResource("19_gyw1e")]
 visible = false
 
-[node name="Door" parent="." instance=ExtResource("14_mgkoc")]
+[node name="Door" parent="." instance=ExtResource("20_asoyi")]
 position = Vector2(-480, 200)
 rotation = -1.5708
-scene_file = "res://boss2.tscn"
+scene_file = "res://scenes/boss3.tscn"
 shader_pos = Vector2(-0.3, 0.5)
 
 [node name="BossStart" type="AnimationPlayer" parent="."]

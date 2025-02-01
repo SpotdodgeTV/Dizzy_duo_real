@@ -2,8 +2,8 @@
 
 [ext_resource type="TileSet" uid="uid://btud2pws16bag" path="res://Textures/misc/TileSet.tres" id="1_nkb4g"]
 [ext_resource type="PackedScene" uid="uid://pt57p26pop1" path="res://scenes/connected_players.tscn" id="2_ptrcr"]
-[ext_resource type="PackedScene" uid="uid://bdv6gh78tr2qn" path="res://enemy.tscn" id="3_5h4f3"]
-[ext_resource type="Script" path="res://Triangle_boss.gd" id="3_66m4a"]
+[ext_resource type="PackedScene" uid="uid://bdv6gh78tr2qn" path="res://scenes/enemy.tscn" id="3_5h4f3"]
+[ext_resource type="Script" path="res://scripts/Triangle_boss.gd" id="3_66m4a"]
 [ext_resource type="PackedScene" uid="uid://shbpwr4gt3cp" path="res://scenes/player_health_bar.tscn" id="5_8bwsw"]
 [ext_resource type="Material" uid="uid://b866f4ff4lu3u" path="res://Textures/unshaded_ui_mat.tres" id="6_8ae8b"]
 [ext_resource type="Texture2D" uid="uid://b2hdsm2gyh3n2" path="res://Textures/characters/triangle_boss.png" id="6_tmwhk"]

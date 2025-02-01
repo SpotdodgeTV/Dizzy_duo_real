@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://shbpwr4gt3cp"]
 
-[ext_resource type="Script" path="res://player_health_bar.gd" id="1_12phb"]
+[ext_resource type="Script" path="res://scripts/player_health_bar.gd" id="1_12phb"]
 [ext_resource type="PackedScene" uid="uid://njjphe3rt4un" path="res://scenes/heart.tscn" id="2_2yn7j"]
 
 [node name="PlayerHealth" type="HBoxContainer"]

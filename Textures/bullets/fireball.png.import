@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bejtf8f2il5tl"
-path="res://.godot/imported/fireball.png-0e24d99dbc23ae82c588c4bbbdafe6aa.ctex"
+path="res://.godot/imported/fireball.png-604cfb83c585d72224d769d1f82b5533.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/bullets/fireball.png"
-dest_files=["res://.godot/imported/fireball.png-0e24d99dbc23ae82c588c4bbbdafe6aa.ctex"]
+source_file="res://Textures/bullets/fireball.png"
+dest_files=["res://.godot/imported/fireball.png-604cfb83c585d72224d769d1f82b5533.ctex"]
 
 [params]
 
