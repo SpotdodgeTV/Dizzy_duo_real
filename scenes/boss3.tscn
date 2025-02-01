@@ -32,12 +32,9 @@ func _ready() -> void:
 	4: load(\"res://scenes/Attack_patterns/alternating_crosses.tscn\")
 }
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+
 
 func phase_update(phase: int):
-	print(\"phase: \", phase)
 	match phase:
 		0:
 			$Main_body.global_position = pos0

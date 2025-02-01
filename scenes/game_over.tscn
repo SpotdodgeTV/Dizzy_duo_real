@@ -1,6 +1,6 @@
-[gd_scene load_steps=34 format=3 uid="uid://dl80e2ao54wqx"]
+[gd_scene load_steps=34 format=3 uid="uid://c83bjq30q4qhn"]
 
-[ext_resource type="Texture2D" uid="uid://2b1wnvt7o1q0" path="res://textures/misc/game_over.png" id="1_8tro4"]
+[ext_resource type="Texture2D" uid="uid://2b1wnvt7o1q0" path="res://Textures/misc/game_over.png" id="1_8tro4"]
 [ext_resource type="Script" path="res://scenes/game_over.gd" id="1_uoqef"]
 [ext_resource type="FontFile" uid="uid://u4csmhrdtwge" path="res://fonts/FreeCheese-Regular.ttf" id="2_3nn1n"]
 
@@ -235,7 +235,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_7noxv"]
 resource_name = "game_over"
-length = 1.3
+length = 1.4
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -244,10 +244,10 @@ tracks/0/path = NodePath("AnimatedSprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.5)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -256,10 +256,10 @@ tracks/1/path = NodePath("Label:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -268,7 +268,7 @@ tracks/2/path = NodePath("Play:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.8, 1.3),
+"times": PackedFloat32Array(0, 0.9, 1.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -280,7 +280,7 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.3),
+"times": PackedFloat32Array(0.1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],

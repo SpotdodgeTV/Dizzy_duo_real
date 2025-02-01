@@ -4,7 +4,6 @@ extends CharacterBody2D
 @onready var players = get_tree().get_nodes_in_group("player")
 @onready var closest_player = players[1]
 @onready var animation_player = $face/AnimationPlayer
-@onready var health_bar = $"../ProgressBar"
 @onready var boss_bar = $"../../CanvasLayer/BossHealth"
 @export var active:bool = true
 @export var enemy_name = "boss1"
