@@ -1,9 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://c862e5hdf8y7"]
+[gd_scene load_steps=23 format=3 uid="uid://c862e5hdf8y7"]
 
 [ext_resource type="Script" path="res://scripts/projectile.gd" id="1_thmso"]
 [ext_resource type="Texture2D" uid="uid://dowdbufahwus0" path="res://Textures/bullets/bullet.png" id="2_v76n2"]
 [ext_resource type="Texture2D" uid="uid://bejtf8f2il5tl" path="res://Textures/bullets/fireball.png" id="3_xq1je"]
 [ext_resource type="Texture2D" uid="uid://cl1hiyx3yw77l" path="res://Textures/bullets/fireball-blue.png" id="4_uh0oj"]
+[ext_resource type="AudioStream" uid="uid://ca3i5ngqamoh0" path="res://sfx/Menu__010.wav" id="5_usog8"]
+[ext_resource type="AudioStream" uid="uid://dnqcphrnc5ocj" path="res://sfx/Bass Drum__001.wav" id="6_705an"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qpa0g"]
 radius = 12.893
@@ -202,6 +204,14 @@ libraries = {
 "": SubResource("AnimationLibrary_brpgf")
 }
 autoplay = "start"
+
+[node name="reflect_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_usog8")
+bus = &"SFX"
+
+[node name="reflect_hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_705an")
+volume_db = 10.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Life" to="." method="_on_life_timeout"]

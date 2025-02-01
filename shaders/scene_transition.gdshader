@@ -2,9 +2,9 @@ shader_type canvas_item;
 render_mode unshaded;
 
 uniform vec2 pos = vec2(0.5,0.5);
-uniform float circle_size : hint_range(0.0, 1.35);
+uniform float circle_size : hint_range(0.0, 2);
 uniform float screen_width = 1152;
-uniform float screen_height = 672;
+uniform float screen_height = 648;
 
 void fragment() {
 	float ratio = screen_width / screen_height;

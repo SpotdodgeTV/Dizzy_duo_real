@@ -40,6 +40,8 @@ func enemy_setup():
 			$face.animation = "spit"
 		"triangleboss":
 			$face.animation = "triangleboss"
+		"eye":
+			$face.animation = "eye"
 
 func get_closest_player():
 	for player in players:
@@ -97,6 +99,7 @@ func _on_cooldown_timeout():
 		var random_attack = randi() % attacks.size()
 		#random_attack = 4
 		shoot_attack(attacks[random_attack])
+		$"../Cooldown".wait_time = randf_range(2,3)
 
 func play_animation(anim: String = "", force:bool = false):
 	if !animation_player.is_playing() or force:
@@ -106,6 +109,7 @@ func play_animation(anim: String = "", force:bool = false):
 
 func damaged(damage):
 	if active:
+		$Damage_sound.play()
 		play_animation("hurt", true)
 		health -= damage
 		if !main.is_in_group("sub-boss"):
@@ -118,6 +122,7 @@ func damaged(damage):
 				return
 			dead = true
 			play_animation("death", true)
+			$AudioStreamPlayer2D.play()
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

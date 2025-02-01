@@ -9,6 +9,7 @@ var can_move:bool = true
 @onready var player2 = $"../Player2"
 @onready var line = $"../Line2D"
 @onready var animation_player = $Sprite2D/AnimationPlayer
+@onready var sling_sound = $sling_sound
 
 var lasso_in_use = false
 var player_two_connected = false
@@ -78,6 +79,8 @@ func end_lasso(sling_speed: int = current_speed, sling_direction = (player2.glob
 	current_movement_speed = STARTING_MOVEMENT_SPEED
 	lasso_in_use = false
 	if player_two_connected:
+		sling_sound.pitch_scale = 1 + (current_speed/6 - .5)
+		sling_sound.play()
 		player_two_connected = false
 		player2.freeze = false
 		player2.sling(sling_direction, sling_speed * 2, player2.global_position)

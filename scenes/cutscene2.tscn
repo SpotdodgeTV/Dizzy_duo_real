@@ -1,11 +1,11 @@
 [gd_scene load_steps=21 format=3 uid="uid://dcjjg1d7dh4ca"]
 
 [ext_resource type="Script" path="res://scenes/cutscene_2.gd" id="1_okbgw"]
-[ext_resource type="Texture2D" uid="uid://du58wtu33d1wa" path="res://textures/portraits/backgrounds/background.jpg" id="2_ej75a"]
-[ext_resource type="Texture2D" uid="uid://1or86fgw6e3e" path="res://textures/misc/Dimensional_Portal.png" id="3_psklr"]
-[ext_resource type="Texture2D" uid="uid://bu2l2560lqf31" path="res://textures/portraits/knight_bottomhalf_phtshop.PNG" id="5_hebtt"]
+[ext_resource type="Texture2D" uid="uid://du58wtu33d1wa" path="res://Textures/portraits/backgrounds/background.jpg" id="2_ej75a"]
+[ext_resource type="Texture2D" uid="uid://1or86fgw6e3e" path="res://Textures/misc/Dimensional_Portal.png" id="3_psklr"]
+[ext_resource type="Texture2D" uid="uid://bu2l2560lqf31" path="res://Textures/portraits/knight_bottomhalf_phtshop.PNG" id="5_hebtt"]
 [ext_resource type="PackedScene" uid="uid://m57sixwgejsh" path="res://scenes/dialog.tscn" id="5_mxout"]
-[ext_resource type="Texture2D" uid="uid://c01lhllupwioj" path="res://textures/portraits/Knight_tophalf_phtshop.PNG" id="6_hvj7e"]
+[ext_resource type="Texture2D" uid="uid://c01lhllupwioj" path="res://Textures/portraits/Knight_tophalf_phtshop.PNG" id="6_hvj7e"]
 [ext_resource type="PackedScene" uid="uid://fja40kx2ag3p" path="res://scenes/scene_changer.tscn" id="7_f5nxm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cam0o"]
@@ -298,9 +298,9 @@ scale = Vector2(0.8, 0.8)
 [node name="Bottom" type="TextureRect" parent="knight"]
 layout_mode = 0
 offset_left = -57.0
-offset_top = 4.0
+offset_top = -29.0
 offset_right = 154.0
-offset_bottom = 415.0
+offset_bottom = 382.0
 pivot_offset = Vector2(22, 406)
 texture = ExtResource("5_hebtt")
 flip_h = true
@@ -308,14 +308,17 @@ flip_h = true
 [node name="Top" type="TextureRect" parent="knight"]
 layout_mode = 0
 offset_left = -111.0
-offset_top = -297.0
+offset_top = -330.0
 offset_right = 266.0
-offset_bottom = 194.0
+offset_bottom = 161.0
 pivot_offset = Vector2(151, 245.75)
 texture = ExtResource("6_hvj7e")
 flip_h = true
 
 [node name="Dialog" parent="." instance=ExtResource("5_mxout")]
+
+[node name="Button_pressed" type="AudioStreamPlayer2D" parent="Dialog"]
+position = Vector2(0, -24)
 
 [node name="SceneChanger" parent="." instance=ExtResource("7_f5nxm")]
 visible = false

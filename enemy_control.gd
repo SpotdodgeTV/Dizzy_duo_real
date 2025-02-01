@@ -18,5 +18,4 @@ func deactivate():
 
 
 func _on_enemy_has_died() -> void:
-	print("HHHHHHH")
 	emit_signal("enemy_dead")

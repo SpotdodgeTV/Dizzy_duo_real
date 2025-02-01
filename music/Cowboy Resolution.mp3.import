@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bi8070ug3vaga"
+path="res://.godot/imported/Cowboy Resolution.mp3-37ff7db9dbab18abad86449012f815f6.mp3str"
+
+[deps]
+
+source_file="res://music/Cowboy Resolution.mp3"
+dest_files=["res://.godot/imported/Cowboy Resolution.mp3-37ff7db9dbab18abad86449012f815f6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

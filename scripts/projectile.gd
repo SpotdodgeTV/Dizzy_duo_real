@@ -33,20 +33,22 @@ func _physics_process(delta):
 
 func _on_area_2d_body_entered(body: Node2D):
 	#print("HIT!")
-	if body.is_in_group("player") && reflected == false:
-		if body.is_in_group("cowboy"):
-			body.parent.hurt(body, damage)
-		elif body.is_in_group("knight"):
-			if body.player_one.player_two_connected:
-				body.player_one.current_speed *= 0.86
-			else:
-				body.sling((body.global_position - global_position), 0.04, body.global_position, false)
-		queue_free()
-	elif body.is_in_group("enemy") && reflected == true:
-		body.damaged(damage)
-		queue_free()
-	elif body.is_in_group("object"):
-		queue_free()
+	if is_set:
+		if body.is_in_group("player") && reflected == false:
+			if body.is_in_group("cowboy"):
+				body.parent.hurt(body, damage)
+			elif body.is_in_group("knight"):
+				if body.player_one.player_two_connected:
+					body.player_one.current_speed *= 0.86
+				else:
+					body.sling((body.global_position - global_position), 0.04, body.global_position, false)
+			queue_free()
+		elif body.is_in_group("enemy") && reflected == true:
+			print("$reflect_hit.play()")
+			body.damaged(damage)
+			queue_free()
+		elif body.is_in_group("object"):
+			queue_free()
 
 func reflect(target_pos : Vector2): 
 	if !visible:
@@ -59,6 +61,7 @@ func reflect(target_pos : Vector2):
 	$AnimatedSprite2D.animation = "reflected"
 	speed += 50
 	damage = 2
+	$reflect_sound.play()
 	reflected = true
 	#velocity = Vector2(0, -speed).rotated(global_rotation + deg_to_rad(180))
 	

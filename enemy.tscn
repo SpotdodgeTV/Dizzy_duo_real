@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bdv6gh78tr2qn"]
+[gd_scene load_steps=16 format=3 uid="uid://bdv6gh78tr2qn"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_3jr3v"]
 [ext_resource type="Script" path="res://enemy_control.gd" id="1_23jiw"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://b8r3prh8gxjht" path="res://Textures/characters/triangle_active.png" id="5_y5bv5"]
 [ext_resource type="AnimationLibrary" uid="uid://b7e3c06etyhfm" path="res://animations/enemy.res" id="6_cvg38"]
 [ext_resource type="Texture2D" uid="uid://ctl6t71jflewk" path="res://Textures/characters/triangle_inactive.png" id="6_ktj2h"]
+[ext_resource type="AudioStream" uid="uid://ua0ht7o1885t" path="res://sfx/Roar__007.wav" id="9_bqlao"]
+[ext_resource type="AudioStream" uid="uid://dnqcphrnc5ocj" path="res://sfx/Bass Drum__001.wav" id="10_vt56m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wskqp"]
 atlas = ExtResource("2_b23x7")
@@ -95,6 +97,13 @@ shape = SubResource("CircleShape2D_fq7qp")
 position = Vector2(-2.53518e-05, -10)
 scale = Vector2(5, 5)
 occluder = SubResource("OccluderPolygon2D_3dy6a")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Enemy"]
+stream = ExtResource("9_bqlao")
+bus = &"SFX"
+
+[node name="Damage_sound" type="AudioStreamPlayer2D" parent="Enemy"]
+stream = ExtResource("10_vt56m")
 
 [connection signal="timeout" from="Cooldown" to="Enemy" method="_on_cooldown_timeout"]
 [connection signal="animation_finished" from="Enemy/face/AnimationPlayer" to="Enemy" method="_on_animation_player_animation_finished"]

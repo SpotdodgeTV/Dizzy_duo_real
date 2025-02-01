@@ -1,15 +1,17 @@
 [gd_scene load_steps=25 format=4 uid="uid://dx7hafeqt4sl1"]
 
+[ext_resource type="TileSet" uid="uid://btud2pws16bag" path="res://Textures/misc/TileSet.tres" id="1_nkb4g"]
 [ext_resource type="PackedScene" uid="uid://pt57p26pop1" path="res://scenes/connected_players.tscn" id="2_ptrcr"]
 [ext_resource type="PackedScene" uid="uid://bdv6gh78tr2qn" path="res://enemy.tscn" id="3_5h4f3"]
 [ext_resource type="Script" path="res://Triangle_boss.gd" id="3_66m4a"]
-[ext_resource type="Texture2D" uid="uid://bnhe1ahh8fv7w" path="res://tilemaps/dawngeon.png" id="4_s15xd"]
 [ext_resource type="PackedScene" uid="uid://shbpwr4gt3cp" path="res://scenes/player_health_bar.tscn" id="5_8bwsw"]
 [ext_resource type="Material" uid="uid://b866f4ff4lu3u" path="res://Textures/unshaded_ui_mat.tres" id="6_8ae8b"]
 [ext_resource type="Texture2D" uid="uid://b2hdsm2gyh3n2" path="res://Textures/characters/triangle_boss.png" id="6_tmwhk"]
 [ext_resource type="AnimationLibrary" uid="uid://b7e3c06etyhfm" path="res://animations/enemy.res" id="7_7l5vh"]
 [ext_resource type="Texture2D" uid="uid://ctl6t71jflewk" path="res://Textures/characters/triangle_inactive.png" id="7_qk32x"]
 [ext_resource type="Texture2D" uid="uid://dukavvigm7qyg" path="res://Textures/characters/boss_1.png" id="7_w6a1w"]
+[ext_resource type="AudioStream" uid="uid://ua0ht7o1885t" path="res://sfx/Roar__007.wav" id="8_216lv"]
+[ext_resource type="AudioStream" uid="uid://dnqcphrnc5ocj" path="res://sfx/Bass Drum__001.wav" id="9_bu6hf"]
 
 [sub_resource type="GDScript" id="GDScript_fyjra"]
 script/source = "extends Node2D
@@ -25,65 +27,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 "
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ali6m"]
-texture = ExtResource("4_s15xd")
-0:0/0 = 0
-1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-2:0/0 = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-3:0/0 = 0
-3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-0:1/0 = 0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-1:1/0 = 0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-2:1/0 = 0
-3:1/0 = 0
-3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-4:1/0 = 0
-4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-5:1/0 = 0
-6:1/0 = 0
-0:2/0 = 0
-0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-5:2/0 = 0
-6:2/0 = 0
-0:3/0 = 0
-0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-1:3/0 = 0
-1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-2:3/0 = 0
-3:3/0 = 0
-3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-4:3/0 = 0
-4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-5:3/0 = 0
-6:3/0 = 0
-0:4/0 = 0
-1:4/0 = 0
-1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-2:4/0 = 0
-2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-3:4/0 = 0
-3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-4:4/0 = 0
-5:4/0 = 0
-6:4/0 = 0
-6:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
-[sub_resource type="TileSet" id="TileSet_13jxl"]
-physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_ali6m")
 
 [sub_resource type="Environment" id="Environment_ykgmf"]
 background_mode = 3
@@ -154,18 +97,22 @@ func phase_update(phase: int):
 func activate(sub_boss):
 	sub_boss.active = true
 	sub_boss.health = 40
+	sub_boss.add_to_group(\"enemy\")
 	sub_boss.get_child(0).animation = \"triangle_child\"
 	
 func deactivate(sub_boss):
 	sub_boss.active = false
+	sub_boss.remove_from_group(\"enemy\")
 	sub_boss.get_child(0).animation = \"triangle_deactivate\"
 
 func main_body_activate():
 	$Main_body/face.animation = \"triangleboss\"
+	main_body.add_to_group(\"enemy\")
 	main_body.active = true
 	
 func main_body_deactivate():
 	$Main_body/face.animation = \"inactive\"
+	main_body.remove_from_group(\"enemy\")
 	main_body.active = false
 
 func _on_main_body_next_phase() -> void:
@@ -285,14 +232,14 @@ z_index = -1
 position = Vector2(-64, -28)
 scale = Vector2(4, 4)
 tile_map_data = PackedByteArray("AAD+////AAACAAIAAAD/////AAACAAIAAAAAAP//AAACAAIAAAABAP//AAACAAIAAAAAAAAAAAACAAIAAAD//wAAAAACAAIAAAD+/wAAAAACAAIAAAD+/wEAAAACAAIAAAD//wEAAAACAAIAAAAAAAEAAAACAAIAAAABAAEAAAACAAIAAAABAAAAAAACAAIAAAACAAAAAAACAAIAAAADAAAAAAACAAIAAAAEAAAAAAADAAIAAAD8//7/AAACAAAAAAD8////AAADAAIAAAD8/wAAAAADAAIAAAD8/wEAAAADAAIAAAD8/wIAAAACAAIAAAD8/wMAAAACAAIAAAD8/wQAAAACAAIAAAD9//7/AAACAAAAAAD9////AAADAAIAAAD9/wAAAAADAAIAAAD9/wEAAAACAAIAAAD9/wIAAAACAAIAAAD9/wMAAAACAAIAAAD9/wQAAAACAAIAAAD+//7/AAACAAAAAAD+/wIAAAACAAIAAAD+/wMAAAACAAIAAAD+/wQAAAACAAIAAAD///7/AAACAAAAAAD//wIAAAACAAIAAAD//wMAAAACAAIAAAD//wQAAAACAAIAAAAAAP7/AAACAAAAAAAAAAIAAAACAAIAAAAAAAMAAAACAAIAAAAAAAQAAAACAAIAAAABAP7/AAACAAAAAAABAAIAAAACAAIAAAABAAMAAAACAAIAAAABAAQAAAACAAIAAAACAP7/AAACAAAAAAACAP//AAACAAIAAAACAAEAAAACAAIAAAACAAIAAAACAAIAAAACAAMAAAACAAIAAAACAAQAAAACAAIAAAADAP7/AAACAAAAAAADAP//AAACAAIAAAADAAEAAAACAAIAAAADAAIAAAACAAIAAAADAAMAAAACAAIAAAADAAQAAAACAAIAAAAEAP7/AAACAAAAAAAEAP//AAADAAIAAAAEAAEAAAACAAIAAAAEAAIAAAACAAIAAAAEAAMAAAACAAIAAAAEAAQAAAACAAIAAAD8/wUAAAADAAIAAAD9/wUAAAACAAIAAAD+/wUAAAACAAIAAAD//wUAAAACAAIAAAAAAAUAAAACAAIAAAABAAUAAAACAAIAAAACAAUAAAACAAIAAAADAAUAAAACAAIAAAAEAAUAAAACAAIAAAAFAAUAAAABAAIAAAAFAAQAAAACAAIAAAAFAAMAAAACAAIAAAAFAAIAAAACAAIAAAAFAAEAAAABAAIAAAAFAAAAAAABAAIAAAAFAP//AAABAAIAAAAFAP7/AAACAAAAAAD4//7/AAAAAAAAAAD4////AAAAAAEAAAD4/wAAAAAAAAIAAAD4/wEAAAAAAAIAAAD4/wIAAAAAAAIAAAD4/wMAAAAAAAIAAAD4/wQAAAAAAAIAAAD4/wUAAAAAAAIAAAD4/wYAAAAAAAIAAAD4/wcAAAAAAAMAAAD4/wgAAAAAAAAAAAD5//7/AAABAAAAAAD5////AAABAAEAAAD5/wAAAAABAAIAAAD5/wEAAAADAAIAAAD5/wIAAAACAAIAAAD5/wMAAAACAAIAAAD5/wQAAAACAAIAAAD5/wUAAAADAAIAAAD5/wYAAAABAAIAAAD5/wcAAAABAAMAAAD5/wgAAAABAAQAAAD6//7/AAACAAAAAAD6////AAABAAIAAAD6/wAAAAABAAIAAAD6/wEAAAADAAIAAAD6/wIAAAACAAIAAAD6/wMAAAACAAIAAAD6/wQAAAACAAIAAAD6/wUAAAADAAIAAAD6/wYAAAABAAIAAAD6/wcAAAABAAIAAAD6/wgAAAACAAQAAAD7//7/AAACAAAAAAD7////AAADAAIAAAD7/wAAAAADAAIAAAD7/wEAAAADAAIAAAD7/wIAAAACAAIAAAD7/wMAAAACAAIAAAD7/wQAAAACAAIAAAD7/wUAAAADAAIAAAD7/wYAAAADAAIAAAD7/wcAAAADAAIAAAD7/wgAAAACAAQAAAD8/wYAAAADAAIAAAD8/wcAAAADAAIAAAD8/wgAAAACAAQAAAD9/wYAAAADAAIAAAD9/wcAAAADAAIAAAD9/wgAAAACAAQAAAD+/wYAAAACAAIAAAD+/wcAAAACAAIAAAD+/wgAAAACAAQAAAD//wYAAAACAAIAAAD//wcAAAACAAIAAAD//wgAAAACAAQAAAAAAAYAAAACAAIAAAAAAAcAAAACAAIAAAAAAAgAAAACAAQAAAABAAYAAAACAAIAAAABAAcAAAACAAIAAAABAAgAAAACAAQAAAACAAYAAAACAAIAAAACAAcAAAACAAIAAAACAAgAAAACAAQAAAADAAYAAAACAAIAAAADAAcAAAACAAIAAAADAAgAAAACAAQAAAAEAAYAAAADAAIAAAAEAAcAAAADAAIAAAAEAAgAAAACAAQAAAAFAAYAAAABAAIAAAAFAAcAAAABAAIAAAAFAAgAAAACAAQAAAAGAP7/AAACAAAAAAAGAP//AAABAAIAAAAGAAAAAAABAAIAAAAGAAEAAAABAAIAAAAGAAIAAAACAAIAAAAGAAMAAAACAAIAAAAGAAQAAAACAAIAAAAGAAUAAAABAAIAAAAGAAYAAAABAAIAAAAGAAcAAAABAAIAAAAGAAgAAAACAAQAAAAHAP7/AAACAAAAAAAHAP//AAABAAIAAAAHAAAAAAABAAIAAAAHAAEAAAABAAIAAAAHAAIAAAACAAIAAAAHAAMAAAACAAIAAAAHAAQAAAACAAIAAAAHAAUAAAABAAIAAAAHAAYAAAABAAIAAAAHAAcAAAABAAIAAAAHAAgAAAACAAQAAAAIAP7/AAADAAAAAAAIAP//AAADAAEAAAAIAAAAAAABAAIAAAAIAAEAAAABAAIAAAAIAAIAAAACAAIAAAAIAAMAAAACAAIAAAAIAAQAAAACAAIAAAAIAAUAAAABAAIAAAAIAAYAAAABAAIAAAAIAAcAAAADAAMAAAAIAAgAAAADAAQAAAAJAP7/AAAAAAAAAAAJAP//AAAEAAEAAAAJAAAAAAAEAAIAAAAJAAEAAAAEAAIAAAAJAAIAAAAEAAIAAAAJAAMAAAAEAAIAAAAJAAQAAAAEAAIAAAAJAAUAAAAEAAIAAAAJAAYAAAAEAAIAAAAJAAcAAAAEAAMAAAAJAAgAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_13jxl")
+tile_set = ExtResource("1_nkb4g")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="." groups=["object"]]
 z_index = -1
 position = Vector2(-64, -28)
 scale = Vector2(4, 4)
 tile_map_data = PackedByteArray("AAAEAAMAAAAGAAQAAAD9/wMAAAAGAAQAAAA=")
-tile_set = SubResource("TileSet_13jxl")
+tile_set = ExtResource("1_nkb4g")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.674815, 0.674815, 0.674815, 1)
@@ -350,6 +297,13 @@ position = Vector2(-2.53518e-05, -10)
 scale = Vector2(5, 5)
 occluder = SubResource("OccluderPolygon2D_3dy6a")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="main_boss/Main_body"]
+stream = ExtResource("8_216lv")
+bus = &"SFX"
+
+[node name="Damage_sound" type="AudioStreamPlayer2D" parent="main_boss/Main_body"]
+stream = ExtResource("9_bu6hf")
+
 [node name="Top_right" parent="main_boss" groups=["sub-boss"] instance=ExtResource("3_5h4f3")]
 position = Vector2(-416, 180.001)
 rotation = 3.14159
@@ -366,6 +320,7 @@ rotation = 6.28318
 position = Vector2(420.999, -228.001)
 
 [node name="Players" parent="." instance=ExtResource("2_ptrcr")]
+z_index = 1
 position = Vector2(0, 391)
 rotation = 0.00103694
 
@@ -395,8 +350,9 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/background = SubResource("StyleBoxFlat_flv34")
 theme_override_styles/fill = SubResource("StyleBoxFlat_xwxwf")
+max_value = 400.0
 step = 1.0
-value = 100.0
+value = 400.0
 show_percentage = false
 script = SubResource("GDScript_gp4pq")
 
@@ -405,7 +361,7 @@ material = ExtResource("6_8ae8b")
 layout_mode = 0
 offset_top = -23.0
 offset_right = 40.0
-text = "EVIL BOSS MAN"
+text = "Triangle King"
 
 [connection signal="timeout" from="main_boss/Cooldown" to="main_boss/Main_body" method="_on_cooldown_timeout"]
 [connection signal="has_died" from="main_boss/Main_body" to="main_boss" method="_on_main_body_has_died"]

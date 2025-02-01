@@ -15,7 +15,7 @@ func hurt(body, damage = 10):
 	if !body.animation_player.is_playing():
 		health -= 1
 		player_healthbar.update_hearts(health)
-		
+		$AudioStreamPlayer2D.play()
 		if health <= 0:
 			dead = true
 		

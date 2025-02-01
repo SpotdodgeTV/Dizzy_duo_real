@@ -47,6 +47,7 @@ func sling(direction : Vector2, speed, nposition, add_angle:bool = true):
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		body.damaged(20)
+		#$AudioStreamPlayer2D.play()
 		if player_one.player_two_connected:
 			player_one.end_lasso(1, (global_position - body.global_position).normalized())
 		else:

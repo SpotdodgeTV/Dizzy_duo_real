@@ -1,73 +1,16 @@
-[gd_scene load_steps=23 format=4 uid="uid://d20pmtd86trio"]
+[gd_scene load_steps=23 format=4 uid="uid://dyybv3l18k2dw"]
 
 [ext_resource type="Script" path="res://scripts/tutorial.gd" id="1_w6br3"]
+[ext_resource type="TileSet" uid="uid://btud2pws16bag" path="res://Textures/misc/TileSet.tres" id="2_fgylq"]
 [ext_resource type="PackedScene" uid="uid://pt57p26pop1" path="res://scenes/connected_players.tscn" id="2_rfpkg"]
-[ext_resource type="Texture2D" uid="uid://bnhe1ahh8fv7w" path="res://tilemaps/dawngeon.png" id="3_ejmiy"]
 [ext_resource type="PackedScene" uid="uid://shbpwr4gt3cp" path="res://scenes/player_health_bar.tscn" id="4_68p7q"]
-[ext_resource type="PackedScene" uid="uid://3tew2csl0vog" path="res://scenes/pause_menu.tscn" id="5_60ivj"]
+[ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="5_60ivj"]
 [ext_resource type="PackedScene" uid="uid://m57sixwgejsh" path="res://scenes/dialog.tscn" id="6_p5fgb"]
 [ext_resource type="PackedScene" uid="uid://fja40kx2ag3p" path="res://scenes/scene_changer.tscn" id="7_2thdi"]
-[ext_resource type="PackedScene" uid="uid://dcu5x7gxa7gr4" path="res://scenes/door.tscn" id="8_yw1rt"]
-[ext_resource type="Texture2D" uid="uid://1or86fgw6e3e" path="res://textures/misc/Dimensional_Portal.png" id="9_rh8ec"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ali6m"]
-texture = ExtResource("3_ejmiy")
-0:0/0 = 0
-1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-2:0/0 = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-3:0/0 = 0
-3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-0:1/0 = 0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-1:1/0 = 0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-2:1/0 = 0
-3:1/0 = 0
-3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-4:1/0 = 0
-4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-5:1/0 = 0
-6:1/0 = 0
-0:2/0 = 0
-0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-5:2/0 = 0
-6:2/0 = 0
-0:3/0 = 0
-0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-1:3/0 = 0
-1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-2:3/0 = 0
-3:3/0 = 0
-3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-4:3/0 = 0
-4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-5:3/0 = 0
-6:3/0 = 0
-0:4/0 = 0
-1:4/0 = 0
-1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-2:4/0 = 0
-2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-3:4/0 = 0
-3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-4:4/0 = 0
-5:4/0 = 0
-6:4/0 = 0
-6:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
-[sub_resource type="TileSet" id="TileSet_13jxl"]
-physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_ali6m")
+[ext_resource type="AudioStream" uid="uid://bl2yh2u8txiqg" path="res://sfx/Hi-hat__001.wav" id="8_6r3g5"]
+[ext_resource type="PackedScene" path="res://scenes/door.tscn" id="8_yw1rt"]
+[ext_resource type="Texture2D" uid="uid://1or86fgw6e3e" path="res://Textures/misc/Dimensional_Portal.png" id="9_rh8ec"]
+[ext_resource type="AudioStream" uid="uid://1k8wbopqhj52" path="res://music/Ambience#1.mp3" id="10_kq4pm"]
 
 [sub_resource type="Environment" id="Environment_ykgmf"]
 background_mode = 3
@@ -127,6 +70,57 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="Animation" id="Animation_mc74q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Portals:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Players:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Portals/Portal:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6, 6)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Portals/Portal2:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6, 6)]
+}
+
 [sub_resource type="Animation" id="Animation_nju0w"]
 resource_name = "start"
 length = 6.0
@@ -180,57 +174,6 @@ tracks/3/keys = {
 "values": [Vector2(6, 6), Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_mc74q"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Portals:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Players:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Portals/Portal:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(6, 6)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Portals/Portal2:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(6, 6)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ndpfn"]
 _data = {
 "RESET": SubResource("Animation_mc74q"),
@@ -253,7 +196,7 @@ z_index = -1
 position = Vector2(-64, -28)
 scale = Vector2(4, 4)
 tile_map_data = PackedByteArray("AAD+////AAACAAIAAAD/////AAACAAIAAAAAAP//AAACAAIAAAABAP//AAACAAIAAAAAAAAAAAACAAIAAAD//wAAAAACAAIAAAD+/wAAAAACAAIAAAD+/wEAAAACAAIAAAD//wEAAAACAAIAAAAAAAEAAAACAAIAAAABAAEAAAACAAIAAAABAAAAAAACAAIAAAACAAAAAAACAAIAAAADAAAAAAACAAIAAAAEAAAAAAADAAIAAAD8//7/AAACAAAAAAD8////AAADAAIAAAD8/wAAAAADAAIAAAD8/wEAAAADAAIAAAD8/wIAAAACAAIAAAD8/wMAAAACAAIAAAD8/wQAAAACAAIAAAD9//7/AAACAAAAAAD9////AAADAAIAAAD9/wAAAAADAAIAAAD9/wEAAAACAAIAAAD9/wIAAAACAAIAAAD9/wMAAAACAAIAAAD9/wQAAAACAAIAAAD+//7/AAACAAAAAAD+/wIAAAACAAIAAAD+/wMAAAACAAIAAAD+/wQAAAACAAIAAAD///7/AAACAAAAAAD//wIAAAACAAIAAAD//wMAAAACAAIAAAD//wQAAAACAAIAAAAAAP7/AAAGAAMAAAAAAAIAAAACAAIAAAAAAAMAAAACAAIAAAAAAAQAAAACAAIAAAABAP7/AAAGAAMAABABAAIAAAACAAIAAAABAAMAAAACAAIAAAABAAQAAAACAAIAAAACAP7/AAACAAAAAAACAP//AAACAAIAAAACAAEAAAACAAIAAAACAAIAAAACAAIAAAACAAMAAAACAAIAAAACAAQAAAACAAIAAAADAP7/AAACAAAAAAADAP//AAACAAIAAAADAAEAAAACAAIAAAADAAIAAAACAAIAAAADAAMAAAACAAIAAAADAAQAAAACAAIAAAAEAP7/AAACAAAAAAAEAP//AAADAAIAAAAEAAEAAAACAAIAAAAEAAIAAAACAAIAAAAEAAMAAAACAAIAAAAEAAQAAAACAAIAAAD8/wUAAAADAAIAAAD9/wUAAAACAAIAAAD+/wUAAAACAAIAAAD//wUAAAACAAIAAAAAAAUAAAACAAIAAAABAAUAAAACAAIAAAACAAUAAAACAAIAAAADAAUAAAACAAIAAAAEAAUAAAACAAIAAAAFAAUAAAABAAIAAAAFAAQAAAACAAIAAAAFAAMAAAACAAIAAAAFAAIAAAACAAIAAAAFAAEAAAABAAIAAAAFAAAAAAABAAIAAAAFAP//AAABAAIAAAAFAP7/AAACAAAAAAD4//7/AAAAAAAAAAD4////AAAAAAEAAAD4/wAAAAAAAAIAAAD4/wEAAAAAAAIAAAD4/wIAAAAAAAIAAAD4/wMAAAAAAAIAAAD4/wQAAAAAAAIAAAD4/wUAAAAAAAIAAAD4/wYAAAAAAAIAAAD4/wcAAAAAAAMAAAD4/wgAAAAAAAAAAAD5//7/AAABAAAAAAD5////AAABAAEAAAD5/wAAAAABAAIAAAD5/wEAAAADAAIAAAD5/wIAAAACAAIAAAD5/wMAAAACAAIAAAD5/wQAAAACAAIAAAD5/wUAAAADAAIAAAD5/wYAAAABAAIAAAD5/wcAAAABAAMAAAD5/wgAAAABAAQAAAD6//7/AAACAAAAAAD6////AAABAAIAAAD6/wAAAAABAAIAAAD6/wEAAAADAAIAAAD6/wIAAAACAAIAAAD6/wMAAAACAAIAAAD6/wQAAAACAAIAAAD6/wUAAAADAAIAAAD6/wYAAAABAAIAAAD6/wcAAAABAAIAAAD6/wgAAAACAAQAAAD7//7/AAACAAAAAAD7////AAADAAIAAAD7/wAAAAADAAIAAAD7/wEAAAADAAIAAAD7/wIAAAACAAIAAAD7/wMAAAACAAIAAAD7/wQAAAACAAIAAAD7/wUAAAADAAIAAAD7/wYAAAADAAIAAAD7/wcAAAADAAIAAAD7/wgAAAACAAQAAAD8/wYAAAADAAIAAAD8/wcAAAADAAIAAAD8/wgAAAACAAQAAAD9/wYAAAADAAIAAAD9/wcAAAADAAIAAAD9/wgAAAACAAQAAAD+/wYAAAACAAIAAAD+/wcAAAACAAIAAAD+/wgAAAACAAQAAAD//wYAAAACAAIAAAD//wcAAAACAAIAAAD//wgAAAACAAQAAAAAAAYAAAACAAIAAAAAAAcAAAACAAIAAAAAAAgAAAACAAQAAAABAAYAAAACAAIAAAABAAcAAAACAAIAAAABAAgAAAACAAQAAAACAAYAAAACAAIAAAACAAcAAAACAAIAAAACAAgAAAACAAQAAAADAAYAAAACAAIAAAADAAcAAAACAAIAAAADAAgAAAACAAQAAAAEAAYAAAADAAIAAAAEAAcAAAADAAIAAAAEAAgAAAACAAQAAAAFAAYAAAABAAIAAAAFAAcAAAABAAIAAAAFAAgAAAACAAQAAAAGAP7/AAACAAAAAAAGAP//AAABAAIAAAAGAAAAAAABAAIAAAAGAAEAAAABAAIAAAAGAAIAAAACAAIAAAAGAAMAAAACAAIAAAAGAAQAAAACAAIAAAAGAAUAAAABAAIAAAAGAAYAAAABAAIAAAAGAAcAAAABAAIAAAAGAAgAAAACAAQAAAAHAP7/AAACAAAAAAAHAP//AAABAAIAAAAHAAAAAAABAAIAAAAHAAEAAAABAAIAAAAHAAIAAAACAAIAAAAHAAMAAAACAAIAAAAHAAQAAAACAAIAAAAHAAUAAAABAAIAAAAHAAYAAAABAAIAAAAHAAcAAAABAAIAAAAHAAgAAAACAAQAAAAIAP7/AAADAAAAAAAIAP//AAADAAEAAAAIAAAAAAABAAIAAAAIAAEAAAABAAIAAAAIAAIAAAACAAIAAAAIAAMAAAACAAIAAAAIAAQAAAACAAIAAAAIAAUAAAABAAIAAAAIAAYAAAABAAIAAAAIAAcAAAADAAMAAAAIAAgAAAADAAQAAAAJAP7/AAAAAAAAAAAJAP//AAAEAAEAAAAJAAAAAAAEAAIAAAAJAAEAAAAEAAIAAAAJAAIAAAAEAAIAAAAJAAMAAAAEAAIAAAAJAAQAAAAEAAIAAAAJAAUAAAAEAAIAAAAJAAYAAAAEAAIAAAAJAAcAAAAEAAMAAAAJAAgAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_13jxl")
+tile_set = ExtResource("2_fgylq")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ykgmf")
@@ -295,6 +238,11 @@ visible = false
 
 [node name="Dialog" parent="." instance=ExtResource("6_p5fgb")]
 
+[node name="Button_pressed" type="AudioStreamPlayer2D" parent="Dialog"]
+position = Vector2(518.5, 261)
+stream = ExtResource("8_6r3g5")
+bus = &"SFX"
+
 [node name="SceneChanger" parent="." instance=ExtResource("7_2thdi")]
 visible = false
 
@@ -307,3 +255,8 @@ libraries = {
 "": SubResource("AnimationLibrary_ndpfn")
 }
 autoplay = "start"
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_kq4pm")
+autoplay = true
+bus = &"Music"

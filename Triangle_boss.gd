@@ -13,6 +13,7 @@ func _ready():
 
 func damaged(damage):
 	if active:
+		$Damage_sound.play()
 		play_animation("hurt", true)
 		health -= damage
 		boss_bar.value = health
@@ -21,7 +22,8 @@ func damaged(damage):
 			emit_signal("has_died")
 			dead = true
 			play_animation("death", true)
+			$AudioStreamPlayer2D.play()
 			return
-		if health < phase_change_threshold:
+		if health <= phase_change_threshold:
 			phase_change_threshold -= phase_change_increment
 			emit_signal("next_phase")
