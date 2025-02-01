@@ -48,7 +48,8 @@ _data = {
 "circle_open": SubResource("Animation_o5jei")
 }
 
-[node name="SceneChanger" type="CanvasLayer"]
+[node name="SceneChanger" type="CanvasLayer" groups=["SceneChanger"]]
+layer = 2
 script = ExtResource("1_j243i")
 
 [node name="Black" type="ColorRect" parent="."]
