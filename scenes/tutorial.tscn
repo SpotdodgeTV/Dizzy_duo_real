@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://d20pmtd86trio"]
+[gd_scene load_steps=23 format=4 uid="uid://d20pmtd86trio"]
 
 [ext_resource type="Script" path="res://scripts/tutorial.gd" id="1_w6br3"]
 [ext_resource type="PackedScene" uid="uid://pt57p26pop1" path="res://scenes/connected_players.tscn" id="2_rfpkg"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://m57sixwgejsh" path="res://scenes/dialog.tscn" id="6_p5fgb"]
 [ext_resource type="PackedScene" uid="uid://fja40kx2ag3p" path="res://scenes/scene_changer.tscn" id="7_2thdi"]
 [ext_resource type="PackedScene" uid="uid://dcu5x7gxa7gr4" path="res://scenes/door.tscn" id="8_yw1rt"]
+[ext_resource type="Texture2D" uid="uid://1or86fgw6e3e" path="res://textures/misc/Dimensional_Portal.png" id="9_rh8ec"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ali6m"]
 texture = ExtResource("3_ejmiy")
@@ -76,6 +77,166 @@ fog_density = 0.7928
 fog_height = 754.53
 fog_height_density = -3.0877
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_cam0o"]
+atlas = ExtResource("9_rh8ec")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0d00x"]
+atlas = ExtResource("9_rh8ec")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7alva"]
+atlas = ExtResource("9_rh8ec")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcvmb"]
+atlas = ExtResource("9_rh8ec")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdm4e"]
+atlas = ExtResource("9_rh8ec")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txp3t"]
+atlas = ExtResource("9_rh8ec")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n4kg3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cam0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0d00x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7alva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcvmb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdm4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txp3t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="Animation" id="Animation_nju0w"]
+resource_name = "start"
+length = 6.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Portals:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2, 2.3, 4.3, 4.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Players:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3, 3.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Portals/Portal:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4.5, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(6, 6), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Portals/Portal2:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(4.5, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(6, 6), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mc74q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Portals:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Players:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Portals/Portal:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6, 6)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Portals/Portal2:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6, 6)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ndpfn"]
+_data = {
+"RESET": SubResource("Animation_mc74q"),
+"start": SubResource("Animation_nju0w")
+}
+
 [node name="Tutorial" type="Node2D"]
 script = ExtResource("1_w6br3")
 
@@ -87,10 +248,6 @@ position = Vector2(0, 180)
 rotation = 0.00103694
 scale = Vector2(0.512807, 0.292644)
 
-[node name="Players" parent="." instance=ExtResource("2_rfpkg")]
-position = Vector2(0, 198)
-rotation = 0.00103694
-
 [node name="TileMapLayer" type="TileMapLayer" parent="." groups=["object"]]
 z_index = -1
 position = Vector2(-64, -28)
@@ -100,6 +257,27 @@ tile_set = SubResource("TileSet_13jxl")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ykgmf")
+
+[node name="Portals" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+
+[node name="Portal" type="AnimatedSprite2D" parent="Portals"]
+modulate = Color(2, 2, 3, 1)
+position = Vector2(-56, 200)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_n4kg3")
+autoplay = "default"
+
+[node name="Portal2" type="AnimatedSprite2D" parent="Portals"]
+modulate = Color(2, 2, 3, 1)
+position = Vector2(48, 200)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_n4kg3")
+autoplay = "default"
+
+[node name="Players" parent="." instance=ExtResource("2_rfpkg")]
+position = Vector2(0, 198)
+rotation = 0.00103694
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -123,3 +301,9 @@ visible = false
 [node name="Door" parent="." instance=ExtResource("8_yw1rt")]
 position = Vector2(0, -56)
 shader_pos = Vector2(0.5, 0.1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ndpfn")
+}
+autoplay = "start"

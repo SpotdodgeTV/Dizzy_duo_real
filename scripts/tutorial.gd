@@ -3,11 +3,14 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Dialog.play("tutorial")
+	$Dialog.connect("finished", unlock_door)
+	$Players/Player1.can_move = false
+	$Dialog.play("tutorial", 6, true)
 
 func dialog_signal(dialog_name, key):
-	pass
+	match key:
+		6:
+			$Players/Player1.can_move = true
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func unlock_door():
+	$Door.door_enabled = true

@@ -25,7 +25,9 @@ var tutorial = {
 	4: ["Knight", "Methinks I’ve had a wound... yet 'tis but a mere scratch."],
 	5: ["Knight", "Mayhap thou canst wield thy lasso yonder and swing me about like a merry fool?"],
 	6: ["", "Use left click to have cowboy grab knight with his lasso."],
-	7: ["", "Use right click to swing knight's sword."]
+	7: ["", "Use WASD to move."],
+	8: ["", "Use the mouse wheel to increase and decrease the lasso length."],
+	9: ["", "Use right click to swing knight's sword to attack and deflect bullets."]
 }
 
 func _ready() -> void:
@@ -35,7 +37,12 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("dialog"):
 		emit_signal("dialog_pressed")
 
-func play(dialog_name):
+func play(dialog_name, delay = 0, fade_out: bool = false):
+	if delay > 0:
+		visible = false
+		await get_tree().create_timer(delay).timeout
+		visible = true
+	
 	var dialog = self.get(dialog_name)
 	
 	for key in dialog:
@@ -60,6 +67,9 @@ func play(dialog_name):
 		
 		if key == dialog.size():
 			emit_signal("finished")
+			if fade_out:
+				var fade_tween = create_tween()
+				fade_tween.tween_property($Dialog, "modulate:a", 0, 1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

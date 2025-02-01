@@ -69,8 +69,9 @@ func new_spin_logic(delta):
 
 #anything that needs to happen when lassoing begins goes here
 func start_lasso():
-	elapsed_time = 0.0
-	lasso_in_use = true
+	if can_move:
+		elapsed_time = 0.0
+		lasso_in_use = true
 
 #anything that needs to happen when lassoing ends goes here
 func end_lasso(sling_speed: int = current_speed, sling_direction = (player2.global_position - player1.global_position).normalized()):
@@ -109,7 +110,8 @@ func _process(delta):
 	if movement_direction.length() > input_sensitivity:
 		current_movement_speed = min(current_movement_speed + 15 * delta, MAX_MOVEMENT_SPEED)
 		velocity = movement_direction.normalized() * current_movement_speed
-		move_and_slide()
+		if can_move:
+			move_and_slide()
 	else:
 		if !player_two_connected:
 			current_movement_speed = STARTING_MOVEMENT_SPEED#max(movement_speed - 15 * delta, 0)
