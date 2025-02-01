@@ -172,7 +172,6 @@ texture = ExtResource("2_v76n2")
 [node name="Area2D" type="Area2D" parent="." groups=["bullet"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 scale = Vector2(1.01135, 1)
 shape = SubResource("CircleShape2D_qpa0g")
 
@@ -183,7 +182,7 @@ one_shot = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(2, 2, 2, 1)
 self_modulate = Color(1, 1, 1, 0)
-position = Vector2(-2, 19)
+position = Vector2(0, 19)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_cnu1a")
 animation = &"reflected"

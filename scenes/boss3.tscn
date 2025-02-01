@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://druuao8turya1"]
+[gd_scene load_steps=25 format=4 uid="uid://druuao8turya1"]
 
 [ext_resource type="TileSet" uid="uid://btud2pws16bag" path="res://Textures/misc/TileSet.tres" id="1_mac4a"]
 [ext_resource type="Script" path="res://scripts/Triangle_boss.gd" id="2_cwrqg"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://dnqcphrnc5ocj" path="res://sfx/Bass Drum__001.wav" id="10_4m4ns"]
 [ext_resource type="PackedScene" uid="uid://pt57p26pop1" path="res://scenes/connected_players.tscn" id="11_2rvsj"]
 [ext_resource type="PackedScene" uid="uid://shbpwr4gt3cp" path="res://scenes/player_health_bar.tscn" id="12_6hrpq"]
+[ext_resource type="Script" path="res://scripts/camera_2d.gd" id="13_d8wxg"]
 
 [sub_resource type="GDScript" id="GDScript_ckqmm"]
 script/source = "extends Node2D
@@ -267,13 +268,15 @@ text = "Big Scary Eye"
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.674815, 0.674815, 0.674815, 1)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, 180)
-rotation = 0.00103694
-scale = Vector2(0.512807, 0.292644)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_w3ahx")
+
+[node name="Camera2D2" type="Camera2D" parent="."]
+position = Vector2(0, 224)
+rotation = 0.00103694
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("13_d8wxg")
 
 [connection signal="timeout" from="main_boss/Cooldown" to="main_boss/Main_body" method="_on_cooldown_timeout"]
 [connection signal="next_phase" from="main_boss/Main_body" to="main_boss" method="_on_main_body_next_phase"]

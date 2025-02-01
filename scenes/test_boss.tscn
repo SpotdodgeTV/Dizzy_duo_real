@@ -288,6 +288,7 @@ autostart = true
 [node name="Enemy" type="CharacterBody2D" parent="Boss" groups=["enemy"]]
 rotation = -3.14159
 script = ExtResource("3_in51r")
+attack_interval_range = Vector2(0.75, 1.25)
 
 [node name="face" type="AnimatedSprite2D" parent="Boss/Enemy"]
 modulate = Color(0.5, 0.5, 0.5, 0.6)

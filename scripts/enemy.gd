@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var boss_bar = $"../../CanvasLayer/BossHealth"
 @export var active:bool = true
 @export var enemy_name = "boss1"
+@export var attack_interval_range:Vector2 = Vector2(2,3)
 var dead:bool = false
 var health: int = 100
 
@@ -98,7 +99,7 @@ func _on_cooldown_timeout():
 		var random_attack = randi() % attacks.size()
 		#random_attack = 4
 		shoot_attack(attacks[random_attack])
-		$"../Cooldown".wait_time = randf_range(2,3)
+		$"../Cooldown".wait_time = randf_range(attack_interval_range.x,attack_interval_range.y)
 
 func play_animation(anim: String = "", force:bool = false):
 	if !animation_player.is_playing() or force:

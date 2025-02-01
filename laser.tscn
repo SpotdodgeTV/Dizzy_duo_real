@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://v28tgvq2ist2"]
+
+[ext_resource type="Script" path="res://laser.gd" id="1_lxcdg"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ywymn"]
+b = Vector2(100, 0)
+
+[node name="Laser" type="Line2D"]
+points = PackedVector2Array(0, 0, 100, 0)
+script = ExtResource("1_lxcdg")
+
+[node name="Area2D" type="Area2D" parent="." groups=["bullet"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("SegmentShape2D_ywymn")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,6 +1,6 @@
 extends Node2D
 
-var health: int = 2
+var health: int = 10
 var dead: bool = false
 var hearts_list : Array[TextureRect]
 @onready var player_healthbar = $"../CanvasLayer/PlayerHealth"
