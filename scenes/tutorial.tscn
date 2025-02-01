@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://dyybv3l18k2dw"]
+[gd_scene load_steps=22 format=4 uid="uid://dyybv3l18k2dw"]
 
 [ext_resource type="Script" path="res://scripts/tutorial.gd" id="1_w6br3"]
 [ext_resource type="TileSet" uid="uid://btud2pws16bag" path="res://Textures/misc/TileSet.tres" id="2_fgylq"]
@@ -10,7 +10,6 @@
 [ext_resource type="AudioStream" uid="uid://bl2yh2u8txiqg" path="res://sfx/Hi-hat__001.wav" id="8_6r3g5"]
 [ext_resource type="PackedScene" path="res://scenes/door.tscn" id="8_yw1rt"]
 [ext_resource type="Texture2D" uid="uid://1or86fgw6e3e" path="res://Textures/misc/Dimensional_Portal.png" id="9_rh8ec"]
-[ext_resource type="AudioStream" uid="uid://1k8wbopqhj52" path="res://music/Ambience#1.mp3" id="10_kq4pm"]
 
 [sub_resource type="Environment" id="Environment_ykgmf"]
 background_mode = 3
@@ -256,8 +255,3 @@ libraries = {
 "": SubResource("AnimationLibrary_ndpfn")
 }
 autoplay = "start"
-
-[node name="Music" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("10_kq4pm")
-autoplay = true
-bus = &"Music"

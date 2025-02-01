@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://pt57p26pop1"]
+[gd_scene load_steps=26 format=3 uid="uid://pt57p26pop1"]
 
 [ext_resource type="Script" path="res://scripts/connected_players.gd" id="1_08mic"]
 [ext_resource type="Texture2D" uid="uid://ihxkmr4trrgu" path="res://Textures/weapons/rope.png" id="1_gx0dy"]
 [ext_resource type="Script" path="res://scripts/player2.gd" id="2_h86dy"]
 [ext_resource type="Material" uid="uid://b866f4ff4lu3u" path="res://Textures/unshaded_ui_mat.tres" id="3_0wc6k"]
 [ext_resource type="Texture2D" uid="uid://c4x0dlrynjvim" path="res://Textures/characters/knight.png" id="3_cxt7w"]
+[ext_resource type="PhysicsMaterial" uid="uid://5s8veaoilc0h" path="res://resources/knightphysics.tres" id="3_q03cp"]
 [ext_resource type="Script" path="res://scripts/player1.gd" id="4_8sexq"]
 [ext_resource type="Texture2D" uid="uid://ccf8yjh5253kp" path="res://Textures/weapons/sword.png" id="4_a7w7r"]
 [ext_resource type="Texture2D" uid="uid://cowa12bnksvxl" path="res://Textures/characters/cowboy.png" id="6_fufho"]
@@ -268,6 +269,7 @@ texture_mode = 2
 
 [node name="Player2" type="RigidBody2D" parent="." groups=["knight", "player"]]
 position = Vector2(50, 0)
+physics_material_override = ExtResource("3_q03cp")
 gravity_scale = 0.0
 lock_rotation = true
 linear_damp = 2.0

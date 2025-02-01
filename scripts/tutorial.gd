@@ -3,6 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	AmbientMusic.play_loop()
 	$Dialog.connect("finished", unlock_door)
 	$Players/Player1.can_move = false
 	$Dialog.play("tutorial", 6, true)

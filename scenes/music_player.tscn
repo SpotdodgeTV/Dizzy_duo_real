@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://b60tija8w1xw3"]
+
+[ext_resource type="AudioStream" uid="uid://b6j8fk0u1t6jt" path="res://music/TutBoss.wav" id="1_wk6oo"]
+
+[sub_resource type="Animation" id="Animation_3bioo"]
+resource_name = "fade_out"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
+
+[sub_resource type="Animation" id="Animation_hlslb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t2td8"]
+_data = {
+"RESET": SubResource("Animation_hlslb"),
+"fade_out": SubResource("Animation_3bioo")
+}
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D"]
+process_mode = 3
+stream = ExtResource("1_wk6oo")
+bus = &"Music"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t2td8")
+}
