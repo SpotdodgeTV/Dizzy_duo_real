@@ -1,6 +1,6 @@
 extends "res://scripts/enemy.gd"
 @onready var ray_caster = $RayCast2D
-@onready var laser = $Laser
+@onready var laser = $"../Laser"
 
 func _ready():
 	enemy_setup()
@@ -9,6 +9,8 @@ func _ready():
 	ray_caster.add_exception(players[1])
 
 func shoot_attack(attack):
+	if laser.is_shooting:
+		return
 	var ray_point = ray_caster.get_collision_point()
 	var dist = sqrt(ray_point.x * ray_point.x + ray_point.y * ray_point.y)
 	laser.points[0] = position

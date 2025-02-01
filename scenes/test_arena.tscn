@@ -34,7 +34,11 @@ tile_set = ExtResource("2_dcxrr")
 environment = SubResource("Environment_ykgmf")
 
 [node name="Players" parent="." instance=ExtResource("4_w8jjk")]
+<<<<<<< Updated upstream
 position = Vector2(0, 198)
+=======
+position = Vector2(-1, 214)
+>>>>>>> Stashed changes
 rotation = 0.00103694
 
 [node name="Laser" parent="Players" instance=ExtResource("3_tpmv4")]
@@ -50,3 +54,58 @@ offset_right = 53.0
 offset_bottom = 13.0
 scale = Vector2(6, 6)
 pivot_offset = Vector2(3.16063e-05, 0.00147909)
+<<<<<<< Updated upstream
+=======
+
+[node name="main" type="Node2D" parent="."]
+position = Vector2(-0.999992, 4.00002)
+rotation = 0.00103694
+script = ExtResource("5_7uwsk")
+metadata/_edit_group_ = true
+
+[node name="Laser" parent="main" instance=ExtResource("3_tpmv4")]
+rotation = -3.14159
+
+[node name="Cooldown" type="Timer" parent="main"]
+autostart = true
+
+[node name="Enemy" type="CharacterBody2D" parent="main" groups=["enemy"]]
+rotation = -3.14159
+script = ExtResource("6_7fkiw")
+attack_interval_range = Vector2(0.5, 1)
+
+[node name="face" type="AnimatedSprite2D" parent="main/Enemy"]
+z_index = 1
+material = ExtResource("7_tjbss")
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_uj4bg")
+animation = &"spit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="main/Enemy/face"]
+libraries = {
+"": ExtResource("12_kcx5v")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main/Enemy"]
+rotation = 0.00182393
+shape = SubResource("CircleShape2D_fq7qp")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="main/Enemy"]
+position = Vector2(-2.53518e-05, -10)
+scale = Vector2(5, 5)
+occluder = SubResource("OccluderPolygon2D_3dy6a")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="main/Enemy"]
+stream = ExtResource("13_bsw8e")
+bus = &"SFX"
+
+[node name="Damage_sound" type="AudioStreamPlayer2D" parent="main/Enemy"]
+stream = ExtResource("14_l7uex")
+
+[node name="RayCast2D" type="RayCast2D" parent="main/Enemy"]
+rotation = 3.14159
+target_position = Vector2(0, 1000)
+
+[connection signal="timeout" from="main/Cooldown" to="main/Enemy" method="_on_cooldown_timeout"]
+[connection signal="animation_finished" from="main/Enemy/face/AnimationPlayer" to="main/Enemy" method="_on_animation_player_animation_finished"]
+>>>>>>> Stashed changes
