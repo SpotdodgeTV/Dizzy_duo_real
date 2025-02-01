@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcu5x7gxa7gr4"]
+
+[ext_resource type="Script" path="res://scripts/door.gd" id="1_1ehut"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kkvic"]
+size = Vector2(200, 100)
+
+[node name="Door" type="Area2D"]
+script = ExtResource("1_1ehut")
+scene_file = "res://test_boss.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -48)
+shape = SubResource("RectangleShape2D_kkvic")

@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+var can_move:bool = true
+
 @onready var parent = $"../"
 @onready var device_num: int = Global.player_one_device_num
 

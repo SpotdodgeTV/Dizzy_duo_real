@@ -4,6 +4,9 @@ var health: int = 10
 var dead: bool = false
 var hearts_list : Array[TextureRect]
 @onready var player_healthbar = $"../CanvasLayer/PlayerHealth"
+@onready var player_one = $Player1
+@onready var player_two = $Player2
+
 
 func _ready() -> void:
 	pass

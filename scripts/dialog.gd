@@ -13,17 +13,17 @@ var dialog1 = {
 	}
 
 var dialog2 = {
-	1: ["Knight", "Onward men! Victory is within our grasp!"],
-	2: ["Knight", "Huh what is this? This seems to be some kind of portal of sorts!"],
+	1: ["Knight", "Forward, good men! Glory be nigh unto us!"],
+	2: ["Knight", "Hark! What be this? 'Tis a strange sort of gateway, it doth seem!"],
 	3: ["Knight", "AHHHHHHHH!"]
 	}
 
 var tutorial = {
 	1: ["Cowboy", "Where am I? Who are you?"],
-	2: ["Knight", "It seems that this sort of portal thing has teleportation powers!"],
+	2: ["Knight", "Methinks this strange portal doth possess powers of swift travel!"],
 	3: ["Cowboy", "You don't have any legs! What happened?!"],
-	4: ["Knight", "It seems I have been wounded... but it is only a scratch."],
-	5: ["Knight", "Maybe you can use your lasso there and move me around by swinging me?"],
+	4: ["Knight", "Methinks I’ve had a wound... yet 'tis but a mere scratch."],
+	5: ["Knight", "Mayhap thou canst wield thy lasso yonder and swing me about like a merry fool?"],
 	6: ["", "Use left click to have cowboy grab knight with his lasso."],
 	7: ["", "Use right click to swing knight's sword."]
 }
