@@ -58,9 +58,13 @@ var credits = [
 		"Circle Scene Transition - agurkas Simple circle transition - Godot Shaders",
 		"16 bit sound effects - phoenix 1291 SFX: The Ultimate 2017 16 bit Mini pack | OpenGameArt.org",
 		"Emoji references - Svor87 Pixelart 16x16 emojis free | OpenGameArt.org",
-		"Dungeon Tileset - pebonius Dawngeon | OpenGameArt.org"
+		"Dungeon Tileset - pebonius Dawngeon | OpenGameArt.org",
+		"Pallet Shader - laffcat 3 line colormap pallets - Godot Shaders"
 	]
 ]
+
+func _ready() -> void:
+	$SceneChanger.change_shader_pos(Vector2(0.5,0.5))
 
 func _process(delta: float):
 	var scroll_speed = base_speed * delta

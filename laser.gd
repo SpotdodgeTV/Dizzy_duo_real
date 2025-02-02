@@ -4,7 +4,7 @@ var damage = 1
 
 var INVIS = "00000000"
 var CHARGING = "d66988b6"
-var ACTIVE = Color(2.3,0,0)
+var ACTIVE = Color(2.5,0,0)
 @onready var is_shooting:bool = false
 
 # Called when the node enters the scene tree for the first time.

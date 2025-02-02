@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://pt57p26pop1"]
+[gd_scene load_steps=27 format=3 uid="uid://pt57p26pop1"]
 
 [ext_resource type="Script" path="res://scripts/connected_players.gd" id="1_08mic"]
 [ext_resource type="Texture2D" uid="uid://ihxkmr4trrgu" path="res://Textures/weapons/rope.png" id="1_gx0dy"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/player1.gd" id="4_8sexq"]
 [ext_resource type="Texture2D" uid="uid://ccf8yjh5253kp" path="res://Textures/weapons/sword.png" id="4_a7w7r"]
 [ext_resource type="Texture2D" uid="uid://cowa12bnksvxl" path="res://Textures/characters/cowboy.png" id="6_fufho"]
+[ext_resource type="Texture2D" uid="uid://c1vsgpahdr0yd" path="res://Textures/misc/slash2.png" id="8_12pww"]
 [ext_resource type="AudioStream" uid="uid://bk86oo32kst3a" path="res://sfx/Jump__005.wav" id="9_blg8y"]
 [ext_resource type="AudioStream" uid="uid://be355e73tws2q" path="res://sfx/Ouch__007.wav" id="10_a1tli"]
 [ext_resource type="AudioStream" uid="uid://bohjwp5r10e50" path="res://sfx/Jump__002.ogg" id="11_7jlr8"]
@@ -135,6 +136,30 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D/Slash:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D/Slash:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.045, 0.5)]
+}
 
 [sub_resource type="Animation" id="Animation_6sy6v"]
 resource_name = "Swing"
@@ -187,6 +212,30 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D/Slash:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.16),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D/Slash:scale")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.08, 0.14),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.045, 0.5), Vector2(0.5, 0.5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xlha2"]
@@ -315,6 +364,17 @@ position = Vector2(32, -6)
 rotation = 0.523598
 shape = SubResource("CapsuleShape2D_c15uc")
 disabled = true
+
+[node name="Slash" type="Sprite2D" parent="Player2/Sword/Sprite2D"]
+visible = false
+modulate = Color(2, 2, 2, 1)
+show_behind_parent = true
+position = Vector2(-9.57269, 8.16713)
+rotation = -2.33812
+scale = Vector2(0.045, 0.5)
+texture = ExtResource("8_12pww")
+offset = Vector2(-17.5736, -4.04851)
+flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player2/Sword"]
 libraries = {

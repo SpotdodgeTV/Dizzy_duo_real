@@ -332,10 +332,6 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 script = ExtResource("12_7k52s")
 
-[node name="Players" parent="." instance=ExtResource("13_qjde3")]
-position = Vector2(0, 448)
-rotation = 0.00103694
-
 [node name="TileMapLayer" type="TileMapLayer" parent="." groups=["object"]]
 z_index = -1
 position = Vector2(-64, -28)
@@ -353,6 +349,10 @@ tile_set = ExtResource("14_1bvhs")
 [node name="Arrow" parent="." instance=ExtResource("15_xpepn")]
 position = Vector2(-448, 198)
 rotation = -1.5708
+
+[node name="Players" parent="." instance=ExtResource("13_qjde3")]
+position = Vector2(0, 448)
+rotation = 0.00103694
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ykgmf")

@@ -10,5 +10,4 @@ func _ready() -> void:
 
 func door_touched(body):
 	if body.is_in_group("cowboy") and door_enabled:
-		scene_changer.change_shader_pos(shader_pos)
-		scene_changer.change_scene(scene_file)
+		scene_changer.change_scene(scene_file, shader_pos)

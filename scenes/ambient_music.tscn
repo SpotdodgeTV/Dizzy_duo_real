@@ -65,6 +65,7 @@ _data = {
 }
 
 [node name="AmbientMusic" type="AudioStreamPlayer2D"]
+process_mode = 3
 stream = ExtResource("1_3my1k")
 bus = &"Music"
 script = ExtResource("2_yutok")

@@ -46,9 +46,9 @@ func _physics_process(delta: float) -> void:
 	#collision/bouncing stuff
 	for body in $BodyCol.get_overlapping_bodies():
 		if body.is_in_group("object") or body.is_in_group("enemy"):
-			if player_one.player_two_connected:
-				if (body.is_in_group("pillar") or body.is_in_group("enemy")) and !player_one.lasso_pulled_in:
-					return
+			if (body.is_in_group("pillar") or body.is_in_group("enemy")) and !player_one.lasso_pulled_in:
+				return
+			elif player_one.player_two_connected:
 				player_one.end_lasso(-1)
 
 func sling(direction : Vector2, speed, nposition, add_angle:bool = true):

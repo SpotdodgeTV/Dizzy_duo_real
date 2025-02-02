@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://hb2ohyr3015k"]
+
+[ext_resource type="Shader" path="res://shaders/pallete.gdshader" id="1_tu0tv"]
+[ext_resource type="Texture2D" uid="uid://x4w015mvy6ij" path="res://resources/room_materials/purple_palatte.tres" id="2_ytv7n"]
+
+[resource]
+shader = ExtResource("1_tu0tv")
+shader_parameter/palette = ExtResource("2_ytv7n")
