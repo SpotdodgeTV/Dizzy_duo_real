@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cl7qrh6vng5lo"
-path="res://.godot/imported/pixil-frame-0 (2).png-88a190b4e4f8c3a6b4678a525b445db2.ctex"
+path="res://.godot/imported/pixil-frame-0 (2).png-a9509d8c7fe48812290f0b9191eeafa9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/characters/pixil-frame-0 (2).png"
-dest_files=["res://.godot/imported/pixil-frame-0 (2).png-88a190b4e4f8c3a6b4678a525b445db2.ctex"]
+source_file="res://textures/characters/pixil-frame-0 (2).png"
+dest_files=["res://.godot/imported/pixil-frame-0 (2).png-a9509d8c7fe48812290f0b9191eeafa9.ctex"]
 
 [params]
 

@@ -1,9 +1,9 @@
 [gd_scene load_steps=37 format=3 uid="uid://c83bjq30q4qhn"]
 
-[ext_resource type="Texture2D" uid="uid://2b1wnvt7o1q0" path="res://Textures/misc/game_over.png" id="1_8tro4"]
+[ext_resource type="Texture2D" uid="uid://2b1wnvt7o1q0" path="res://textures/misc/game_over.png" id="1_8tro4"]
 [ext_resource type="Script" path="res://scenes/game_over.gd" id="1_uoqef"]
 [ext_resource type="FontFile" uid="uid://u4csmhrdtwge" path="res://fonts/FreeCheese-Regular.ttf" id="2_3nn1n"]
-[ext_resource type="Texture2D" uid="uid://th6o2hcp8ji4" path="res://Textures/ui/brush-stroke.png" id="3_iulug"]
+[ext_resource type="Texture2D" uid="uid://th6o2hcp8ji4" path="res://textures/ui/brush-stroke.png" id="3_iulug"]
 [ext_resource type="AudioStream" uid="uid://b1kbbkbxximxc" path="res://sfx/You died idiot.mp3" id="5_uupen"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wwv1w"]
