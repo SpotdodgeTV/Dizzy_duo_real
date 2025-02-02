@@ -10,6 +10,7 @@ extends CharacterBody2D
 @export var attack_interval_range:Vector2 = Vector2(2,3)
 var dead:bool = false
 var health: int = 100
+@export var look_speed: float = 5.0
 
 @onready var attacks = {
 	0: load("res://scenes/Attack_patterns/basic_attack.tscn"),
@@ -53,7 +54,7 @@ func _process(delta: float):
 	if active:
 		if Engine.get_process_frames() % 30 == 0:
 			get_closest_player()
-		global_rotation = lerp_angle(global_rotation, global_position.angle_to_point(closest_player.global_position) + 1.57, 5 * delta)
+		global_rotation = lerp_angle(global_rotation, global_position.angle_to_point(closest_player.global_position) + 1.57, look_speed * delta)
 	#var mouse_pos = get_viewport().get_mouse_position()
 	#var vector_to_mouse = get_viewport_rect().get_center() - mouse_pos
 	#print(get_angle_to(closest_player.global_position))#get_angle_to(closest_player.global_position), closest_player.name)

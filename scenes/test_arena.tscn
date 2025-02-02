@@ -1,9 +1,19 @@
-[gd_scene load_steps=6 format=4 uid="uid://bmf0yfy6fqro8"]
+[gd_scene load_steps=21 format=4 uid="uid://d0uff4xmjyhd6"]
 
 [ext_resource type="TileSet" uid="uid://btud2pws16bag" path="res://Textures/misc/TileSet.tres" id="2_dcxrr"]
 [ext_resource type="PackedScene" uid="uid://v28tgvq2ist2" path="res://laser.tscn" id="3_tpmv4"]
+[ext_resource type="Script" path="res://scripts/enemy_control.gd" id="4_ucqq3"]
 [ext_resource type="PackedScene" uid="uid://pt57p26pop1" path="res://scenes/connected_players.tscn" id="4_w8jjk"]
 [ext_resource type="PackedScene" uid="uid://shbpwr4gt3cp" path="res://scenes/player_health_bar.tscn" id="5_rg8wh"]
+[ext_resource type="Script" path="res://scenes/laser_enemy.gd" id="6_xyx5k"]
+[ext_resource type="Material" uid="uid://b866f4ff4lu3u" path="res://Textures/unshaded_ui_mat.tres" id="7_uxkrv"]
+[ext_resource type="Texture2D" uid="uid://dukavvigm7qyg" path="res://Textures/characters/boss_1.png" id="8_lkj2c"]
+[ext_resource type="Texture2D" uid="uid://b8r3prh8gxjht" path="res://Textures/characters/triangle_active.png" id="9_rjywr"]
+[ext_resource type="Texture2D" uid="uid://ctl6t71jflewk" path="res://Textures/characters/triangle_inactive.png" id="10_6d88v"]
+[ext_resource type="Texture2D" uid="uid://b2hdsm2gyh3n2" path="res://Textures/characters/triangle_boss.png" id="11_wc1oc"]
+[ext_resource type="AnimationLibrary" uid="uid://b7e3c06etyhfm" path="res://animations/enemy.res" id="12_ge4o0"]
+[ext_resource type="AudioStream" uid="uid://ua0ht7o1885t" path="res://sfx/Roar__007.wav" id="13_0ke84"]
+[ext_resource type="AudioStream" uid="uid://dnqcphrnc5ocj" path="res://sfx/Bass Drum__001.wav" id="14_88n0q"]
 
 [sub_resource type="Environment" id="Environment_ykgmf"]
 background_mode = 3
@@ -12,6 +22,61 @@ glow_blend_mode = 1
 fog_density = 0.7928
 fog_height = 754.53
 fog_height_density = -3.0877
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wskqp"]
+atlas = ExtResource("8_lkj2c")
+region = Rect2(0, 15, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vflaq"]
+atlas = ExtResource("8_lkj2c")
+region = Rect2(0, 0, 16, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uj4bg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wskqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vflaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wskqp")
+}],
+"loop": false,
+"name": &"spit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_rjywr")
+}],
+"loop": true,
+"name": &"triangle_child",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_6d88v")
+}],
+"loop": true,
+"name": &"triangle_deactivate",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_wc1oc")
+}],
+"loop": false,
+"name": &"triangleboss",
+"speed": 0.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fq7qp"]
+radius = 43.566
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3dy6a"]
+polygon = PackedVector2Array(-3.1, -5.6, -3.1, -4.6, -5.1, -4.6, -5.1, -3.6, -6.1, -3.6, -6.1, -2.6, -7.1, -2.6, -7.1, -0.6, -8, -0.6, -8, 4.6, -7.1, 4.6, -7.1, 6.6, -6.1, 6.6, -6.1, 7.6, -5.1, 7.6, -5.1, 8.6, -3.1, 8.6, -3.1, 9.5, 3.1, 9.5, 3.1, 8.6, 5.1, 8.6, 5.1, 7.6, 6.1, 7.6, 6.1, 6.6, 7.1, 6.6, 7.1, 4.6, 8, 4.6, 8, -0.6, 7.1, -0.6, 7.1, -2.6, 6.1, -2.6, 6.1, -3.6, 5.1, -3.6, 5.1, -4.6, 4.1, -4.6, 4.1, -5.6)
 
 [node name="Tutorial" type="Node2D"]
 
@@ -34,15 +99,8 @@ tile_set = ExtResource("2_dcxrr")
 environment = SubResource("Environment_ykgmf")
 
 [node name="Players" parent="." instance=ExtResource("4_w8jjk")]
-<<<<<<< Updated upstream
-position = Vector2(0, 198)
-=======
 position = Vector2(-1, 214)
->>>>>>> Stashed changes
 rotation = 0.00103694
-
-[node name="Laser" parent="Players" instance=ExtResource("3_tpmv4")]
-position = Vector2(251.975, -24.2613)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -54,13 +112,11 @@ offset_right = 53.0
 offset_bottom = 13.0
 scale = Vector2(6, 6)
 pivot_offset = Vector2(3.16063e-05, 0.00147909)
-<<<<<<< Updated upstream
-=======
 
 [node name="main" type="Node2D" parent="."]
 position = Vector2(-0.999992, 4.00002)
 rotation = 0.00103694
-script = ExtResource("5_7uwsk")
+script = ExtResource("4_ucqq3")
 metadata/_edit_group_ = true
 
 [node name="Laser" parent="main" instance=ExtResource("3_tpmv4")]
@@ -71,19 +127,19 @@ autostart = true
 
 [node name="Enemy" type="CharacterBody2D" parent="main" groups=["enemy"]]
 rotation = -3.14159
-script = ExtResource("6_7fkiw")
+script = ExtResource("6_xyx5k")
 attack_interval_range = Vector2(0.5, 1)
 
 [node name="face" type="AnimatedSprite2D" parent="main/Enemy"]
 z_index = 1
-material = ExtResource("7_tjbss")
+material = ExtResource("7_uxkrv")
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_uj4bg")
 animation = &"spit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="main/Enemy/face"]
 libraries = {
-"": ExtResource("12_kcx5v")
+"": ExtResource("12_ge4o0")
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="main/Enemy"]
@@ -96,11 +152,11 @@ scale = Vector2(5, 5)
 occluder = SubResource("OccluderPolygon2D_3dy6a")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="main/Enemy"]
-stream = ExtResource("13_bsw8e")
+stream = ExtResource("13_0ke84")
 bus = &"SFX"
 
 [node name="Damage_sound" type="AudioStreamPlayer2D" parent="main/Enemy"]
-stream = ExtResource("14_l7uex")
+stream = ExtResource("14_88n0q")
 
 [node name="RayCast2D" type="RayCast2D" parent="main/Enemy"]
 rotation = 3.14159
@@ -108,4 +164,3 @@ target_position = Vector2(0, 1000)
 
 [connection signal="timeout" from="main/Cooldown" to="main/Enemy" method="_on_cooldown_timeout"]
 [connection signal="animation_finished" from="main/Enemy/face/AnimationPlayer" to="main/Enemy" method="_on_animation_player_animation_finished"]
->>>>>>> Stashed changes

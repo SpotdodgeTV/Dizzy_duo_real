@@ -1,9 +1,10 @@
-[gd_scene load_steps=31 format=4 uid="uid://druuao8turya1"]
+[gd_scene load_steps=34 format=4 uid="uid://druuao8turya1"]
 
 [ext_resource type="TileSet" uid="uid://btud2pws16bag" path="res://Textures/misc/TileSet.tres" id="1_mac4a"]
 [ext_resource type="Script" path="res://scripts/EyebossRoom.gd" id="1_oxt0k"]
 [ext_resource type="Script" path="res://scripts/Triangle_boss.gd" id="2_cwrqg"]
 [ext_resource type="Material" uid="uid://b866f4ff4lu3u" path="res://Textures/unshaded_ui_mat.tres" id="3_kg5li"]
+[ext_resource type="PackedScene" uid="uid://v28tgvq2ist2" path="res://laser.tscn" id="3_pnec4"]
 [ext_resource type="Texture2D" uid="uid://ctl6t71jflewk" path="res://Textures/characters/triangle_inactive.png" id="5_nr30j"]
 [ext_resource type="Texture2D" uid="uid://bwpc4lkp174o4" path="res://Textures/characters/eyeball.png" id="5_unhr5"]
 [ext_resource type="Texture2D" uid="uid://dukavvigm7qyg" path="res://Textures/characters/boss_1.png" id="6_eb48b"]
@@ -19,6 +20,8 @@
 [ext_resource type="AudioStream" uid="uid://bfpiqwsdfkqw8" path="res://music/eyeboss_intro.mp3" id="17_sugdd"]
 [ext_resource type="PackedScene" uid="uid://b60tija8w1xw3" path="res://scenes/music_player.tscn" id="18_j6nco"]
 [ext_resource type="AudioStream" uid="uid://bj6uku1d25dx7" path="res://music/eyeboss.mp3" id="19_kve6m"]
+[ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="21_bbww0"]
+[ext_resource type="PackedScene" uid="uid://drydeo6prtrfd" path="res://scenes/arrow.tscn" id="22_gy0bv"]
 
 [sub_resource type="GDScript" id="GDScript_ckqmm"]
 script/source = "extends Node2D
@@ -45,12 +48,19 @@ func phase_update(phase: int):
 	match phase:
 		0:
 			$Main_body.global_position = pos0
+			#global_position = pos0
 		1:
 			$Main_body.global_position = pos1
+			#global_position = pos1
+			
 		2:
 			$Main_body.global_position = pos2
+			#global_position = pos2
+			
 		3:
 			$Main_body.global_position = pos3
+			#global_position = pos3
+			
 			
 
 
@@ -177,8 +187,14 @@ scale = Vector2(4, 4)
 tile_map_data = PackedByteArray("AAD+////AAACAAIAAAD/////AAACAAIAAAAAAP//AAACAAIAAAABAP//AAACAAIAAAAAAAAAAAACAAIAAAD//wAAAAACAAIAAAD+/wAAAAACAAIAAAD+/wEAAAACAAIAAAD//wEAAAACAAIAAAAAAAEAAAACAAIAAAABAAEAAAACAAIAAAABAAAAAAACAAIAAAACAAAAAAACAAIAAAADAAAAAAACAAIAAAAEAAAAAAADAAIAAAD8//7/AAACAAAAAAD8////AAADAAIAAAD8/wAAAAADAAIAAAD8/wEAAAADAAIAAAD8/wIAAAACAAIAAAD8/wMAAAACAAIAAAD8/wQAAAACAAIAAAD9//7/AAACAAAAAAD9////AAADAAIAAAD9/wAAAAADAAIAAAD9/wEAAAACAAIAAAD9/wIAAAACAAIAAAD9/wMAAAACAAIAAAD9/wQAAAACAAIAAAD+//7/AAACAAAAAAD+/wIAAAACAAIAAAD+/wMAAAACAAIAAAD+/wQAAAACAAIAAAD///7/AAACAAAAAAD//wIAAAACAAIAAAD//wMAAAACAAIAAAD//wQAAAACAAIAAAAAAP7/AAACAAAAAAAAAAIAAAACAAIAAAAAAAMAAAACAAIAAAAAAAQAAAACAAIAAAABAP7/AAACAAAAAAABAAIAAAACAAIAAAABAAMAAAACAAIAAAABAAQAAAACAAIAAAACAP7/AAACAAAAAAACAP//AAACAAIAAAACAAEAAAACAAIAAAACAAIAAAACAAIAAAACAAMAAAACAAIAAAACAAQAAAACAAIAAAADAP7/AAACAAAAAAADAP//AAACAAIAAAADAAEAAAACAAIAAAADAAIAAAACAAIAAAADAAMAAAACAAIAAAADAAQAAAACAAIAAAAEAP7/AAACAAAAAAAEAP//AAADAAIAAAAEAAEAAAACAAIAAAAEAAIAAAACAAIAAAAEAAMAAAACAAIAAAAEAAQAAAACAAIAAAD8/wUAAAADAAIAAAD9/wUAAAACAAIAAAD+/wUAAAACAAIAAAD//wUAAAACAAIAAAAAAAUAAAACAAIAAAABAAUAAAACAAIAAAACAAUAAAACAAIAAAADAAUAAAACAAIAAAAEAAUAAAACAAIAAAAFAAUAAAABAAIAAAAFAAQAAAACAAIAAAAFAAMAAAACAAIAAAAFAAIAAAACAAIAAAAFAAEAAAABAAIAAAAFAAAAAAABAAIAAAAFAP//AAABAAIAAAAFAP7/AAACAAAAAAD4//7/AAAAAAAAAAD4////AAAAAAEAAAD4/wAAAAAAAAIAAAD4/wEAAAAAAAIAAAD4/wIAAAAAAAIAAAD4/wMAAAAGAAMAAGD4/wQAAAAAAAIAAAD4/wUAAAAAAAIAAAD4/wYAAAAAAAIAAAD4/wcAAAAAAAMAAAD4/wgAAAAAAAAAAAD5//7/AAABAAAAAAD5////AAABAAEAAAD5/wAAAAABAAIAAAD5/wEAAAADAAIAAAD5/wIAAAACAAIAAAD5/wMAAAACAAIAAAD5/wQAAAACAAIAAAD5/wUAAAADAAIAAAD5/wYAAAABAAIAAAD5/wcAAAABAAMAAAD5/wgAAAABAAQAAAD6//7/AAACAAAAAAD6////AAABAAIAAAD6/wAAAAABAAIAAAD6/wEAAAADAAIAAAD6/wIAAAACAAIAAAD6/wMAAAACAAIAAAD6/wQAAAACAAIAAAD6/wUAAAADAAIAAAD6/wYAAAABAAIAAAD6/wcAAAABAAIAAAD6/wgAAAACAAQAAAD7//7/AAACAAAAAAD7////AAADAAIAAAD7/wAAAAADAAIAAAD7/wEAAAADAAIAAAD7/wIAAAACAAIAAAD7/wMAAAACAAIAAAD7/wQAAAACAAIAAAD7/wUAAAADAAIAAAD7/wYAAAADAAIAAAD7/wcAAAADAAIAAAD7/wgAAAACAAQAAAD8/wYAAAADAAIAAAD8/wcAAAADAAIAAAD8/wgAAAACAAQAAAD9/wYAAAADAAIAAAD9/wcAAAADAAIAAAD9/wgAAAACAAQAAAD+/wYAAAACAAIAAAD+/wcAAAACAAIAAAD+/wgAAAACAAQAAAD//wYAAAACAAIAAAD//wcAAAACAAIAAAD//wgAAAACAAQAAAAAAAYAAAACAAIAAAAAAAcAAAACAAIAAAAAAAgAAAACAAQAAAABAAYAAAACAAIAAAABAAcAAAACAAIAAAABAAgAAAACAAQAAAACAAYAAAACAAIAAAACAAcAAAACAAIAAAACAAgAAAACAAQAAAADAAYAAAACAAIAAAADAAcAAAACAAIAAAADAAgAAAACAAQAAAAEAAYAAAADAAIAAAAEAAcAAAADAAIAAAAEAAgAAAACAAQAAAAFAAYAAAABAAIAAAAFAAcAAAABAAIAAAAFAAgAAAACAAQAAAAGAP7/AAACAAAAAAAGAP//AAABAAIAAAAGAAAAAAABAAIAAAAGAAEAAAABAAIAAAAGAAIAAAACAAIAAAAGAAMAAAACAAIAAAAGAAQAAAACAAIAAAAGAAUAAAABAAIAAAAGAAYAAAABAAIAAAAGAAcAAAABAAIAAAAGAAgAAAACAAQAAAAHAP7/AAACAAAAAAAHAP//AAABAAIAAAAHAAAAAAABAAIAAAAHAAEAAAABAAIAAAAHAAIAAAACAAIAAAAHAAMAAAACAAIAAAAHAAQAAAACAAIAAAAHAAUAAAABAAIAAAAHAAYAAAABAAIAAAAHAAcAAAABAAIAAAAHAAgAAAACAAQAAAAIAP7/AAADAAAAAAAIAP//AAADAAEAAAAIAAAAAAABAAIAAAAIAAEAAAABAAIAAAAIAAIAAAACAAIAAAAIAAMAAAACAAIAAAAIAAQAAAACAAIAAAAIAAUAAAABAAIAAAAIAAYAAAABAAIAAAAIAAcAAAADAAMAAAAIAAgAAAADAAQAAAAJAP7/AAAAAAAAAAAJAP//AAAEAAEAAAAJAAAAAAAEAAIAAAAJAAEAAAAEAAIAAAAJAAIAAAAEAAIAAAAJAAMAAAAGAAMAAFAJAAQAAAAEAAIAAAAJAAUAAAAEAAIAAAAJAAYAAAAEAAIAAAAJAAcAAAAEAAMAAAAJAAgAAAAAAAAAAAA=")
 tile_set = ExtResource("1_mac4a")
 
+[node name="TileMapLayer2" type="TileMapLayer" parent="." groups=["object", "pillar"]]
+z_index = -1
+position = Vector2(-64, -28)
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAD9/wEAAAAGAAQAAAAEAAUAAAAGAAQAAAA=")
+tile_set = ExtResource("1_mac4a")
+
 [node name="main_boss" type="Node2D" parent="."]
-position = Vector2(0, 200)
 rotation = -3.14159
 script = SubResource("GDScript_ckqmm")
 metadata/_edit_group_ = true
@@ -188,12 +204,18 @@ wait_time = 2.0
 autostart = true
 
 [node name="Main_body" type="CharacterBody2D" parent="main_boss" groups=["enemy"]]
-scale = Vector2(0.989946, 0.982383)
 script = ExtResource("2_cwrqg")
 phase_change_threshold = 160
 phase_change_increment = 40
 initial_health = 200
+has_laser = true
 enemy_name = "eye"
+look_speed = 3.0
+
+[node name="Laser" parent="main_boss/Main_body" instance=ExtResource("3_pnec4")]
+z_index = 2
+rotation = -3.14159
+scale = Vector2(0.989946, 0.982383)
 
 [node name="face" type="AnimatedSprite2D" parent="main_boss/Main_body"]
 z_index = 1
@@ -230,10 +252,9 @@ bus = &"SFX"
 [node name="Damage_sound" type="AudioStreamPlayer2D" parent="main_boss/Main_body"]
 stream = ExtResource("10_4m4ns")
 
-[node name="Players" parent="." instance=ExtResource("11_2rvsj")]
-position = Vector2(480, 200)
-rotation = 0.00103694
-change_pos_for_vertical = true
+[node name="RayCast2D" type="RayCast2D" parent="main_boss/Main_body"]
+rotation = 3.14159
+target_position = Vector2(0, 10000)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -274,6 +295,11 @@ offset_top = -23.0
 offset_right = 40.0
 text = "Big Scary Eye"
 
+[node name="Players" parent="." instance=ExtResource("11_2rvsj")]
+position = Vector2(480, 200)
+rotation = 0.00103695
+change_pos_for_vertical = true
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.674815, 0.674815, 0.674815, 1)
 
@@ -303,6 +329,13 @@ bus = &"Music"
 
 [node name="MusicPlayer" parent="." instance=ExtResource("18_j6nco")]
 stream = ExtResource("19_kve6m")
+
+[node name="pause_menu" parent="." instance=ExtResource("21_bbww0")]
+visible = false
+
+[node name="Arrow" parent="." instance=ExtResource("22_gy0bv")]
+position = Vector2(-448, 198)
+rotation = -1.5708
 
 [connection signal="timeout" from="main_boss/Cooldown" to="main_boss/Main_body" method="_on_cooldown_timeout"]
 [connection signal="next_phase" from="main_boss/Main_body" to="main_boss" method="_on_main_body_next_phase"]

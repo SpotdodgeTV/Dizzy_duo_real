@@ -1,0 +1,292 @@
+[gd_scene load_steps=18 format=3 uid="uid://ix3dq8gnwo3t"]
+
+[ext_resource type="PackedScene" uid="uid://fja40kx2ag3p" path="res://scenes/scene_changer.tscn" id="1_ua4o6"]
+[ext_resource type="Script" path="res://scripts/end_cutscene.gd" id="1_wtru6"]
+[ext_resource type="PackedScene" uid="uid://m57sixwgejsh" path="res://scenes/dialog.tscn" id="3_qsk4w"]
+[ext_resource type="Texture2D" uid="uid://501gmqda8eer" path="res://Textures/portraits/cowboy_portrait.png" id="3_yfydx"]
+[ext_resource type="Texture2D" uid="uid://e1ym2xe8vyk0" path="res://Textures/portraits/backgrounds/desert.png" id="4_c2f7i"]
+[ext_resource type="Texture2D" uid="uid://bqu83efwr568p" path="res://Textures/portraits/RobotLegs.png" id="4_ucp4m"]
+[ext_resource type="Texture2D" uid="uid://ciuymibhfaft4" path="res://Textures/portraits/backgrounds/Background_City_Skyline_(Visualisation03).png" id="4_waw4p"]
+[ext_resource type="Texture2D" uid="uid://c01lhllupwioj" path="res://Textures/portraits/Knight_tophalf_phtshop.PNG" id="5_lrjld"]
+[ext_resource type="AudioStream" uid="uid://ddyl8hpkg3are" path="res://music/boss_win.mp3" id="7_x5gsq"]
+
+[sub_resource type="Animation" id="Animation_8oxus"]
+resource_name = "CowboyStuff"
+length = 5.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4vjdi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_q52so"]
+resource_name = "fade_out"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qhu6q"]
+_data = {
+"CowboyStuff": SubResource("Animation_8oxus"),
+"RESET": SubResource("Animation_4vjdi"),
+"fade_out": SubResource("Animation_q52so")
+}
+
+[sub_resource type="Animation" id="Animation_iom1k"]
+resource_name = "KnightStuff"
+length = 4.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.1, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(380, -479), Vector2(380, -15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Legs:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.1, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(302, 492), Vector2(302, 108.85)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Legs2:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_2ro8x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(380, -479)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Legs:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(302, 492)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Legs2:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_5sfve"]
+resource_name = "fade_out"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tjead"]
+_data = {
+"KnightStuff": SubResource("Animation_iom1k"),
+"RESET": SubResource("Animation_2ro8x"),
+"fade_out": SubResource("Animation_5sfve")
+}
+
+[node name="EndCutscene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wtru6")
+
+[node name="SceneChanger" parent="." instance=ExtResource("1_ua4o6")]
+visible = false
+
+[node name="Saloon" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Desert" type="TextureRect" parent="Saloon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -12.0
+offset_right = 10.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(168, 252)
+texture = ExtResource("4_c2f7i")
+
+[node name="Cowboy" type="TextureRect" parent="Saloon"]
+layout_mode = 1
+offset_left = 400.0
+offset_top = 136.0
+offset_right = 735.0
+offset_bottom = 640.0
+pivot_offset = Vector2(168, 252)
+texture = ExtResource("3_yfydx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Saloon"]
+libraries = {
+"": SubResource("AnimationLibrary_qhu6q")
+}
+
+[node name="Future" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Future"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_waw4p")
+
+[node name="Legs" type="TextureRect" parent="Future"]
+layout_mode = 0
+offset_left = 302.0
+offset_top = 492.0
+offset_right = 1531.0
+offset_bottom = 2230.0
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(151, 245.75)
+texture = ExtResource("4_ucp4m")
+flip_h = true
+
+[node name="Top" type="TextureRect" parent="Future"]
+layout_mode = 0
+offset_left = 380.0
+offset_top = -479.0
+offset_right = 757.0
+offset_bottom = 12.0
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(151, 245.75)
+texture = ExtResource("5_lrjld")
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Future"]
+libraries = {
+"": SubResource("AnimationLibrary_tjead")
+}
+
+[node name="Legs2" type="AudioStreamPlayer2D" parent="Future"]
+stream = ExtResource("7_x5gsq")
+
+[node name="Dialog" parent="." instance=ExtResource("3_qsk4w")]

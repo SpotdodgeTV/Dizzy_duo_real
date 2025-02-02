@@ -24,6 +24,7 @@ func _ready() -> void:
 	$Boss.connect("enemy_dead", boss_over)
 
 func boss_over():
+	$Arrow.arrow_time()
 	$Door.door_enabled = true
 	$MusicPlayer/AnimationPlayer.play("fade_out")
 	await $MusicPlayer/AnimationPlayer.animation_finished

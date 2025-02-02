@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b1kbbkbxximxc"
+path="res://.godot/imported/You died idiot.mp3-e1053e5672c4ca255765c3bb901eb0d0.mp3str"
+
+[deps]
+
+source_file="res://sfx/You died idiot.mp3"
+dest_files=["res://.godot/imported/You died idiot.mp3-e1053e5672c4ca255765c3bb901eb0d0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,318 @@
+[gd_scene load_steps=32 format=4 uid="uid://druuao8turya1"]
+
+[ext_resource type="TileSet" uid="uid://btud2pws16bag" path="res://Textures/misc/TileSet.tres" id="1_mac4a"]
+[ext_resource type="Script" path="res://scripts/EyebossRoom.gd" id="1_oxt0k"]
+[ext_resource type="Script" path="res://scripts/Triangle_boss.gd" id="2_cwrqg"]
+[ext_resource type="Material" uid="uid://b866f4ff4lu3u" path="res://Textures/unshaded_ui_mat.tres" id="3_kg5li"]
+[ext_resource type="PackedScene" uid="uid://v28tgvq2ist2" path="res://laser.tscn" id="3_pnec4"]
+[ext_resource type="Texture2D" uid="uid://ctl6t71jflewk" path="res://Textures/characters/triangle_inactive.png" id="5_nr30j"]
+[ext_resource type="Texture2D" uid="uid://bwpc4lkp174o4" path="res://Textures/characters/eyeball.png" id="5_unhr5"]
+[ext_resource type="Texture2D" uid="uid://dukavvigm7qyg" path="res://Textures/characters/boss_1.png" id="6_eb48b"]
+[ext_resource type="Texture2D" uid="uid://b2hdsm2gyh3n2" path="res://Textures/characters/triangle_boss.png" id="7_cu6a8"]
+[ext_resource type="AnimationLibrary" uid="uid://b7e3c06etyhfm" path="res://animations/enemy.res" id="8_yetq7"]
+[ext_resource type="AudioStream" uid="uid://ua0ht7o1885t" path="res://sfx/Roar__007.wav" id="9_xkpnp"]
+[ext_resource type="AudioStream" uid="uid://dnqcphrnc5ocj" path="res://sfx/Bass Drum__001.wav" id="10_4m4ns"]
+[ext_resource type="PackedScene" uid="uid://pt57p26pop1" path="res://scenes/connected_players.tscn" id="11_2rvsj"]
+[ext_resource type="PackedScene" uid="uid://shbpwr4gt3cp" path="res://scenes/player_health_bar.tscn" id="12_6hrpq"]
+[ext_resource type="Script" path="res://scripts/camera_2d.gd" id="13_d8wxg"]
+[ext_resource type="PackedScene" uid="uid://fja40kx2ag3p" path="res://scenes/scene_changer.tscn" id="14_mijne"]
+[ext_resource type="PackedScene" path="res://scenes/door.tscn" id="16_4hyn1"]
+[ext_resource type="AudioStream" uid="uid://bfpiqwsdfkqw8" path="res://music/eyeboss_intro.mp3" id="17_sugdd"]
+[ext_resource type="PackedScene" uid="uid://b60tija8w1xw3" path="res://scenes/music_player.tscn" id="18_j6nco"]
+[ext_resource type="AudioStream" uid="uid://bj6uku1d25dx7" path="res://music/eyeboss.mp3" id="19_kve6m"]
+
+[sub_resource type="GDScript" id="GDScript_ckqmm"]
+script/source = "extends Node2D
+
+var phase = 0
+var locations  
+@onready var pos0 = $\"../position0\".global_position
+@onready var pos1 = $\"../position1\".global_position
+@onready var pos2 = $\"../position2\".global_position
+@onready var pos3 = $\"../position3\".global_position
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	$Main_body.attacks = {
+	0: load(\"res://scenes/Attack_patterns/inverting_arc.tscn\"),
+	1: load(\"res://scenes/Attack_patterns/cross_burst.tscn\"),
+	2: load(\"res://scenes/Attack_patterns/machine_arc.tscn\"),
+	3: load(\"res://scenes/Attack_patterns/eight_way_burst.tscn\"),
+	4: load(\"res://scenes/Attack_patterns/alternating_crosses.tscn\")
+}
+
+
+
+func phase_update(phase: int):
+	match phase:
+		0:
+			$Main_body.global_position = pos0
+		1:
+			$Main_body.global_position = pos1
+		2:
+			$Main_body.global_position = pos2
+		3:
+			$Main_body.global_position = pos3
+			
+
+
+
+
+func _on_main_body_next_phase() -> void:
+	print(\"check\")
+	var prev_phase = phase
+	phase = randi_range(0, 3)
+	while phase == prev_phase:
+		phase = randi_range(0, 3)
+	phase_update(phase)
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wskqp"]
+atlas = ExtResource("6_eb48b")
+region = Rect2(0, 15, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vflaq"]
+atlas = ExtResource("6_eb48b")
+region = Rect2(0, 0, 16, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rm8vi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_unhr5")
+}],
+"loop": true,
+"name": &"eye",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_nr30j")
+}],
+"loop": true,
+"name": &"inactive",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wskqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vflaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wskqp")
+}],
+"loop": false,
+"name": &"spit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_cu6a8")
+}],
+"loop": false,
+"name": &"triangleboss",
+"speed": 0.0
+}]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2bpek"]
+load_path = "res://.godot/imported/Untitled drawing.svg-53e36e70428d4913dac13bd201e04728.ctex"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_35ao6"]
+radius = 43.566
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tr6fa"]
+polygon = PackedVector2Array(-3.1, -5.6, -3.1, -4.6, -5.1, -4.6, -5.1, -3.6, -6.1, -3.6, -6.1, -2.6, -7.1, -2.6, -7.1, -0.6, -8, -0.6, -8, 4.6, -7.1, 4.6, -7.1, 6.6, -6.1, 6.6, -6.1, 7.6, -5.1, 7.6, -5.1, 8.6, -3.1, 8.6, -3.1, 9.5, 3.1, 9.5, 3.1, 8.6, 5.1, 8.6, 5.1, 7.6, 6.1, 7.6, 6.1, 6.6, 7.1, 6.6, 7.1, 4.6, 8, 4.6, 8, -0.6, 7.1, -0.6, 7.1, -2.6, 6.1, -2.6, 6.1, -3.6, 5.1, -3.6, 5.1, -4.6, 4.1, -4.6, 4.1, -5.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qj500"]
+bg_color = Color(0.154876, 0.154876, 0.154876, 0.466667)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1pqsb"]
+bg_color = Color(1, 0, 0, 0.647059)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="GDScript" id="GDScript_drh2r"]
+script/source = "extends ProgressBar
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="Environment" id="Environment_w3ahx"]
+background_mode = 3
+glow_enabled = true
+glow_blend_mode = 1
+fog_density = 0.7928
+fog_height = 754.53
+fog_height_density = -3.0877
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_oxt0k")
+
+[node name="position0" type="Marker2D" parent="."]
+
+[node name="position1" type="Marker2D" parent="."]
+position = Vector2(-400, 200)
+
+[node name="position2" type="Marker2D" parent="."]
+position = Vector2(400, 200)
+
+[node name="position3" type="Marker2D" parent="."]
+position = Vector2(0, 300)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." groups=["object"]]
+z_index = -1
+position = Vector2(-64, -28)
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAD+////AAACAAIAAAD/////AAACAAIAAAAAAP//AAACAAIAAAABAP//AAACAAIAAAAAAAAAAAACAAIAAAD//wAAAAACAAIAAAD+/wAAAAACAAIAAAD+/wEAAAACAAIAAAD//wEAAAACAAIAAAAAAAEAAAACAAIAAAABAAEAAAACAAIAAAABAAAAAAACAAIAAAACAAAAAAACAAIAAAADAAAAAAACAAIAAAAEAAAAAAADAAIAAAD8//7/AAACAAAAAAD8////AAADAAIAAAD8/wAAAAADAAIAAAD8/wEAAAADAAIAAAD8/wIAAAACAAIAAAD8/wMAAAACAAIAAAD8/wQAAAACAAIAAAD9//7/AAACAAAAAAD9////AAADAAIAAAD9/wAAAAADAAIAAAD9/wEAAAACAAIAAAD9/wIAAAACAAIAAAD9/wMAAAACAAIAAAD9/wQAAAACAAIAAAD+//7/AAACAAAAAAD+/wIAAAACAAIAAAD+/wMAAAACAAIAAAD+/wQAAAACAAIAAAD///7/AAACAAAAAAD//wIAAAACAAIAAAD//wMAAAACAAIAAAD//wQAAAACAAIAAAAAAP7/AAACAAAAAAAAAAIAAAACAAIAAAAAAAMAAAACAAIAAAAAAAQAAAACAAIAAAABAP7/AAACAAAAAAABAAIAAAACAAIAAAABAAMAAAACAAIAAAABAAQAAAACAAIAAAACAP7/AAACAAAAAAACAP//AAACAAIAAAACAAEAAAACAAIAAAACAAIAAAACAAIAAAACAAMAAAACAAIAAAACAAQAAAACAAIAAAADAP7/AAACAAAAAAADAP//AAACAAIAAAADAAEAAAACAAIAAAADAAIAAAACAAIAAAADAAMAAAACAAIAAAADAAQAAAACAAIAAAAEAP7/AAACAAAAAAAEAP//AAADAAIAAAAEAAEAAAACAAIAAAAEAAIAAAACAAIAAAAEAAMAAAACAAIAAAAEAAQAAAACAAIAAAD8/wUAAAADAAIAAAD9/wUAAAACAAIAAAD+/wUAAAACAAIAAAD//wUAAAACAAIAAAAAAAUAAAACAAIAAAABAAUAAAACAAIAAAACAAUAAAACAAIAAAADAAUAAAACAAIAAAAEAAUAAAACAAIAAAAFAAUAAAABAAIAAAAFAAQAAAACAAIAAAAFAAMAAAACAAIAAAAFAAIAAAACAAIAAAAFAAEAAAABAAIAAAAFAAAAAAABAAIAAAAFAP//AAABAAIAAAAFAP7/AAACAAAAAAD4//7/AAAAAAAAAAD4////AAAAAAEAAAD4/wAAAAAAAAIAAAD4/wEAAAAAAAIAAAD4/wIAAAAAAAIAAAD4/wMAAAAGAAMAAGD4/wQAAAAAAAIAAAD4/wUAAAAAAAIAAAD4/wYAAAAAAAIAAAD4/wcAAAAAAAMAAAD4/wgAAAAAAAAAAAD5//7/AAABAAAAAAD5////AAABAAEAAAD5/wAAAAABAAIAAAD5/wEAAAADAAIAAAD5/wIAAAACAAIAAAD5/wMAAAACAAIAAAD5/wQAAAACAAIAAAD5/wUAAAADAAIAAAD5/wYAAAABAAIAAAD5/wcAAAABAAMAAAD5/wgAAAABAAQAAAD6//7/AAACAAAAAAD6////AAABAAIAAAD6/wAAAAABAAIAAAD6/wEAAAADAAIAAAD6/wIAAAACAAIAAAD6/wMAAAACAAIAAAD6/wQAAAACAAIAAAD6/wUAAAADAAIAAAD6/wYAAAABAAIAAAD6/wcAAAABAAIAAAD6/wgAAAACAAQAAAD7//7/AAACAAAAAAD7////AAADAAIAAAD7/wAAAAADAAIAAAD7/wEAAAADAAIAAAD7/wIAAAACAAIAAAD7/wMAAAACAAIAAAD7/wQAAAACAAIAAAD7/wUAAAADAAIAAAD7/wYAAAADAAIAAAD7/wcAAAADAAIAAAD7/wgAAAACAAQAAAD8/wYAAAADAAIAAAD8/wcAAAADAAIAAAD8/wgAAAACAAQAAAD9/wYAAAADAAIAAAD9/wcAAAADAAIAAAD9/wgAAAACAAQAAAD+/wYAAAACAAIAAAD+/wcAAAACAAIAAAD+/wgAAAACAAQAAAD//wYAAAACAAIAAAD//wcAAAACAAIAAAD//wgAAAACAAQAAAAAAAYAAAACAAIAAAAAAAcAAAACAAIAAAAAAAgAAAACAAQAAAABAAYAAAACAAIAAAABAAcAAAACAAIAAAABAAgAAAACAAQAAAACAAYAAAACAAIAAAACAAcAAAACAAIAAAACAAgAAAACAAQAAAADAAYAAAACAAIAAAADAAcAAAACAAIAAAADAAgAAAACAAQAAAAEAAYAAAADAAIAAAAEAAcAAAADAAIAAAAEAAgAAAACAAQAAAAFAAYAAAABAAIAAAAFAAcAAAABAAIAAAAFAAgAAAACAAQAAAAGAP7/AAACAAAAAAAGAP//AAABAAIAAAAGAAAAAAABAAIAAAAGAAEAAAABAAIAAAAGAAIAAAACAAIAAAAGAAMAAAACAAIAAAAGAAQAAAACAAIAAAAGAAUAAAABAAIAAAAGAAYAAAABAAIAAAAGAAcAAAABAAIAAAAGAAgAAAACAAQAAAAHAP7/AAACAAAAAAAHAP//AAABAAIAAAAHAAAAAAABAAIAAAAHAAEAAAABAAIAAAAHAAIAAAACAAIAAAAHAAMAAAACAAIAAAAHAAQAAAACAAIAAAAHAAUAAAABAAIAAAAHAAYAAAABAAIAAAAHAAcAAAABAAIAAAAHAAgAAAACAAQAAAAIAP7/AAADAAAAAAAIAP//AAADAAEAAAAIAAAAAAABAAIAAAAIAAEAAAABAAIAAAAIAAIAAAACAAIAAAAIAAMAAAACAAIAAAAIAAQAAAACAAIAAAAIAAUAAAABAAIAAAAIAAYAAAABAAIAAAAIAAcAAAADAAMAAAAIAAgAAAADAAQAAAAJAP7/AAAAAAAAAAAJAP//AAAEAAEAAAAJAAAAAAAEAAIAAAAJAAEAAAAEAAIAAAAJAAIAAAAEAAIAAAAJAAMAAAAGAAMAAFAJAAQAAAAEAAIAAAAJAAUAAAAEAAIAAAAJAAYAAAAEAAIAAAAJAAcAAAAEAAMAAAAJAAgAAAAAAAAAAAA=")
+tile_set = ExtResource("1_mac4a")
+
+[node name="main_boss" type="Node2D" parent="."]
+position = Vector2(0, 200)
+rotation = -3.14159
+script = SubResource("GDScript_ckqmm")
+metadata/_edit_group_ = true
+
+[node name="Laser" parent="main_boss" instance=ExtResource("3_pnec4")]
+rotation = -3.14159
+scale = Vector2(0.989946, 0.982383)
+
+[node name="Cooldown" type="Timer" parent="main_boss"]
+wait_time = 2.0
+autostart = true
+
+[node name="Main_body" type="CharacterBody2D" parent="main_boss" groups=["enemy"]]
+scale = Vector2(0.989946, 0.982383)
+script = ExtResource("2_cwrqg")
+phase_change_threshold = 160
+phase_change_increment = 40
+initial_health = 200
+has_laser = true
+enemy_name = "eye"
+
+[node name="face" type="AnimatedSprite2D" parent="main_boss/Main_body"]
+z_index = 1
+material = ExtResource("3_kg5li")
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_rm8vi")
+animation = &"eye"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="main_boss/Main_body/face"]
+libraries = {
+"": ExtResource("8_yetq7")
+}
+
+[node name="Sprite2D2" type="Sprite2D" parent="main_boss/Main_body"]
+visible = false
+modulate = Color(0, 1, 1, 1)
+position = Vector2(0, -50.0525)
+scale = Vector2(0.251833, 0.254175)
+texture = SubResource("CompressedTexture2D_2bpek")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_boss/Main_body"]
+rotation = 0.00182393
+shape = SubResource("CircleShape2D_35ao6")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="main_boss/Main_body"]
+position = Vector2(-2.53518e-05, -10)
+scale = Vector2(5, 5)
+occluder = SubResource("OccluderPolygon2D_tr6fa")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="main_boss/Main_body"]
+stream = ExtResource("9_xkpnp")
+bus = &"SFX"
+
+[node name="Damage_sound" type="AudioStreamPlayer2D" parent="main_boss/Main_body"]
+stream = ExtResource("10_4m4ns")
+
+[node name="RayCast2D" type="RayCast2D" parent="main_boss/Main_body"]
+rotation = 3.14159
+target_position = Vector2(0, 1000)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlayerHealth" parent="CanvasLayer" instance=ExtResource("12_6hrpq")]
+modulate = Color(1, 1, 1, 0.760784)
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 53.0
+offset_bottom = 13.0
+scale = Vector2(6, 6)
+pivot_offset = Vector2(3.16063e-05, 0.00147909)
+
+[node name="BossHealth" type="ProgressBar" parent="CanvasLayer"]
+material = ExtResource("3_kg5li")
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -227.0
+offset_top = -42.0
+offset_right = 227.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_qj500")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1pqsb")
+max_value = 200.0
+step = 1.0
+value = 200.0
+show_percentage = false
+script = SubResource("GDScript_drh2r")
+
+[node name="Label" type="Label" parent="CanvasLayer/BossHealth"]
+material = ExtResource("3_kg5li")
+layout_mode = 0
+offset_top = -23.0
+offset_right = 40.0
+text = "Big Scary Eye"
+
+[node name="Players" parent="." instance=ExtResource("11_2rvsj")]
+position = Vector2(480, 200)
+rotation = 0.00103695
+change_pos_for_vertical = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.674815, 0.674815, 0.674815, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_w3ahx")
+
+[node name="Camera2D2" type="Camera2D" parent="."]
+position = Vector2(0, 224)
+rotation = 0.00103694
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("13_d8wxg")
+
+[node name="SceneChanger" parent="." instance=ExtResource("14_mijne")]
+visible = false
+
+[node name="Door" parent="." instance=ExtResource("16_4hyn1")]
+position = Vector2(-480, 200)
+rotation = -1.5708
+scene_file = "res://scenes/boss2.tscn"
+shader_pos = Vector2(-0.3, 0.5)
+
+[node name="BossIntro" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_sugdd")
+autoplay = true
+bus = &"Music"
+
+[node name="MusicPlayer" parent="." instance=ExtResource("18_j6nco")]
+stream = ExtResource("19_kve6m")
+
+[connection signal="timeout" from="main_boss/Cooldown" to="main_boss/Main_body" method="_on_cooldown_timeout"]
+[connection signal="next_phase" from="main_boss/Main_body" to="main_boss" method="_on_main_body_next_phase"]

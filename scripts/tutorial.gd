@@ -12,6 +12,8 @@ func dialog_signal(dialog_name, key):
 	match key:
 		6:
 			$Players/Player1.can_move = true
+		9:
+			$Arrow.arrow_time()
 
 func unlock_door():
 	$Door.door_enabled = true

@@ -77,7 +77,7 @@ func _on_body_col_body_entered(body: Node2D) -> void:
 		#sling(linear_velocity.normalized(), -2, global_position)
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.is_in_group("bullet"):
+	if area.is_in_group("bullet") && !area.is_in_group("laser"):
 		print("hello")
 		
 		area.get_parent().reflect(get_global_mouse_position())

@@ -30,6 +30,13 @@ var tutorial = {
 	9: ["", "Use right click to swing knight's sword to attack and deflect bullets."]
 }
 
+var end_cutscene = {
+	1: ["", "Cowboy and Knight have escaped the dungeon!"],
+	2: ["", "The Cowboy returned to his epic journey through the desert..."],
+	3: ["", "And the Knight went to the future to get a sick ass pair of robot legs!"],
+	4: ["", "The end."],
+}
+
 func _ready() -> void:
 	name_panel.visible = false
 
@@ -57,7 +64,7 @@ func play(dialog_name, delay = 0, fade_out: bool = false):
 		text_label.visible_ratio = 0
 		text_label.text = dialog[key][1]
 		tween.tween_property(text_label, "visible_ratio", 1, text_label.text.length() * .01)
-		
+		dialog_noise(tween)
 		
 		await dialog_pressed
 		if text_label.visible_ratio != 1:
@@ -70,6 +77,14 @@ func play(dialog_name, delay = 0, fade_out: bool = false):
 			if fade_out:
 				var fade_tween = create_tween()
 				fade_tween.tween_property($Dialog, "modulate:a", 0, 1)
+
+func dialog_noise(tween):
+	$Blip/AnimationPlayer.play("blip")
+	await tween.finished
+	$Blip/AnimationPlayer.stop()
+
+func change_blip_pitch():
+	$Blip.pitch_scale = randf_range(.7,1.9)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

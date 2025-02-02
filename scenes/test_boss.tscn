@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://dtvd8y0a3u3n0"]
+[gd_scene load_steps=37 format=4 uid="uid://dtvd8y0a3u3n0"]
 
 [ext_resource type="Script" path="res://scripts/Boss1Room.gd" id="1_j82m5"]
 [ext_resource type="Script" path="res://scripts/enemy_control.gd" id="2_im668"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://pt57p26pop1" path="res://scenes/connected_players.tscn" id="13_qjde3"]
 [ext_resource type="TileSet" uid="uid://btud2pws16bag" path="res://Textures/misc/TileSet.tres" id="14_1bvhs"]
 [ext_resource type="PackedScene" uid="uid://shbpwr4gt3cp" path="res://scenes/player_health_bar.tscn" id="15_oe5ja"]
+[ext_resource type="PackedScene" uid="uid://drydeo6prtrfd" path="res://scenes/arrow.tscn" id="15_xpepn"]
 [ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="16_fr3lf"]
 [ext_resource type="PackedScene" uid="uid://b60tija8w1xw3" path="res://scenes/music_player.tscn" id="17_ob18a"]
 [ext_resource type="AudioStream" uid="uid://dtjc8yi7m8ac6" path="res://music/BossOpening1.mp3" id="18_efkyw"]
@@ -348,6 +349,10 @@ position = Vector2(-64, -28)
 scale = Vector2(4, 4)
 tile_map_data = PackedByteArray("AAAEAAEAAAAGAAQAAAD9/wEAAAAGAAQAAAA=")
 tile_set = ExtResource("14_1bvhs")
+
+[node name="Arrow" parent="." instance=ExtResource("15_xpepn")]
+position = Vector2(-448, 198)
+rotation = -1.5708
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ykgmf")

@@ -9,9 +9,10 @@ b = Vector2(100, 0)
 points = PackedVector2Array(0, 0, 100, 0)
 script = ExtResource("1_lxcdg")
 
-[node name="Area2D" type="Area2D" parent="." groups=["bullet"]]
+[node name="Area2D" type="Area2D" parent="." groups=["bullet", "laser"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("SegmentShape2D_ywymn")
+disabled = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

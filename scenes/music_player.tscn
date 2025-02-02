@@ -39,7 +39,7 @@ _data = {
 "fade_out": SubResource("Animation_3bioo")
 }
 
-[node name="MusicPlayer" type="AudioStreamPlayer2D"]
+[node name="MusicPlayer" type="AudioStreamPlayer2D" groups=["MusicPlayer"]]
 process_mode = 3
 stream = ExtResource("1_wk6oo")
 bus = &"Music"
