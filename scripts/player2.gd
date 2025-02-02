@@ -11,6 +11,7 @@ extends RigidBody2D
 var can_attack: bool = true
 const MAGNITUDE = 100
 const SWORD_ROTATION_SPEED = 15
+var is_slinging:bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -35,6 +36,11 @@ func _input(event: InputEvent) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	#Shit
+	#print(linear_velocity.length())
+	#linear_velocity = linear_velocity.limit_length(400)
+	#Shit
+	
 	sword.rotation = get_sword_angle()
 	
 	#collision/bouncing stuff
@@ -46,20 +52,25 @@ func _physics_process(delta: float) -> void:
 				player_one.end_lasso(-1)
 
 func sling(direction : Vector2, speed, nposition, add_angle:bool = true):
-	#global_position = nposition
-	if add_angle:
-		direction = direction.rotated(deg_to_rad(80))
-	apply_impulse(direction * (speed * MAGNITUDE), nposition)
+	if !is_slinging:
+		is_slinging = true
+		#global_position = nposition
+		if add_angle:
+			direction = direction.rotated(deg_to_rad(80))
+		print("direction: ", direction.length())
+		apply_central_impulse(direction.limit_length(400) * (speed * MAGNITUDE))
+		await get_tree().create_timer(0.5).timeout
+		is_slinging = false
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
-		body.damaged(20)
 		#$AudioStreamPlayer2D.play()
 		if player_one.player_two_connected:
 			player_one.end_lasso(2, (global_position - body.global_position).normalized())
 		else:
 			sling((global_position - body.global_position).normalized(), 2.8, global_position, false)
+		body.damaged(20)
 
 func _on_body_col_body_entered(body: Node2D) -> void:
 	pass

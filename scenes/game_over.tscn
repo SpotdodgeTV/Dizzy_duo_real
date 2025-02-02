@@ -323,6 +323,7 @@ vertical_alignment = 1
 [node name="TextureRect" type="TextureRect" parent="Label"]
 modulate = Color(0.0509804, 0.0509804, 0.0509804, 0.745098)
 show_behind_parent = true
+layout_mode = 0
 offset_left = -137.0
 offset_top = -48.0
 offset_right = 535.0
@@ -333,6 +334,7 @@ expand_mode = 2
 [node name="TextureRect3" type="TextureRect" parent="Label"]
 modulate = Color(0.0509804, 0.0509804, 0.0509804, 0.745098)
 show_behind_parent = true
+layout_mode = 0
 offset_left = -43.0
 offset_top = 113.0
 offset_right = 412.0

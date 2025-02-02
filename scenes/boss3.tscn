@@ -45,6 +45,7 @@ func _ready() -> void:
 
 
 func phase_update(phase: int):
+	await get_tree().create_timer(0.25).timeout
 	match phase:
 		0:
 			$Main_body.global_position = pos0
@@ -194,6 +195,10 @@ scale = Vector2(4, 4)
 tile_map_data = PackedByteArray("AAD9/wEAAAAGAAQAAAAEAAUAAAAGAAQAAAA=")
 tile_set = ExtResource("1_mac4a")
 
+[node name="Arrow" parent="." instance=ExtResource("22_gy0bv")]
+position = Vector2(-448, 198)
+rotation = -1.5708
+
 [node name="main_boss" type="Node2D" parent="."]
 rotation = -3.14159
 script = SubResource("GDScript_ckqmm")
@@ -332,10 +337,6 @@ stream = ExtResource("19_kve6m")
 
 [node name="pause_menu" parent="." instance=ExtResource("21_bbww0")]
 visible = false
-
-[node name="Arrow" parent="." instance=ExtResource("22_gy0bv")]
-position = Vector2(-448, 198)
-rotation = -1.5708
 
 [connection signal="timeout" from="main_boss/Cooldown" to="main_boss/Main_body" method="_on_cooldown_timeout"]
 [connection signal="next_phase" from="main_boss/Main_body" to="main_boss" method="_on_main_body_next_phase"]

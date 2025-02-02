@@ -234,6 +234,10 @@ scale = Vector2(4, 4)
 tile_map_data = PackedByteArray("AAAEAAMAAAAGAAQAAAD9/wMAAAAGAAQAAAD4/wMAAAAGAAMAAGA=")
 tile_set = ExtResource("1_nkb4g")
 
+[node name="Arrow" parent="." instance=ExtResource("20_doseq")]
+position = Vector2(-448, 198)
+rotation = -1.5708
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.674815, 0.674815, 0.674815, 1)
 
@@ -377,10 +381,6 @@ position = Vector2(-480, 200)
 rotation = -1.5708
 scene_file = "res://scenes/end_cutscene.tscn"
 shader_pos = Vector2(-0.3, 0.5)
-
-[node name="Arrow" parent="." instance=ExtResource("20_doseq")]
-position = Vector2(-448, 198)
-rotation = -1.5708
 
 [connection signal="timeout" from="main_boss/Cooldown" to="main_boss/Main_body" method="_on_cooldown_timeout"]
 [connection signal="has_died" from="main_boss/Main_body" to="main_boss" method="_on_main_body_has_died"]

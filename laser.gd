@@ -24,13 +24,16 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		body.parent.hurt(body, damage)
 
 func activate():
-	collision.shape.a = points[0]
-	collision.shape.b = points[1]
+	await get_tree().create_timer(randf_range(2,3)).timeout
 	default_color = CHARGING
 	is_shooting = true
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(1).timeout
+	$SFX.pitch_scale = randf_range(.8,1.2)
+	$SFX.play()
 	default_color = ACTIVE
 	collision.disabled = false
+	collision.shape.a = points[0]
+	collision.shape.b = points[1]
 	await get_tree().create_timer(.25).timeout
 	collision.disabled = true
 	default_color = INVIS

@@ -68,6 +68,7 @@ func play(dialog_name, delay = 0, fade_out: bool = false):
 		
 		await dialog_pressed
 		if text_label.visible_ratio != 1:
+			$Blip/AnimationPlayer.stop() #fixes yapping bug
 			tween.stop()
 			text_label.visible_ratio = 1
 			await  dialog_pressed

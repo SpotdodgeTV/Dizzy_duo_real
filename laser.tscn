@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://v28tgvq2ist2"]
+[gd_scene load_steps=4 format=3 uid="uid://v28tgvq2ist2"]
 
 [ext_resource type="Script" path="res://laser.gd" id="1_lxcdg"]
+[ext_resource type="AudioStream" uid="uid://dnnglcdwoj4eh" path="res://sfx/Pickup__008.wav" id="2_nru72"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ywymn"]
 b = Vector2(100, 0)
@@ -14,5 +15,9 @@ script = ExtResource("1_lxcdg")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("SegmentShape2D_ywymn")
 disabled = true
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_nru72")
+volume_db = -10.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

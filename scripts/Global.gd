@@ -5,3 +5,6 @@ extends Node
 var player_one_device_num: int = -1
 var player_two_device_num: int = -1
 var coop_enabled = false
+
+func _ready() -> void:
+	Engine.time_scale = 1

@@ -62,5 +62,5 @@ func _process(delta: float) -> void:
 		if laser.is_shooting:
 			$RayCast2D.get_collider()
 			var ray_point = ray_caster.get_collision_point()
-			laser.points[1].x = global_position.distance_to(ray_point)
+			laser.points[1].x = global_position.distance_to(ray_point) + 10
 			laser.global_rotation_degrees = global_rotation_degrees - 90

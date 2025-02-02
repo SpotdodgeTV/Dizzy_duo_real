@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dxn5pa5umd878"]
 
 [ext_resource type="Script" path="res://scripts/Credits.gd" id="1_sf83l"]
-[ext_resource type="AudioStream" uid="uid://bi8070ug3vaga" path="res://music/Cowboy Resolution.mp3" id="2_fe7f4"]
+[ext_resource type="AudioStream" uid="uid://dh00jco7kr3vw" path="res://music/Cowboy real.mp3" id="2_aoc0t"]
 [ext_resource type="PackedScene" uid="uid://fja40kx2ag3p" path="res://scenes/scene_changer.tscn" id="3_mxo1j"]
 
 [node name="Credits" type="Control"]
@@ -38,7 +38,7 @@ offset_bottom = 671.0
 grow_horizontal = 2
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_fe7f4")
+stream = ExtResource("2_aoc0t")
 volume_db = 5.0
 autoplay = true
 bus = &"Music"
